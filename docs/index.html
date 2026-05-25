@@ -953,87 +953,6 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  margin-top: 12px;
 }
 
-/* ============ QUESTIONS ============ */
-.questions {
- display: flex;
- flex-direction: column;
- gap: 14px;
-}
-.q-card {
- background: white;
- border: 1px solid var(--border-subtle);
- border-radius: 12px;
- box-shadow: var(--shadow-card);
- padding: 20px;
-}
-.q-num {
- font-family: 'JetBrains Mono', monospace;
- font-size: 11px;
- font-weight: 600;
- color: var(--text-tertiary);
- letter-spacing: 0.05em;
- margin-bottom: 6px;
-}
-.q-body {
- font-size: 14px;
- font-weight: 500;
- color: var(--text-primary);
- line-height: 1.5;
- margin-bottom: 6px;
-}
-.q-context {
- font-size: 13px;
- color: var(--text-secondary);
- line-height: 1.6;
- margin-bottom: 12px;
-}
-.q-note-btn {
- font-size: 12px;
- background: transparent;
- border: 1px dashed var(--border-subtle);
- color: var(--text-secondary);
- padding: 6px 12px;
- border-radius: 6px;
- cursor: pointer;
- font-family: inherit;
-}
-.q-note-btn:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
-.q-note-area {
- display: none;
- margin-top: 12px;
-}
-.q-card.note-open .q-note-area { display: block; }
-.q-card.note-open .q-note-btn { display: none; }
-.q-note-area textarea {
- width: 100%;
- min-height: 80px;
- border: 1px solid var(--border-subtle);
- border-radius: 8px;
- padding: 10px 12px;
- font-family: inherit;
- font-size: 13px;
- line-height: 1.5;
- color: var(--text-primary);
- resize: vertical;
- background: var(--bg-canvas);
-}
-.q-note-area textarea:focus {
- outline: none;
- border-color: var(--brand-primary);
- background: white;
-}
-.q-note-meta {
- display: flex;
- justify-content: space-between;
- margin-top: 6px;
- font-size: 11px;
- color: var(--text-tertiary);
-}
-.questions-footer {
- display: flex;
- justify-content: flex-end;
- margin-top: 16px;
-}
 
 /* ============ JOURNEY TABLE ============ */
 .journey-tbl {
@@ -1162,7 +1081,6 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  <a class="toc-item toc-sub" data-target="screen-6">· 6 Scenario Simulator</a>
  <a class="toc-item toc-sub" data-target="screen-7">· 7 ROI Looker</a>
  <a class="toc-item" data-target="checklist"><span class="toc-num">07</span> Checklist</a>
- <a class="toc-item" data-target="questions"><span class="toc-num">08</span> Open Questions</a>
  <div class="toc-footer">
  Doc <span class="mono">v1</span><br>
  <span class="mono">2026-05-22</span><br>
@@ -1496,11 +1414,6 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 </section>
 
 </div>
-<section id="questions" class="doc-section">
-  <h2>Open Questions</h2>
-  <p>These are outstanding design and UX decisions that are not yet resolved. They are listed here so reviewers know what to flag feedback on.</p>
-  <div id="questions-list"></div>
-</section>
 </main>
 </div>
 
@@ -1741,210 +1654,6 @@ const CHECKLIST = [
 ];
 
 // ============================================================
-// OPEN QUESTIONS DATA
-// ============================================================
-const QUESTIONS = [
- { q: 'Pillar count — is it 5 or 6?', ctx: 'Overview hero shows 5 pillars. Shelf Health shows 6 (adds Reviews). Is Reviews a first-class pillar of DSIM or a secondary signal? If first-class, it needs an Overview tile and a position in the Sales Decomposition waterfall.' },
- { q: 'Should there be a dedicated Brand Manager (Persona 3) view, or remain absorbed under Overview?', ctx: 'Today the dashboard is built for VP eCom / RGM. Brand Managers care about a single sub-brand or product line — do they get a filtered version, a dedicated tab, or just inherit the same view?' },
- { q: '90% CI vs 95% CI — which is the canonical confidence interval?', ctx: 'The Overview Shelf Health strip says "$30K /day at 95% CI." The Scenario Simulator prediction panel says "90% CI from the Bayesian posterior." Pick one.' },
- { q: 'Should the Keyword Calculator be merged into the Scenario Simulator as a "Keyword tab," or remain free-standing?', ctx: 'Today they are two separate destinations with no cross-link. The user job is similar ("size an opportunity"). Could be one product surface with two views.' },
- { q: 'The cluster heatmap (a grid where similar products are grouped together, and color intensity shows how strong a metric is) shows 17 stores and 17 factors — is this the right granularity?', ctx: 'At full desktop width (1440 pixels), the cells are 6×4px padded with 11px monospace numbers. Drillable from the heatmap to a per-store view, or is the heatmap itself the terminal view?' },
- { q: 'Top-nav Account / Brand / Date filters — should they be global state (affecting all pages) or removed for this version?', ctx: 'Today they look functional but aren\'t wired up. Either commit to making them global or remove them so users don\'t try to use them.' },
- { q: 'The "Open in Simulator" link from Response Curves — should it preload the active driver, the recommended target index, OR just navigate?', ctx: 'Currently navigates with no state. Highest-value cross-page integration in the prototype if fixed.' },
- { q: 'What is the role of "Settings" (Page 8 stub)?', ctx: 'Account preferences, model configuration, integrations, team access — but in what priority order? Is model configuration (e.g., re-cluster, re-train) self-serve in v1 or DataWeave-driven?' },
- { q: 'Should there be a sortable / filterable table on Top Movers (Overview) and Per-Play (ROI Looker)?', ctx: 'Today neither table has column sort. Both are scenarios where a user wants to re-sort.' },
- { q: 'Does the dashboard need a "what changed since last login" patch-notes view?', ctx: 'The model refreshes weekly. A user logging in after a refresh should see "here\'s what\'s new" — currently absent.' },
- { q: 'Should Pages 3 and 4 (Decomposition + Response Curves) be merged into a single "Diagnose" surface with tabs, or remain peers in the sidebar?', ctx: 'They share data, share drivers, and share the user job. Today they share zero navigation.' },
- { q: 'What does a 0% realization or a negative-lift outcome look like on Page 7?', ctx: 'Today the lowest realization shown is 40% (red). A rejected play shows "—" with no actual. What if a play actively hurt sales — does the realization gauge support negative values?' }
-];
-
-// ============================================================
-// RENDER: ACCORDIONS
-// ============================================================
-function renderAccordions() {
- const wrap = document.getElementById('accordion');
- wrap.innerHTML = SCREENS.map((s, idx) => {
- const compHTML = s.comprehends.map((c, i) => `<li><strong>${c[0]}</strong><span class="takeaway">${c[1]}</span></li>`).join('');
- const insHTML = s.insights.map(i => `<li>${i}</li>`).join('');
- const linksHTML = s.links.map(l => `<li>${l}</li>`).join('');
- const showsHTML = s.whatShows.map(w => `<li>${w}</li>`).join('');
- const antiHTML = s.antiMisreads.map(a => `<li>${a}</li>`).join('');
- const openCls = idx === 0 ? 'open' : '';
- return `
-<div class="acc-card ${openCls}" data-screen="${s.n}" id="screen-${s.n}">
- <div class="acc-head">
- <div class="acc-badge">${s.n}</div>
- <div class="acc-title-wrap">
- <div class="acc-title">${s.name}</div>
- <div class="acc-sub">${s.side} <span class="kbd">${s.kbd}</span></div>
- </div>
- <span class="stage-chip stage-${s.stage}">${s.stageLabel}</span>
- <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
- </div>
- <div class="acc-body-wrap">
- <div class="acc-body">
- <div class="acc-body-inner">
- <a class="acc-open-proto" href="https://raghavmht09.github.io/dsim-design/#page-${s.n}" target="_blank" rel="noopener">Open in prototype →</a>
- <div class="field-label">What it shows</div>
- <div class="field-body"><ul>${showsHTML}</ul></div>
- <div class="field-label">User job</div>
- <div class="field-body user-job">${s.userJob}</div>
- <div class="field-label">Where in the journey</div>
- <div class="field-body"><span class="stage-inline-chip stage-${s.stage}">${s.stageLabel}</span></div>
- <div class="field-label">What the user comprehends</div>
- <div class="field-body"><ol>${compHTML}</ol></div>
- <div class="field-label">Key insights surfaced</div>
- <div class="field-body"><ul>${insHTML}</ul></div>
- <div class="field-label">Where this links to</div>
- <div class="field-body"><ul class="where-list">${linksHTML}</ul></div>
- <div class="field-label">Anti-misreads</div>
- <div class="anti-misread">
- <span class="anti-misread-icon">💡</span>
- <ul>${antiHTML}</ul>
- </div>
- </div>
- </div>
- </div>
-</div>`;
- }).join('');
-
- // accordion toggle
- wrap.querySelectorAll('.acc-head').forEach(head => {
- head.addEventListener('click', () => {
- head.parentElement.classList.toggle('open');
- });
- });
-}
-
-// ============================================================
-// RENDER: CHECKLIST
-// ============================================================
-const CHECK_KEY = 'dsim-doc-checklist';
-function getChecklistState() {
- try { return JSON.parse(localStorage.getItem(CHECK_KEY) || '[]'); } catch (e) { return []; }
-}
-function saveChecklistState(arr) {
- localStorage.setItem(CHECK_KEY, JSON.stringify(arr));
-}
-function renderQuestions() {
-  const el = document.getElementById('questions-list');
-  if (!el) return;
-  el.innerHTML = QUESTIONS.map((q, i) => `
-    <div style="margin-bottom:20px;padding:16px;background:#fff;border:1px solid var(--border-subtle);border-radius:8px;">
-      <div style="font-weight:600;margin-bottom:6px;">Q${i+1}. ${q.q}</div>
-      <div style="color:var(--text-secondary);font-size:12px;">${q.ctx}</div>
-    </div>
-  `).join('');
-}
-function renderChecklist() {
- const state = getChecklistState();
- const wrap = document.getElementById('checklist-list');
- wrap.innerHTML = CHECKLIST.map((c, i) => {
- const doneCls = state.includes(i) ? 'done' : '';
- const sub = c.sub ? `<span class="check-sub">${c.sub}</span>` : '';
- return `
-<div class="check-item ${doneCls}" data-i="${i}">
- <div class="check-box"></div>
- <div class="check-num">${String(i+1).padStart(2,'0')}</div>
- <div class="check-text">${c.txt}${sub}</div>
-</div>`;
- }).join('');
- updateProgress();
-
- wrap.querySelectorAll('.check-item').forEach(el => {
- el.addEventListener('click', () => {
- const i = +el.dataset.i;
- const s = getChecklistState();
- const idx = s.indexOf(i);
- if (idx >= 0) s.splice(idx, 1); else s.push(i);
- saveChecklistState(s);
- el.classList.toggle('done');
- updateProgress();
- });
- });
-}
-function updateProgress() {
- const s = getChecklistState();
- const n = s.filter(i => i >= 0 && i < CHECKLIST.length).length;
- document.getElementById('check-count').textContent = n;
- const pct = Math.round((n / CHECKLIST.length) * 100);
- document.getElementById('check-bar').style.width = pct + '%';
- document.getElementById('check-pct').textContent = pct + '%';
-}
-document.getElementById('checklist-reset').addEventListener('click', () => {
- saveChecklistState([]);
- document.querySelectorAll('.check-item').forEach(el => el.classList.remove('done'));
- updateProgress();
-});
-
-// ============================================================
-// RENDER: QUESTIONS
-// ============================================================
-const NOTES_KEY = 'dsim-doc-notes';
-function getNotes() {
- try { return JSON.parse(localStorage.getItem(NOTES_KEY) || '{}'); } catch (e) { return {}; }
-}
-function saveNotes(obj) { localStorage.setItem(NOTES_KEY, JSON.stringify(obj)); }
-function renderQuestions() {
- const notes = getNotes();
- const wrap = document.getElementById('questions-list');
- wrap.innerHTML = QUESTIONS.map((q, i) => {
- const has = notes[i];
- const openCls = has ? 'note-open' : '';
- const val = has ? notes[i].replace(/</g, '&lt;') : '';
- return `
-<div class="q-card ${openCls}" data-i="${i}">
- <div class="q-num">Q${i+1}</div>
- <div class="q-body">${q.q}</div>
- <div class="q-context">${q.ctx}</div>
- <button class="q-note-btn">+ Add a note</button>
- <div class="q-note-area">
- <textarea placeholder="Capture your take on this question…">${val}</textarea>
- <div class="q-note-meta"><span>Auto-saved locally</span><span class="char-count">${val.length} chars</span></div>
- </div>
-</div>`;
- }).join('');
-
- wrap.querySelectorAll('.q-card').forEach(card => {
- const i = +card.dataset.i;
- const btn = card.querySelector('.q-note-btn');
- const ta = card.querySelector('textarea');
- const cc = card.querySelector('.char-count');
- btn.addEventListener('click', () => {
- card.classList.add('note-open');
- setTimeout(() => ta.focus(), 50);
- });
- ta.addEventListener('input', () => {
- const n = getNotes();
- const v = ta.value;
- if (v.trim()) n[i] = v; else delete n[i];
- saveNotes(n);
- cc.textContent = v.length + ' chars';
- });
- });
-}
-document.getElementById('export-notes')?.addEventListener('click', () => {
- const n = getNotes();
- const lines = ['DSIM Reviewer Notes', '====================', '', `Exported: ${new Date().toISOString().slice(0,19).replace('T',' ')}`, ''];
- QUESTIONS.forEach((q, i) => {
- lines.push(`Q${i+1}: ${q.q}`);
- if (n[i]) {
- lines.push(' Note:');
- n[i].split('\n').forEach(l => lines.push(' ' + l));
- } else {
- lines.push(' (no note)');
- }
- lines.push('');
- });
- const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
- const url = URL.createObjectURL(blob);
- const a = document.createElement('a');
- a.href = url; a.download = 'dsim-reviewer-notes.txt';
- document.body.appendChild(a); a.click();
- setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
-});
-
-// ============================================================
 // METHODOLOGY ALPHABET STRIP
 // ============================================================
 function buildAlphaStrip() {
@@ -1993,7 +1702,7 @@ function initTOC() {
 
  // IntersectionObserver
  const sections = [];
- ['overview','pillars','methodology','walmart','levers','screens','checklist','questions'].forEach(id => {
+ ['overview','pillars','methodology','walmart','levers','screens','checklist'].forEach(id => {
  const el = document.getElementById(id);
  if (el) sections.push(el);
  });
@@ -2075,7 +1784,6 @@ function initShortcuts() {
 // ============================================================
 renderAccordions();
 renderChecklist();
-  renderQuestions();
 buildAlphaStrip();
 initTOC();
 initSearch();
