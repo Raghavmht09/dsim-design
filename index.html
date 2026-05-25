@@ -1268,6 +1268,16 @@ main {
 }
 .cluster-heat tbody tr.bottom-meta td { background: var(--bg-canvas); font-weight: 600; }
 .cluster-heat tbody tr.bottom-meta td.factor { background: var(--bg-canvas); }
+.cluster-heat tbody tr.clickable-factor-row { cursor: pointer; }
+.cluster-heat tbody tr.clickable-factor-row:hover td.factor {
+  background: rgba(74,144,217,0.10);
+  color: var(--brand-primary);
+}
+.cluster-heat tbody tr.clickable-factor-row.is-active td.factor {
+  background: rgba(74,144,217,0.18);
+  color: var(--brand-hover);
+  font-weight: 600;
+}
 
 .heat-legend {
   display: flex; align-items: center; gap: var(--s-3);
@@ -2074,6 +2084,177 @@ main {
   font-size: var(--fs-sm); color: var(--text-primary); line-height: 1.5;
 }
 
+/* =========================================================
+   PAGE 3 — Sales Decomposition v2
+   ========================================================= */
+/* Pillar header strip */
+.pillar-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: var(--s-4);
+}
+.pillar-strip-pill {
+  padding: 10px var(--s-3);
+  border-radius: var(--r-md);
+  border: 1px solid color-mix(in srgb, var(--ps-color) 25%, var(--border-subtle));
+  background: color-mix(in srgb, var(--ps-color) 14%, white);
+  display: flex; flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--t-base);
+}
+.pillar-strip-pill:hover {
+  background: color-mix(in srgb, var(--ps-color) 22%, white);
+  border-color: color-mix(in srgb, var(--ps-color) 40%, var(--border-subtle));
+}
+.pillar-strip-pill .ps-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.pillar-strip-pill .ps-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.pillar-strip-pill .ps-value.neg { color: var(--semantic-danger); }
+
+/* Sub-pill row (Adult / Baby / Kids inside Sub-brand tab) */
+.sub-pill-row {
+  display: inline-flex;
+  gap: 2px;
+  background: #F1F5F9;
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: var(--s-4);
+}
+.sub-pill {
+  background: transparent;
+  border: 0;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--t-base);
+}
+.sub-pill:hover:not(.active) { color: var(--text-primary); background: rgba(255,255,255,0.6); }
+.sub-pill.active { background: var(--brand-primary); color: white; }
+
+/* Factor waterfall */
+.factor-waterfall-frame {
+  position: relative;
+  height: 380px;
+}
+
+/* Factor detail panel */
+.factor-detail {
+  margin-top: var(--s-4);
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+  gap: var(--s-4);
+}
+.factor-detail-chart {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  padding: var(--card-pad);
+  box-shadow: var(--shadow-card);
+}
+.factor-detail-title {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+  display: flex; align-items: center; gap: var(--s-2);
+}
+.factor-detail-title .pillar-tag-dot {
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.factor-detail-legend {
+  display: flex; gap: var(--s-4);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  margin: 4px 0 var(--s-3);
+}
+.factor-detail-legend .swatch {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.factor-histogram-frame {
+  position: relative;
+  height: 280px;
+}
+.factor-metric-stack {
+  display: flex; flex-direction: column;
+  gap: var(--s-3);
+}
+.metric-table-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.metric-table-card-header {
+  padding: 10px var(--s-4);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  background: #F8FAFC;
+}
+.metric-table-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.metric-table-card thead th {
+  background: rgba(74,144,217,0.05);
+  padding: 6px 12px;
+  text-align: left;
+  text-transform: none;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  letter-spacing: 0.02em;
+}
+.metric-table-card thead th:last-child { text-align: right; }
+.metric-table-card td {
+  padding: 6px 12px;
+  font-size: 11px;
+  color: var(--text-primary);
+  border-bottom: 1px solid #F1F5F9;
+}
+.metric-table-card td:last-child {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.metric-table-card tbody tr:last-child td { border-bottom: 0; }
+.metric-table-card .factor-col {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
 /* Help-term: dotted-underline tooltip wrapper for jargon */
 .help-term {
   text-decoration: underline dotted color-mix(in srgb, var(--text-tertiary) 80%, transparent);
@@ -2674,74 +2855,70 @@ main {
 
     <!-- National pane -->
     <div class="tab-pane active" id="decomp-national">
-      <div class="decomp-grid">
-        <div class="card">
-          <div class="card-header">
-            <div>
-              <h3 class="card-title">Sales contribution waterfall</h3>
-              <div class="card-subtitle">Q2 2026 · All Walmart stores</div>
-            </div>
-            <span class="pill info"><span class="pill-dot"></span><span class="help-term" title="Coefficient of determination" style="color:inherit;">R²</span> 0.91 · <span class="help-term" title="Mean Absolute Percentage Error" style="color:inherit;">MAPE</span> 5.9%</span>
-          </div>
-          <div class="waterfall-frame">
-            <canvas id="waterfallNational"></canvas>
-          </div>
-          <div class="legend">
-            <span class="legend-item"><span class="legend-swatch" style="background:#94A3B8"></span>Baseline</span>
-            <span class="legend-item"><span class="legend-swatch" style="background:#27AE60"></span>Always Available</span>
-            <span class="legend-item"><span class="legend-swatch" style="background:#4A90D9"></span>Looking Great</span>
-            <span class="legend-item"><span class="legend-swatch" style="background:#E0922B"></span>Right Price</span>
-            <span class="legend-item"><span class="legend-swatch" style="background:#7C3AED"></span>Promoted</span>
-            <span class="legend-item"><span class="legend-swatch" style="background:#BE185D"></span>Easy To Find</span>
-            <span class="legend-item"><span class="legend-swatch" style="background:#E74C3C"></span>Competition</span>
-          </div>
-        </div>
 
-        <div class="card interp-card">
-          <h4>What this means</h4>
-          <p><span class="highlight">Promoted channels drove ~23%</span> of Q2 sales — heavily weighted to Onsite Search.</p>
-          <p>The model identifies <span class="highlight">Offsite Display as the headroom lever</span>: <span class="iroi" title="Incremental ROI — effect share ÷ investment share">1.55× iROI</span> vs. <span class="iroi" style="background:rgba(231,76,60,0.10);color:#991B1B;" title="Incremental ROI — effect share ÷ investment share">0.83× iROI</span> for Onsite Search.</p></p>
-          <p>Competition headwind <span class="dollar">(−5%)</span> is concentrated in the <span class="highlight">Southern Staples</span> cluster — Adult cheese SKUs facing private-label pricing pressure.</p>
+      <!-- Pillar header strip -->
+      <div class="pillar-strip" id="pillarStripNational"></div>
+
+      <!-- Factor waterfall -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Sales contribution waterfall</h3>
+            <div class="card-subtitle">Q2 2026 · All Walmart stores · 17 factors → 100%</div>
+          </div>
+          <span class="pill info"><span class="pill-dot"></span><span class="help-term" title="Coefficient of determination" style="color:inherit;">R²</span> 0.91 · <span class="help-term" title="Mean Absolute Percentage Error" style="color:inherit;">MAPE</span> 5.9%</span>
+        </div>
+        <div class="factor-waterfall-frame">
+          <canvas id="waterfallNational"></canvas>
+        </div>
+        <div class="legend">
+          <span class="legend-item"><span class="legend-swatch" style="background:#94A3B8"></span>Baseline</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#27AE60"></span>Always Available</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#4A90D9"></span>Looking Great</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#E0922B"></span>Right Price</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#7C3AED"></span>Promoted</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#BE185D"></span>Easy To Find</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#E74C3C"></span>Competition</span>
+          <span class="legend-item" style="margin-left: auto;"><span style="display:inline-block; width:14px; height:0; border-top:1.5px dashed #94A3B8; margin-right:6px; vertical-align:middle;"></span>Cumulative</span>
+        </div>
+        <div style="margin-top: var(--s-3); font-size: var(--fs-xs); color: var(--text-tertiary); text-align: center;">
+          Click any bar to drill into that factor's distribution and metric values below.
         </div>
       </div>
 
-      <div class="section-gap">
-        <div class="section-heading">
-          Promoted breakdown
-          <span class="meta">The 23% Promoted contribution by channel</span>
+      <!-- Factor detail panel (shared) -->
+      <div class="factor-detail">
+        <div class="factor-detail-chart">
+          <h4 class="factor-detail-title" id="fdNatTitle">
+            <span class="pillar-tag-dot" id="fdNatDot"></span>
+            <span id="fdNatName">Onsite Search Factor</span>
+          </h4>
+          <div class="factor-detail-legend">
+            <span><span class="swatch" style="background:#E74C3C"></span>Average</span>
+            <span><span class="swatch" style="background:#4A90D9"></span>Peak responsiveness</span>
+          </div>
+          <div class="factor-histogram-frame">
+            <canvas id="factorHistogramNational"></canvas>
+          </div>
         </div>
-        <div class="grid cols-4" style="gap: var(--s-3);">
-          <div class="card" style="padding: var(--s-4);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 6px;">
-              <span style="font-size:var(--fs-sm); font-weight:500; color:var(--text-secondary);">Onsite Search</span>
-              <span class="iroi" style="background:rgba(231,76,60,0.10);color:#991B1B;">0.83×</span>
-            </div>
-            <div style="font-family:'JetBrains Mono', monospace; font-size: var(--fs-xl); font-weight:600;">10%</div>
-            <div class="score-bar" style="margin-top:8px;"><span style="width:44%; background:#7C3AED;"></span></div>
+        <div class="factor-metric-stack">
+          <div class="metric-table-card">
+            <div class="metric-table-card-header">Avg metric values</div>
+            <table>
+              <thead>
+                <tr><th>Factor</th><th>Metric</th><th>Value</th></tr>
+              </thead>
+              <tbody id="fdNatAvgTable"></tbody>
+            </table>
           </div>
-          <div class="card" style="padding: var(--s-4);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 6px;">
-              <span style="font-size:var(--fs-sm); font-weight:500; color:var(--text-secondary);">Offsite Display</span>
-              <span class="iroi">1.55×</span>
-            </div>
-            <div style="font-family:'JetBrains Mono', monospace; font-size: var(--fs-xl); font-weight:600;">7%</div>
-            <div class="score-bar" style="margin-top:8px;"><span style="width:30%; background:#7C3AED;"></span></div>
-          </div>
-          <div class="card" style="padding: var(--s-4);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 6px;">
-              <span style="font-size:var(--fs-sm); font-weight:500; color:var(--text-secondary);">Onsite Display</span>
-              <span class="iroi">1.12×</span>
-            </div>
-            <div style="font-family:'JetBrains Mono', monospace; font-size: var(--fs-xl); font-weight:600;">3%</div>
-            <div class="score-bar" style="margin-top:8px;"><span style="width:13%; background:#7C3AED;"></span></div>
-          </div>
-          <div class="card" style="padding: var(--s-4);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 6px;">
-              <span style="font-size:var(--fs-sm); font-weight:500; color:var(--text-secondary);">Sponsored Visibility</span>
-              <span class="iroi">0.94×</span>
-            </div>
-            <div style="font-family:'JetBrains Mono', monospace; font-size: var(--fs-xl); font-weight:600;">3%</div>
-            <div class="score-bar" style="margin-top:8px;"><span style="width:13%; background:#7C3AED;"></span></div>
+          <div class="metric-table-card">
+            <div class="metric-table-card-header">Peak metric values</div>
+            <table>
+              <thead>
+                <tr><th>Factor</th><th>Metric</th><th>Value</th></tr>
+              </thead>
+              <tbody id="fdNatPeakTable"></tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -2749,30 +2926,36 @@ main {
 
     <!-- Sub-brand pane -->
     <div class="tab-pane" id="decomp-subbrand">
-      <div class="decomp-mini-grid">
-        <div class="card mini-card">
-          <div class="mini-card-title">
-            Adult
-            <span class="mono" style="font-size:var(--fs-xs); color:var(--text-tertiary);">$8.2M Q</span>
+
+      <div class="sub-pill-row" id="subBrandPills">
+        <button class="sub-pill active" data-sb="all" type="button">All</button>
+        <button class="sub-pill" data-sb="adult" type="button">Adult</button>
+        <button class="sub-pill" data-sb="baby"  type="button">Baby</button>
+        <button class="sub-pill" data-sb="kids"  type="button">Kids</button>
+      </div>
+
+      <div class="pillar-strip" id="pillarStripSubbrand"></div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title" id="sbWaterfallTitle">All sub-brands — sales contribution waterfall</h3>
+            <div class="card-subtitle" id="sbWaterfallMeta">100% of volume · all Walmart stores</div>
           </div>
-          <div class="mini-card-meta">52% of total volume · Adult cheese SKUs</div>
-          <div class="waterfall-mini"><canvas id="waterfallAdult"></canvas></div>
+          <span class="pill info"><span class="pill-dot"></span><span class="help-term" title="Coefficient of determination" style="color:inherit;">R²</span> 0.91</span>
         </div>
-        <div class="card mini-card">
-          <div class="mini-card-title">
-            Baby
-            <span class="mono" style="font-size:var(--fs-xs); color:var(--text-tertiary);">$4.1M Q</span>
-          </div>
-          <div class="mini-card-meta">28% of total volume · Baby yogurts</div>
-          <div class="waterfall-mini"><canvas id="waterfallBaby"></canvas></div>
+        <div class="factor-waterfall-frame">
+          <canvas id="waterfallSubbrand"></canvas>
         </div>
-        <div class="card mini-card">
-          <div class="mini-card-title">
-            Kids
-            <span class="mono" style="font-size:var(--fs-xs); color:var(--text-tertiary);">$2.8M Q</span>
-          </div>
-          <div class="mini-card-meta">20% of total volume · Kids snacks</div>
-          <div class="waterfall-mini"><canvas id="waterfallKids"></canvas></div>
+        <div class="legend">
+          <span class="legend-item"><span class="legend-swatch" style="background:#94A3B8"></span>Baseline</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#27AE60"></span>Always Available</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#4A90D9"></span>Looking Great</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#E0922B"></span>Right Price</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#7C3AED"></span>Promoted</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#BE185D"></span>Easy To Find</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#E74C3C"></span>Competition</span>
+          <span class="legend-item" style="margin-left: auto;"><span style="display:inline-block; width:14px; height:0; border-top:1.5px dashed #94A3B8; margin-right:6px; vertical-align:middle;"></span>Cumulative</span>
         </div>
       </div>
 
@@ -2780,15 +2963,50 @@ main {
         <span class="emoji">🔁</span>
         <span><span class="highlight" style="font-weight:600;">Cross-sub-brand halo:</span> Kids / Baby media drove <span class="dollar" style="color:var(--semantic-success); font-family:'JetBrains Mono', monospace; font-weight:600;">+12% incremental Adult sales</span> — not visible in single-brand analysis. Households exposed to Baby-segment ads converted on Adult SKUs within 14 days.</span>
       </div>
+
+      <div class="factor-detail">
+        <div class="factor-detail-chart">
+          <h4 class="factor-detail-title">
+            <span class="pillar-tag-dot" id="fdSbDot"></span>
+            <span id="fdSbName">Onsite Search Factor</span>
+          </h4>
+          <div class="factor-detail-legend">
+            <span><span class="swatch" style="background:#E74C3C"></span>Average</span>
+            <span><span class="swatch" style="background:#4A90D9"></span>Peak responsiveness</span>
+          </div>
+          <div class="factor-histogram-frame">
+            <canvas id="factorHistogramSubbrand"></canvas>
+          </div>
+        </div>
+        <div class="factor-metric-stack">
+          <div class="metric-table-card">
+            <div class="metric-table-card-header">Avg metric values</div>
+            <table>
+              <thead><tr><th>Factor</th><th>Metric</th><th>Value</th></tr></thead>
+              <tbody id="fdSbAvgTable"></tbody>
+            </table>
+          </div>
+          <div class="metric-table-card">
+            <div class="metric-table-card-header">Peak metric values</div>
+            <table>
+              <thead><tr><th>Factor</th><th>Metric</th><th>Value</th></tr></thead>
+              <tbody id="fdSbPeakTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Cluster pane -->
     <div class="tab-pane" id="decomp-cluster">
+
+      <div class="pillar-strip" id="pillarStripCluster"></div>
+
       <div class="card" style="padding: var(--s-4);">
         <div class="card-header">
           <div>
             <h3 class="card-title">Contribution by store × factor</h3>
-            <div class="card-subtitle">17 stores grouped into 4 mega-clusters · hover any cell for detail</div>
+            <div class="card-subtitle">17 stores grouped into 4 mega-clusters · click any factor row for detail</div>
           </div>
           <div class="heat-legend" style="margin-top: 0;">
             <span class="mono">−5%</span>
@@ -2798,6 +3016,38 @@ main {
         </div>
         <div class="cluster-heat-wrapper" id="clusterHeatWrapper">
           <table class="cluster-heat" id="clusterHeatTable"></table>
+        </div>
+      </div>
+
+      <div class="factor-detail">
+        <div class="factor-detail-chart">
+          <h4 class="factor-detail-title">
+            <span class="pillar-tag-dot" id="fdClDot"></span>
+            <span id="fdClName">Promoted — Onsite Search</span>
+          </h4>
+          <div class="factor-detail-legend">
+            <span><span class="swatch" style="background:#E74C3C"></span>Average</span>
+            <span><span class="swatch" style="background:#4A90D9"></span>Peak responsiveness</span>
+          </div>
+          <div class="factor-histogram-frame">
+            <canvas id="factorHistogramCluster"></canvas>
+          </div>
+        </div>
+        <div class="factor-metric-stack">
+          <div class="metric-table-card">
+            <div class="metric-table-card-header">Avg metric values</div>
+            <table>
+              <thead><tr><th>Factor</th><th>Metric</th><th>Value</th></tr></thead>
+              <tbody id="fdClAvgTable"></tbody>
+            </table>
+          </div>
+          <div class="metric-table-card">
+            <div class="metric-table-card-header">Peak metric values</div>
+            <table>
+              <thead><tr><th>Factor</th><th>Metric</th><th>Value</th></tr></thead>
+              <tbody id="fdClPeakTable"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -4246,10 +4496,11 @@ document.querySelectorAll('.tab-strip').forEach(strip => {
     if (targetId === 'decomp-cluster') renderClusterHeatmap();
     // Sub-brand mini-waterfalls were instantiated while their pane was hidden
     // (display:none → 0×0 canvas). Force a resize once the pane is visible.
-    if (targetId === 'decomp-subbrand' && decompCharts) {
-      requestAnimationFrame(() => {
-        ['adult','baby','kids'].forEach(k => decompCharts[k] && decompCharts[k].resize());
-      });
+    if (targetId === 'decomp-subbrand' && decompCharts && decompCharts.subbrand) {
+      requestAnimationFrame(() => decompCharts.subbrand.resize());
+    }
+    if (targetId === 'decomp-national' && decompCharts && decompCharts.national) {
+      requestAnimationFrame(() => decompCharts.national.resize());
     }
   });
 });
@@ -4277,103 +4528,349 @@ const PILLAR_LABELS = {
 };
 
 window.DSIM_DATA.decomp = {
-  national: [
-    { key: 'baseline',     pct: 49 },
-    { key: 'availability', pct: 10 },
-    { key: 'content',      pct:  6 },
-    { key: 'pricing',      pct:  5 },
-    { key: 'media',        pct: 23 },
-    { key: 'search',       pct:  3 },
-    { key: 'competition',  pct: -5 }
-  ],
-  subbrand: {
-    adult: [
-      { key: 'baseline', pct: 51 }, { key: 'availability', pct: 9 }, { key: 'content', pct: 5 },
-      { key: 'pricing', pct: 4 }, { key: 'media', pct: 26 }, { key: 'search', pct: 3 }, { key: 'competition', pct: -8 }
+  /* Factor-level data per scope. Each factor's pct sums to 100. */
+  national: {
+    pillarTotals: [
+      { key: 'baseline',     pct: 55 },  // Baseline + Residuals + Seasonality
+      { key: 'availability', pct: 13 },
+      { key: 'content',      pct:  5 },
+      { key: 'pricing',      pct:  3 },
+      { key: 'media',        pct: 23 },
+      { key: 'search',       pct:  5 },
+      { key: 'competition',  pct: -4 }
     ],
-    baby: [
-      { key: 'baseline', pct: 46 }, { key: 'availability', pct: 12 }, { key: 'content', pct: 8 },
-      { key: 'pricing', pct: 6 }, { key: 'media', pct: 22 }, { key: 'search', pct: 4 }, { key: 'competition', pct: -2 }
+    factors: [
+      { name: 'Baseline Sales',          pct: 47, pillar: 'baseline' },
+      { name: 'Residuals/Noise',         pct:  2, pillar: 'baseline' },
+      { name: 'Seasonality Factor',      pct:  6, pillar: 'baseline' },
+      { name: 'Availability Factor',     pct:  7, pillar: 'availability' },
+      { name: 'Assortment Factor',       pct:  6, pillar: 'availability' },
+      { name: 'Ratings & Reviews',       pct:  4, pillar: 'content' },
+      { name: 'Content Quality Factor',  pct:  1, pillar: 'content' },
+      { name: 'Price Factor',            pct:  3, pillar: 'pricing' },
+      { name: 'Onsite Search Factor',    pct:  9, pillar: 'media' },
+      { name: 'Offsite Display Factor',  pct:  7, pillar: 'media' },
+      { name: 'Onsite Display Factor',   pct:  3, pillar: 'media' },
+      { name: 'Sponsored Visibility',    pct:  4, pillar: 'media' },
+      { name: 'Organic SoS Visibility',  pct:  3, pillar: 'search' },
+      { name: 'Organic SoC Visibility',  pct:  2, pillar: 'search' },
+      { name: 'Competitor Organic',      pct: -1, pillar: 'competition' },
+      { name: 'Competitor Sponsored',    pct: -2, pillar: 'competition' },
+      { name: 'Other Competitor',        pct: -1, pillar: 'competition' }
+    ]
+  }
+};
+// Sub-brand variants — same factor list, slightly different magnitudes
+window.DSIM_DATA.decomp.subbrand = {
+  all: window.DSIM_DATA.decomp.national,
+  adult: {
+    pillarTotals: [
+      { key: 'baseline', pct: 56 }, { key: 'availability', pct: 12 }, { key: 'content', pct: 5 },
+      { key: 'pricing', pct: 3 }, { key: 'media', pct: 26 }, { key: 'search', pct: 4 }, { key: 'competition', pct: -6 }
     ],
-    kids: [
-      { key: 'baseline', pct: 48 }, { key: 'availability', pct: 11 }, { key: 'content', pct: 7 },
-      { key: 'pricing', pct: 5 }, { key: 'media', pct: 19 }, { key: 'search', pct: 5 }, { key: 'competition', pct: -3 }
+    factors: [
+      { name: 'Baseline Sales',         pct: 48, pillar: 'baseline' },
+      { name: 'Residuals/Noise',        pct:  2, pillar: 'baseline' },
+      { name: 'Seasonality Factor',     pct:  6, pillar: 'baseline' },
+      { name: 'Availability Factor',    pct:  7, pillar: 'availability' },
+      { name: 'Assortment Factor',      pct:  5, pillar: 'availability' },
+      { name: 'Ratings & Reviews',      pct:  3, pillar: 'content' },
+      { name: 'Content Quality Factor', pct:  2, pillar: 'content' },
+      { name: 'Price Factor',           pct:  3, pillar: 'pricing' },
+      { name: 'Onsite Search Factor',   pct: 11, pillar: 'media' },
+      { name: 'Offsite Display Factor', pct:  8, pillar: 'media' },
+      { name: 'Onsite Display Factor',  pct:  3, pillar: 'media' },
+      { name: 'Sponsored Visibility',   pct:  4, pillar: 'media' },
+      { name: 'Organic SoS Visibility', pct:  2, pillar: 'search' },
+      { name: 'Organic SoC Visibility', pct:  2, pillar: 'search' },
+      { name: 'Competitor Organic',     pct: -1, pillar: 'competition' },
+      { name: 'Competitor Sponsored',   pct: -3, pillar: 'competition' },
+      { name: 'Other Competitor',       pct: -2, pillar: 'competition' }
+    ]
+  },
+  baby: {
+    pillarTotals: [
+      { key: 'baseline', pct: 54 }, { key: 'availability', pct: 15 }, { key: 'content', pct: 7 },
+      { key: 'pricing', pct: 4 }, { key: 'media', pct: 22 }, { key: 'search', pct: 4 }, { key: 'competition', pct: -2 }
+    ],
+    factors: [
+      { name: 'Baseline Sales',         pct: 45, pillar: 'baseline' },
+      { name: 'Residuals/Noise',        pct:  2, pillar: 'baseline' },
+      { name: 'Seasonality Factor',     pct:  7, pillar: 'baseline' },
+      { name: 'Availability Factor',    pct:  8, pillar: 'availability' },
+      { name: 'Assortment Factor',      pct:  7, pillar: 'availability' },
+      { name: 'Ratings & Reviews',      pct:  5, pillar: 'content' },
+      { name: 'Content Quality Factor', pct:  2, pillar: 'content' },
+      { name: 'Price Factor',           pct:  4, pillar: 'pricing' },
+      { name: 'Onsite Search Factor',   pct:  8, pillar: 'media' },
+      { name: 'Offsite Display Factor', pct:  7, pillar: 'media' },
+      { name: 'Onsite Display Factor',  pct:  3, pillar: 'media' },
+      { name: 'Sponsored Visibility',   pct:  4, pillar: 'media' },
+      { name: 'Organic SoS Visibility', pct:  2, pillar: 'search' },
+      { name: 'Organic SoC Visibility', pct:  2, pillar: 'search' },
+      { name: 'Competitor Organic',     pct: -0.5, pillar: 'competition' },
+      { name: 'Competitor Sponsored',   pct: -1, pillar: 'competition' },
+      { name: 'Other Competitor',       pct: -0.5, pillar: 'competition' }
+    ]
+  },
+  kids: {
+    pillarTotals: [
+      { key: 'baseline', pct: 55 }, { key: 'availability', pct: 14 }, { key: 'content', pct: 6 },
+      { key: 'pricing', pct: 4 }, { key: 'media', pct: 19 }, { key: 'search', pct: 5 }, { key: 'competition', pct: -3 }
+    ],
+    factors: [
+      { name: 'Baseline Sales',         pct: 46, pillar: 'baseline' },
+      { name: 'Residuals/Noise',        pct:  3, pillar: 'baseline' },
+      { name: 'Seasonality Factor',     pct:  6, pillar: 'baseline' },
+      { name: 'Availability Factor',    pct:  8, pillar: 'availability' },
+      { name: 'Assortment Factor',      pct:  6, pillar: 'availability' },
+      { name: 'Ratings & Reviews',      pct:  4, pillar: 'content' },
+      { name: 'Content Quality Factor', pct:  2, pillar: 'content' },
+      { name: 'Price Factor',           pct:  4, pillar: 'pricing' },
+      { name: 'Onsite Search Factor',   pct:  7, pillar: 'media' },
+      { name: 'Offsite Display Factor', pct:  5, pillar: 'media' },
+      { name: 'Onsite Display Factor',  pct:  3, pillar: 'media' },
+      { name: 'Sponsored Visibility',   pct:  4, pillar: 'media' },
+      { name: 'Organic SoS Visibility', pct:  3, pillar: 'search' },
+      { name: 'Organic SoC Visibility', pct:  2, pillar: 'search' },
+      { name: 'Competitor Organic',     pct: -1, pillar: 'competition' },
+      { name: 'Competitor Sponsored',   pct: -1, pillar: 'competition' },
+      { name: 'Other Competitor',       pct: -1, pillar: 'competition' }
     ]
   }
 };
 
-/* Waterfall chart (floating bars + dashed connectors) */
-function renderWaterfall(canvasId, contributions, opts = {}) {
+/* Sub-brand summary (for the waterfall card subtitle) */
+const SUBBRAND_META = {
+  all:   { title: 'All sub-brands — sales contribution waterfall',  meta: '100% of volume · all Walmart stores' },
+  adult: { title: 'Adult — sales contribution waterfall',           meta: '52% of volume · $8.2M Q · Adult cheese SKUs' },
+  baby:  { title: 'Baby — sales contribution waterfall',            meta: '28% of volume · $4.1M Q · Baby yogurts' },
+  kids:  { title: 'Kids — sales contribution waterfall',            meta: '20% of volume · $2.8M Q · Kids snacks' }
+};
+
+/* Mock metric values per factor — deterministic */
+function factorMetricRows(factor) {
+  // Returns [{ factor, metric, value, peakValue }, ...] with 4-5 plausible rows
+  const f = factor.name;
+  const seed = f.length;
+  const j = (m) => Number((m * (0.95 + (Math.sin(seed * 1.7 + m) * 0.05))).toFixed(2));
+  if (f.includes('Onsite Search')) return [
+    { metric: 'Onsite – Paid Search spend', avg: 9224.44, peak: 11466.34, fmt: 'k2' },
+    { metric: 'Onsite Paid Search CPM',     avg:    8.36, peak:    8.26, fmt: 'k2' },
+    { metric: 'Onsite PS Clicks',           avg: 8485.28, peak: 11028.35, fmt: 'k2' },
+    { metric: 'Onsite PS CTR',              avg:    0.01, peak:    0.01, fmt: 'k2' },
+    { metric: 'Onsite PS Impressions',      avg: 1028838.34, peak: 1296835.91, fmt: 'k2' }
+  ];
+  if (f.includes('Offsite Display')) return [
+    { metric: 'Offsite Display spend',     avg: 12420.10, peak: 18305.55, fmt: 'k2' },
+    { metric: 'Offsite Display CPM',       avg:    11.82, peak:    11.10, fmt: 'k2' },
+    { metric: 'Offsite Display Clicks',    avg:  4250.66, peak:  6802.30, fmt: 'k2' },
+    { metric: 'Offsite Display CTR',       avg:    0.00, peak:    0.01, fmt: 'k2' },
+    { metric: 'Offsite Display Impressions', avg: 1050880.40, peak: 1647560.20, fmt: 'k2' }
+  ];
+  if (f.includes('Onsite Display')) return [
+    { metric: 'Onsite Display spend',     avg: 3210.80, peak: 4810.20, fmt: 'k2' },
+    { metric: 'Onsite Display CPM',       avg:    9.40, peak:    9.10, fmt: 'k2' },
+    { metric: 'Onsite Display Clicks',    avg: 1480.25, peak: 2370.40, fmt: 'k2' },
+    { metric: 'Onsite Display CTR',       avg:    0.01, peak:    0.01, fmt: 'k2' },
+    { metric: 'Onsite Display Impressions', avg: 341560.10, peak: 528700.80, fmt: 'k2' }
+  ];
+  if (f.includes('Sponsored Visibility')) return [
+    { metric: 'Sponsored Visibility spend', avg: 2010.55, peak: 3650.40, fmt: 'k2' },
+    { metric: 'SV CPM',                     avg:    6.20, peak:    6.80, fmt: 'k2' },
+    { metric: 'SV Clicks',                  avg: 1024.10, peak: 1860.85, fmt: 'k2' },
+    { metric: 'SV CTR',                     avg:    0.02, peak:    0.02, fmt: 'k2' },
+    { metric: 'SV Impressions',             avg: 324180.50, peak: 537820.30, fmt: 'k2' }
+  ];
+  if (f.includes('Availability')) return [
+    { metric: 'OSA rate',                avg:   96.30, peak:   99.10, fmt: 'pct' },
+    { metric: 'SKUs at risk',            avg:   11.00, peak:    2.00, fmt: 'int' },
+    { metric: 'Days OOS / SKU',          avg:    1.40, peak:    0.20, fmt: 'k2' }
+  ];
+  if (f.includes('Assortment')) return [
+    { metric: 'Active SKUs',             avg:  142.00, peak:  156.00, fmt: 'int' },
+    { metric: 'Avg SKUs / store',        avg:   38.00, peak:   44.00, fmt: 'int' },
+    { metric: 'Top-20 coverage',         avg:   0.62, peak:    0.78, fmt: 'pct' }
+  ];
+  if (f.includes('Ratings') || f.includes('Reviews')) return [
+    { metric: 'Avg rating (1–5)',        avg:    4.30, peak:    4.50, fmt: 'k2' },
+    { metric: 'Reviews / SKU',           avg:  187.00, peak:  264.00, fmt: 'int' },
+    { metric: '% SKUs ≥ 4★',             avg:    0.88, peak:    0.94, fmt: 'pct' }
+  ];
+  if (f.includes('Content Quality')) return [
+    { metric: 'Content score (1–10)',    avg:    7.20, peak:    8.40, fmt: 'k2' },
+    { metric: 'Title quality',           avg:    0.82, peak:    0.96, fmt: 'pct' },
+    { metric: 'A+ coverage',             avg:    0.64, peak:    0.85, fmt: 'pct' }
+  ];
+  if (f.includes('Price')) return [
+    { metric: 'List price ($)',          avg: j(4.79), peak: j(4.49), fmt: 'usd' },
+    { metric: 'Promo depth (%)',         avg:    0.07, peak:    0.14, fmt: 'pct' },
+    { metric: 'vs comp index',           avg:    1.02, peak:    0.94, fmt: 'k2' }
+  ];
+  if (f.includes('Organic SoS')) return [
+    { metric: 'Organic SoS rank',        avg:    5.00, peak:    3.00, fmt: 'int' },
+    { metric: 'SoS share',               avg:   0.241, peak:   0.310, fmt: 'pct' }
+  ];
+  if (f.includes('Organic SoC')) return [
+    { metric: 'Organic SoC rank',        avg:    7.00, peak:    4.00, fmt: 'int' },
+    { metric: 'SoC share',               avg:   0.190, peak:   0.262, fmt: 'pct' }
+  ];
+  if (f.includes('Competitor')) return [
+    { metric: 'Competitor spend ($)',    avg: 18420.20, peak: 26310.80, fmt: 'k2' },
+    { metric: 'Competitor SoS rank',     avg:    3.00, peak:    2.00, fmt: 'int' }
+  ];
+  if (f.includes('Seasonality')) return [
+    { metric: 'Seasonality index',       avg:    1.04, peak:    1.22, fmt: 'k2' },
+    { metric: 'Week-of-year',            avg:    26.00, peak:    48.00, fmt: 'int' }
+  ];
+  // Baseline / Residuals fallback
+  return [
+    { metric: 'Daily units (avg)',       avg: 16916,   peak: 19840,  fmt: 'int' },
+    { metric: 'ASP ($)',                 avg:    4.79, peak:    4.92, fmt: 'usd' }
+  ];
+}
+
+function formatMetricVal(v, fmt) {
+  switch (fmt) {
+    case 'pct':  return (v * 100).toFixed(2) + '%';
+    case 'usd':  return '$' + v.toFixed(2);
+    case 'int':  return Math.round(v).toLocaleString();
+    case 'k2':
+    default:     return v.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+}
+
+/* Pillar header strip */
+function renderPillarStrip(containerId, pillarTotals) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = pillarTotals.map(p => {
+    const color = PILLAR_COLORS[p.key];
+    const neg = p.pct < 0;
+    return `
+      <div class="pillar-strip-pill" style="--ps-color: ${color};">
+        <span class="ps-label">${PILLAR_LABELS[p.key]}</span>
+        <span class="ps-value ${neg ? 'neg' : ''}">${p.pct > 0 ? '+' : ''}${p.pct}%</span>
+      </div>
+    `;
+  }).join('');
+}
+
+/* Factor-level waterfall with dashed cumulative line */
+function renderFactorWaterfall(canvasId, factors, onBarClick) {
   const ctx = document.getElementById(canvasId);
   if (!ctx) return null;
+
+  // Floating bars + cumulative
   let cursor = 0;
-  const bars = contributions.map(c => {
+  const bars = factors.map(f => {
     const start = cursor;
-    const end = cursor + c.pct;
+    const end = cursor + f.pct;
     cursor = end;
-    return { label: PILLAR_LABELS[c.key], range: [start, end], color: PILLAR_COLORS[c.key], pct: c.pct, key: c.key };
+    return { name: f.name, pct: f.pct, range: [start, end], color: PILLAR_COLORS[f.pillar], pillar: f.pillar };
   });
-  bars.push({ label: 'Total', range: [0, cursor], color: '#0F172A', pct: cursor, key: 'total' });
-
-  const labels = bars.map(b => b.label);
-  const data   = bars.map(b => b.range);
+  // Short labels for x-axis tick (wrap long names)
+  const labels = bars.map(b => b.name);
+  const barData = bars.map(b => b.range);
   const colors = bars.map(b => b.color);
+  const lineData = bars.map(b => b.range[1]);
 
-  const connectorPlugin = {
-    id: 'wfConnector',
+  // Bar-top value label plugin
+  const valueLabelPlugin = {
+    id: 'wfValueLabels',
     afterDatasetsDraw(chart) {
       const { ctx, scales: { y } } = chart;
-      const meta = chart.getDatasetMeta(0);
+      const meta = chart.getDatasetMeta(1); // bar dataset is index 1
+      if (!meta) return;
       ctx.save();
-      ctx.strokeStyle = '#CBD5E1';
-      ctx.setLineDash([3, 3]);
-      ctx.lineWidth = 1;
-      for (let i = 0; i < meta.data.length - 1; i++) {
-        const bar1 = meta.data[i];
-        const bar2 = meta.data[i + 1];
-        if (!bar1 || !bar2) continue;
-        const endVal = data[i][1];
-        const yEnd = y.getPixelForValue(endVal);
-        const x1 = bar1.x + bar1.width / 2;
-        const x2 = bar2.x - bar2.width / 2;
-        ctx.beginPath();
-        ctx.moveTo(x1, yEnd);
-        ctx.lineTo(x2, yEnd);
-        ctx.stroke();
-      }
+      ctx.font = '600 10px Inter, sans-serif';
+      ctx.fillStyle = '#0F172A';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      meta.data.forEach((bar, i) => {
+        const b = bars[i];
+        const yTop = y.getPixelForValue(b.range[1]);
+        const yBot = y.getPixelForValue(b.range[0]);
+        const sign = b.pct > 0 ? '+' : (b.pct < 0 ? '−' : '');
+        const text = `${sign}${Math.abs(b.pct)}%`;
+        if (b.pct >= 0) ctx.fillText(text, bar.x, yTop - 4);
+        else            ctx.fillText(text, bar.x, yBot - 4);
+      });
       ctx.restore();
     }
   };
 
-  const compact = !!opts.compact;
+  // Right-edge 100% label plugin
+  const cumulativeLabelPlugin = {
+    id: 'wfCumLabel',
+    afterDatasetsDraw(chart) {
+      const { ctx, scales: { y }, chartArea } = chart;
+      ctx.save();
+      ctx.font = '600 11px Inter, sans-serif';
+      ctx.fillStyle = '#475569';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      const yCum = y.getPixelForValue(cursor);
+      ctx.fillText(`${Math.round(cursor)}%`, chartArea.right - 36, yCum);
+      ctx.restore();
+    }
+  };
 
   return new Chart(ctx, {
     type: 'bar',
     data: {
       labels,
-      datasets: [{
-        data,
-        backgroundColor: colors,
-        borderColor: colors,
-        borderWidth: 0,
-        borderRadius: 4,
-        borderSkipped: false,
-        barPercentage: 0.7,
-        categoryPercentage: 0.85
-      }]
+      datasets: [
+        {
+          type: 'line',
+          label: 'Cumulative',
+          data: lineData,
+          borderColor: '#94A3B8',
+          borderDash: [4, 4],
+          borderWidth: 1.5,
+          pointRadius: 0,
+          tension: 0.25,
+          fill: false,
+          order: 0
+        },
+        {
+          type: 'bar',
+          label: 'Contribution',
+          data: barData,
+          backgroundColor: colors,
+          borderColor: colors,
+          borderWidth: 0,
+          borderRadius: 3,
+          borderSkipped: false,
+          barPercentage: 0.85,
+          categoryPercentage: 0.92,
+          order: 1
+        }
+      ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       animation: { duration: 500, easing: 'easeOutQuart' },
+      onClick: (evt, items) => {
+        if (!onBarClick) return;
+        const el = items.find(i => i.datasetIndex === 1);
+        if (!el) return;
+        onBarClick(bars[el.index]);
+      },
+      onHover: (evt, items, chart) => {
+        chart.canvas.style.cursor = items.length ? 'pointer' : 'default';
+      },
       plugins: {
         legend: { display: false },
         tooltip: {
+          filter: (item) => item.datasetIndex === 1,
           callbacks: {
+            title: (items) => bars[items[0].dataIndex].name,
             label: (item) => {
               const b = bars[item.dataIndex];
               const sign = b.pct > 0 ? '+' : (b.pct < 0 ? '−' : '');
-              return `  ${b.key === 'total' ? 'Total' : 'Contribution'}: ${sign}${Math.abs(b.pct)}%`;
+              return [`  ${PILLAR_LABELS[b.pillar]}`, `  Contribution: ${sign}${Math.abs(b.pct)}%`, `  Cumulative: ${b.range[1].toFixed(1)}%`];
             }
           }
         }
@@ -4381,31 +4878,214 @@ function renderWaterfall(canvasId, contributions, opts = {}) {
       scales: {
         x: {
           grid: { display: false },
-          ticks: { color: '#475569', font: { size: compact ? 9 : 11, weight: '500' }, autoSkip: false, maxRotation: compact ? 40 : 0, minRotation: compact ? 40 : 0 },
+          ticks: {
+            color: '#475569', font: { size: 10, weight: '500' },
+            autoSkip: false,
+            maxRotation: 50, minRotation: 50,
+            callback: function(v) {
+              const lbl = this.getLabelForValue(v);
+              return lbl.replace(' Factor', '').replace(' Visibility', ' Vis.');
+            }
+          },
           border: { color: '#E5E7EB' }
         },
         y: {
-          min: 0,
-          max: 110,
+          min: -8, max: 110,
           grid: { color: '#F1F5F9', drawBorder: false },
-          ticks: { color: '#94A3B8', font: { size: compact ? 10 : 11 }, callback: (v) => v + '%' },
+          ticks: { color: '#94A3B8', font: { size: 11 }, callback: (v) => v + '%' },
           border: { display: false }
         }
       }
     },
-    plugins: [connectorPlugin]
+    plugins: [valueLabelPlugin, cumulativeLabelPlugin]
   });
 }
 
+/* Factor detail histogram + tables */
+function gaussian(x, mu, sigma) {
+  return Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2));
+}
+function buildHistogramData(factor) {
+  // 60 buckets representing the response distribution
+  const buckets = 60;
+  // Center the distribution around "average" (mid-left) and place "peak" further right
+  const seed = factor.name.length;
+  const mu = 26 + (Math.sin(seed * 0.7) * 4);
+  const sigma = 7;
+  const data = [];
+  for (let i = 0; i < buckets; i++) {
+    const y = gaussian(i, mu, sigma) * 850 + Math.abs(Math.sin(i * 1.3 + seed)) * 24;
+    data.push(Math.round(y));
+  }
+  // Pick average + peak bar indices
+  const avgIdx  = Math.round(mu - 3);
+  const peakIdx = Math.round(mu + 9);
+  // Mock value at each marker
+  const avgValue  = Math.round(85 + Math.sin(seed * 1.3) * 80);
+  const peakValue = Math.round(820 + Math.sin(seed * 2.1) * 120);
+  return { data, avgIdx, peakIdx, avgValue, peakValue };
+}
+function renderFactorHistogram(canvasId, factor) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) return null;
+  const hist = buildHistogramData(factor);
+  const buckets = hist.data.length;
+  const labels = Array.from({ length: buckets }, (_, i) => i);
+  const colors = labels.map(i => {
+    if (i === hist.avgIdx)  return '#E74C3C';
+    if (i === hist.peakIdx) return '#4A90D9';
+    return '#D9DEE6';
+  });
+  // Marker label plugin — draws vertical text above the avg + peak bars
+  const markerPlugin = {
+    id: 'hgMarker',
+    afterDatasetsDraw(chart) {
+      const { ctx, scales: { x, y } } = chart;
+      const meta = chart.getDatasetMeta(0);
+      ctx.save();
+      ctx.font = '600 10px Inter, sans-serif';
+      ctx.fillStyle = '#0F172A';
+      [hist.avgIdx, hist.peakIdx].forEach((idx, n) => {
+        const bar = meta.data[idx];
+        if (!bar) return;
+        const text = n === 0 ? `$${hist.avgValue}` : `($${hist.peakValue.toLocaleString()})`;
+        const cx = bar.x;
+        const cy = bar.y - 6;
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(-Math.PI / 2);
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = n === 0 ? '#991B1B' : '#1E40AF';
+        ctx.fillText(text, 4, 0);
+        ctx.restore();
+      });
+      ctx.restore();
+    }
+  };
+
+  if (window._factorHistChart && window._factorHistChart[canvasId]) {
+    window._factorHistChart[canvasId].destroy();
+  }
+  window._factorHistChart = window._factorHistChart || {};
+
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        data: hist.data,
+        backgroundColor: colors,
+        borderWidth: 0,
+        borderRadius: 2,
+        barPercentage: 0.96,
+        categoryPercentage: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 400, easing: 'easeOutQuart' },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: () => '',
+            label: (item) => `  ${item.parsed.y}`
+          }
+        }
+      },
+      scales: {
+        x: {
+          display: false,
+          grid: { display: false }
+        },
+        y: {
+          beginAtZero: true,
+          grid: { color: '#F1F5F9', drawBorder: false },
+          ticks: { color: '#94A3B8', font: { size: 10 } },
+          border: { display: false }
+        }
+      }
+    },
+    plugins: [markerPlugin]
+  });
+  window._factorHistChart[canvasId] = chart;
+  return chart;
+}
+function renderFactorTables(avgTbodyId, peakTbodyId, factor) {
+  const rows = factorMetricRows(factor);
+  const avg = document.getElementById(avgTbodyId);
+  const peak = document.getElementById(peakTbodyId);
+  const rowHtml = (kind) => rows.map((r, i) => {
+    const factorCellHtml = i === 0
+      ? `<td rowspan="${rows.length}" class="factor-col">${factor.name.replace(' Factor', '')}</td>`
+      : '';
+    const val = formatMetricVal(kind === 'avg' ? r.avg : r.peak, r.fmt || 'k2');
+    return `<tr>${factorCellHtml}<td>${r.metric}</td><td>${val}</td></tr>`;
+  }).join('');
+  if (avg)  avg.innerHTML = rowHtml('avg');
+  if (peak) peak.innerHTML = rowHtml('peak');
+}
+function setFactorDetail(scope, factor) {
+  const dotId = scope === 'national' ? 'fdNatDot' : (scope === 'subbrand' ? 'fdSbDot' : 'fdClDot');
+  const nameId = scope === 'national' ? 'fdNatName' : (scope === 'subbrand' ? 'fdSbName' : 'fdClName');
+  const histCanvasId = scope === 'national' ? 'factorHistogramNational' : (scope === 'subbrand' ? 'factorHistogramSubbrand' : 'factorHistogramCluster');
+  const avgTId = scope === 'national' ? 'fdNatAvgTable' : (scope === 'subbrand' ? 'fdSbAvgTable' : 'fdClAvgTable');
+  const peakTId = scope === 'national' ? 'fdNatPeakTable' : (scope === 'subbrand' ? 'fdSbPeakTable' : 'fdClPeakTable');
+  document.getElementById(dotId).style.background = PILLAR_COLORS[factor.pillar];
+  document.getElementById(nameId).textContent = factor.name;
+  renderFactorHistogram(histCanvasId, factor);
+  renderFactorTables(avgTId, peakTId, factor);
+}
+
+/* Top-level render orchestration */
 let decompCharts = null;
+let currentSbScope = 'all';
 function renderDecomp() {
   if (decompCharts) return;
-  decompCharts = {
-    national: renderWaterfall('waterfallNational', window.DSIM_DATA.decomp.national),
-    adult: renderWaterfall('waterfallAdult', window.DSIM_DATA.decomp.subbrand.adult, { compact: true }),
-    baby:  renderWaterfall('waterfallBaby',  window.DSIM_DATA.decomp.subbrand.baby,  { compact: true }),
-    kids:  renderWaterfall('waterfallKids',  window.DSIM_DATA.decomp.subbrand.kids,  { compact: true })
-  };
+  decompCharts = {};
+  // ----- National -----
+  const nat = window.DSIM_DATA.decomp.national;
+  renderPillarStrip('pillarStripNational', nat.pillarTotals);
+  decompCharts.national = renderFactorWaterfall('waterfallNational', nat.factors, (bar) => {
+    setFactorDetail('national', bar);
+  });
+  // default detail: the highest-impact media factor
+  const defaultNatFactor = nat.factors.find(f => f.name.includes('Onsite Search')) || nat.factors[0];
+  setFactorDetail('national', defaultNatFactor);
+
+  // ----- Sub-brand (default scope = all) -----
+  renderSubbrand('all');
+
+  // ----- Cluster -----
+  renderPillarStrip('pillarStripCluster', nat.pillarTotals);
+  const defaultClFactor = { name: 'Onsite Search Factor', pillar: 'media' };
+  setFactorDetail('cluster', defaultClFactor);
+
+  // Wire sub-brand pill row
+  document.querySelectorAll('#subBrandPills .sub-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#subBrandPills .sub-pill').forEach(b => b.classList.toggle('active', b === btn));
+      renderSubbrand(btn.dataset.sb);
+    });
+  });
+}
+
+function renderSubbrand(scope) {
+  currentSbScope = scope;
+  const data = window.DSIM_DATA.decomp.subbrand[scope];
+  if (!data) return;
+  renderPillarStrip('pillarStripSubbrand', data.pillarTotals);
+  const meta = SUBBRAND_META[scope];
+  document.getElementById('sbWaterfallTitle').textContent = meta.title;
+  document.getElementById('sbWaterfallMeta').textContent  = meta.meta;
+  if (decompCharts.subbrand) { decompCharts.subbrand.destroy(); }
+  decompCharts.subbrand = renderFactorWaterfall('waterfallSubbrand', data.factors, (bar) => {
+    setFactorDetail('subbrand', bar);
+  });
+  const defaultFactor = data.factors.find(f => f.name.includes('Onsite Search')) || data.factors[0];
+  setFactorDetail('subbrand', defaultFactor);
 }
 
 /* Cluster heatmap (17 stores × 17 factors) */
@@ -4416,21 +5096,21 @@ const MEGA_CLUSTERS = [
   { name: 'Localized Stores',        short: 'LOC', count: 3, base: 'LS' }
 ];
 const FACTORS = [
-  { name: 'Baseline',                       isSub: false, base: 4.5 },
-  { name: 'Seasonality',                    isSub: false, base: 1.8 },
-  { name: 'Trend',                          isSub: false, base: 0.9 },
-  { name: 'Always Available',               isSub: false, base: 2.1 },
-  { name: 'Looking Great',                  isSub: false, base: 1.3 },
-  { name: 'Right Price',                    isSub: false, base: 1.0 },
-  { name: 'Promoted — Onsite Search',       isSub: true,  base: 2.3 },
-  { name: 'Promoted — Offsite Display',     isSub: true,  base: 1.7 },
-  { name: 'Promoted — Onsite Display',      isSub: true,  base: 0.7 },
-  { name: 'Promoted — Sponsored Visibility',isSub: true,  base: 0.6 },
-  { name: 'Easy To Find — Branded',         isSub: true,  base: 0.4 },
-  { name: 'Easy To Find — Generic',         isSub: true,  base: 0.3 },
-  { name: 'Competition — TV ads',           isSub: true,  base: -0.9 },
-  { name: 'Competition — Online media',     isSub: true,  base: -0.6 },
-  { name: 'Assortment depth',               isSub: false, base: 0.8 },
+  { name: 'Baseline',                       isSub: false, base: 4.5, pillarKey: 'baseline' },
+  { name: 'Seasonality',                    isSub: false, base: 1.8, pillarKey: 'baseline' },
+  { name: 'Trend',                          isSub: false, base: 0.9, pillarKey: 'baseline' },
+  { name: 'Always Available',               isSub: false, base: 2.1, pillarKey: 'availability' },
+  { name: 'Looking Great',                  isSub: false, base: 1.3, pillarKey: 'content' },
+  { name: 'Right Price',                    isSub: false, base: 1.0, pillarKey: 'pricing' },
+  { name: 'Promoted — Onsite Search',       isSub: true,  base: 2.3, pillarKey: 'media' },
+  { name: 'Promoted — Offsite Display',     isSub: true,  base: 1.7, pillarKey: 'media' },
+  { name: 'Promoted — Onsite Display',      isSub: true,  base: 0.7, pillarKey: 'media' },
+  { name: 'Promoted — Sponsored Visibility',isSub: true,  base: 0.6, pillarKey: 'media' },
+  { name: 'Easy To Find — Branded',         isSub: true,  base: 0.4, pillarKey: 'search' },
+  { name: 'Easy To Find — Generic',         isSub: true,  base: 0.3, pillarKey: 'search' },
+  { name: 'Competition — TV ads',           isSub: true,  base: -0.9, pillarKey: 'competition' },
+  { name: 'Competition — Online media',     isSub: true,  base: -0.6, pillarKey: 'competition' },
+  { name: 'Assortment depth',               isSub: false, base: 0.8, pillarKey: 'availability' },
   { name: 'R²',                             isSub: false, isMeta: true },
   { name: 'MAPE',                           isSub: false, isMeta: true }
 ];
@@ -4497,7 +5177,10 @@ function renderClusterHeatmap() {
       const tooltip = `${f.name} · ${s.cluster.name} (${s.id}) — ${display}`;
       return `<td class="cell" style="background:${color.bg}; color:${color.color};" title="${tooltip}">${display}</td>`;
     }).join('');
-    return `<tr class="${trCls}"><td class="${cls}">${f.name}</td>${cells}</tr>`;
+    const clickable = !f.isMeta && f.pillarKey;
+    const dataAttr = clickable ? `data-factor-idx="${FACTORS.indexOf(f)}"` : '';
+    const rowClick = clickable ? ' clickable-factor-row' : '';
+    return `<tr class="${trCls}${rowClick}" ${dataAttr}><td class="${cls}">${f.name}</td>${cells}</tr>`;
   });
 
   table.innerHTML = `
@@ -4507,6 +5190,18 @@ function renderClusterHeatmap() {
     </thead>
     <tbody>${bodyRows.join('')}</tbody>
   `;
+
+  // Wire factor-row clicks → cluster detail panel
+  table.querySelectorAll('tr.clickable-factor-row').forEach(tr => {
+    tr.addEventListener('click', () => {
+      table.querySelectorAll('tr.is-active').forEach(r => r.classList.remove('is-active'));
+      tr.classList.add('is-active');
+      const idx = +tr.dataset.factorIdx;
+      const f = FACTORS[idx];
+      if (!f) return;
+      setFactorDetail('cluster', { name: f.name, pillar: f.pillarKey });
+    });
+  });
 }
 
 /* =========================================================
