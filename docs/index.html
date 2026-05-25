@@ -1397,8 +1397,11 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 <!-- ============ SECTION 7: CHECKLIST ============ -->
 <section id="checklist" class="doc-section">
  <div class="section-num">SECTION 07</div>
- <h2 class="doc-h2">Reviewer Checklist</h2>
- <p class="section-helper">Run through this in order. Tick each as you go. Most can be done in under 5 minutes total. State persists across reloads.</p>
+ <h2 class="doc-h2">First-Time Reviewer Checklist</h2>
+ <p class="section-helper">New to the prototype? Use this as your guided walk-through. Open the prototype alongside this doc, follow the steps in order, and tick each one as you go. You should be able to cover all 12 steps in about 10 minutes. Your progress saves automatically — pick up where you left off if you close the tab.</p>
+ <div style="background:rgba(74,144,217,0.06);border:1px solid rgba(74,144,217,0.18);border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#1e3a5f;">
+   <strong>Before you start:</strong> Open the DSIM prototype in a separate browser tab at full desktop width. Keep this doc open for reference. The prototype link should have been shared with you alongside this document.
+ </div>
 
  <div class="checklist-progress">
  <div class="checklist-progress-label">Checked <span class="count" id="check-count">0</span> of 12</div>
@@ -1653,6 +1656,107 @@ const CHECKLIST = [
  { txt: 'On ROI Looker, switch quarter Q3 → Q2 → Q1. Confirm gauge, table, and both charts update.' }
 ];
 
+
+// ============================================================
+// RENDER: ACCORDIONS (screen walkthroughs)
+// ============================================================
+function renderAccordions() {
+ const wrap = document.getElementById('accordion');
+ if (!wrap) return;
+ wrap.innerHTML = SCREENS.map(s => {
+   const stageClass = 'stage-' + s.stage;
+   const li = arr => arr.map(x => '<li>' + x + '</li>').join('');
+   const comprehendsHTML = s.comprehends.map(([hd, det]) =>
+     '<li><strong>' + hd + '</strong>' + det + '</li>').join('');
+   return '<div class="acc-card" id="screen-' + s.n + '">' +
+     '<div class="acc-head">' +
+       '<div class="acc-badge">' + s.n + '</div>' +
+       '<div class="acc-title-wrap">' +
+         '<div class="acc-title">' + s.name + '</div>' +
+         '<div class="acc-sub">' + s.side + ' &nbsp;&middot;&nbsp; Press <span class="kbd">' + s.kbd + '</span> to jump here</div>' +
+       '</div>' +
+       '<span class="stage-chip ' + stageClass + '">' + s.stageLabel + '</span>' +
+       '<svg class="acc-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>' +
+     '</div>' +
+     '<div class="acc-body-wrap"><div class="acc-body"><div class="acc-body-inner">' +
+       '<div class="field-label">What you see on screen</div>' +
+       '<div class="field-body"><ul>' + li(s.whatShows) + '</ul></div>' +
+       '<div class="field-label">The reviewer\'s job on this screen</div>' +
+       '<div class="field-body user-job">' + s.userJob + '</div>' +
+       '<div class="field-label">Key takeaways</div>' +
+       '<div class="field-body"><ol>' + comprehendsHTML + '</ol></div>' +
+       '<div class="field-label">Numbers worth remembering</div>' +
+       '<div class="field-body"><ul>' + li(s.insights) + '</ul></div>' +
+       '<div class="field-label">Where this screen links to</div>' +
+       '<ul class="where-list">' + li(s.links) + '</ul>' +
+       '<div class="field-label">Common misreads</div>' +
+       '<div class="anti-misread"><div class="anti-misread-icon">&#9888;&#65039;</div><ul>' + li(s.antiMisreads) + '</ul></div>' +
+     '</div></div></div>' +
+   '</div>';
+ }).join('');
+
+ wrap.querySelectorAll('.acc-head').forEach(head => {
+   head.addEventListener('click', () => {
+     head.closest('.acc-card').classList.toggle('open');
+   });
+ });
+}
+
+// ============================================================
+// RENDER: CHECKLIST
+// ============================================================
+const CHECK_KEY = 'dsim-doc-checklist-v1';
+function getChecklistState() {
+ try { return JSON.parse(localStorage.getItem(CHECK_KEY) || '[]'); } catch(e) { return []; }
+}
+function saveChecklistState(arr) {
+ localStorage.setItem(CHECK_KEY, JSON.stringify(arr));
+}
+function updateProgress() {
+ const done = document.querySelectorAll('.check-item.done').length;
+ const total = document.querySelectorAll('.check-item').length;
+ const pct = total ? Math.round(done / total * 100) : 0;
+ const countEl = document.getElementById('check-count');
+ const barEl = document.getElementById('check-bar');
+ const pctEl = document.getElementById('check-pct');
+ if (countEl) countEl.textContent = done;
+ if (barEl) barEl.style.width = pct + '%';
+ if (pctEl) pctEl.textContent = pct + '%';
+}
+function renderChecklist() {
+ const wrap = document.getElementById('checklist-list');
+ if (!wrap) return;
+ const state = getChecklistState();
+ wrap.innerHTML = CHECKLIST.map((item, i) => {
+   const done = state[i] ? 'done' : '';
+   const sub = item.sub ? '<span class="check-sub">' + item.sub + '</span>' : '';
+   return '<div class="check-item ' + done + '" data-i="' + i + '">' +
+     '<div class="check-box"></div>' +
+     '<div class="check-num">' + String(i + 1).padStart(2, '0') + '</div>' +
+     '<div class="check-text">' + item.txt + sub + '</div>' +
+   '</div>';
+ }).join('');
+
+ wrap.querySelectorAll('.check-item').forEach(item => {
+   item.addEventListener('click', () => {
+     item.classList.toggle('done');
+     const idx = +item.dataset.i;
+     const s = getChecklistState();
+     s[idx] = item.classList.contains('done');
+     saveChecklistState(s);
+     updateProgress();
+   });
+ });
+
+ updateProgress();
+
+ document.getElementById('checklist-reset')?.addEventListener('click', () => {
+   saveChecklistState([]);
+   wrap.querySelectorAll('.check-item').forEach(el => el.classList.remove('done'));
+   updateProgress();
+ });
+}
+
 // ============================================================
 // METHODOLOGY ALPHABET STRIP
 // ============================================================
@@ -1736,29 +1840,61 @@ function initTOC() {
 // ============================================================
 // SEARCH FILTER
 // ============================================================
+function clearSearch() {
+ document.querySelectorAll('table[data-searchable="true"] tbody tr')
+   .forEach(tr => tr.classList.remove('row-hidden'));
+ document.querySelectorAll('.tbl-wrap').forEach(w => w.classList.remove('empty'));
+}
+
 function initSearch() {
  const inp = document.getElementById('search-input');
- const tables = document.querySelectorAll('table[data-searchable="true"]');
  inp.addEventListener('input', () => {
- const q = inp.value.trim().toLowerCase();
- tables.forEach(tbl => {
- const wrap = tbl.closest('.tbl-wrap');
- let visible = 0;
- tbl.querySelectorAll('tbody tr').forEach(tr => {
- const txt = tr.textContent.toLowerCase();
- const match = !q || txt.includes(q);
- tr.classList.toggle('row-hidden', !match);
- if (match) visible++;
+   const q = inp.value.trim().toLowerCase();
+   if (!q) { clearSearch(); return; }
+
+   // 1. Filter glossary table rows
+   document.querySelectorAll('table[data-searchable="true"]').forEach(tbl => {
+     const wrap = tbl.closest('.tbl-wrap');
+     let visible = 0;
+     tbl.querySelectorAll('tbody tr').forEach(tr => {
+       const match = tr.textContent.toLowerCase().includes(q);
+       tr.classList.toggle('row-hidden', !match);
+       if (match) visible++;
+     });
+     wrap.classList.toggle('empty', visible === 0);
+   });
+
+   // 2. Search accordion cards — open matching ones
+   let firstMatch = null;
+   document.querySelectorAll('.acc-card').forEach(card => {
+     if (card.textContent.toLowerCase().includes(q)) {
+       card.classList.add('open');
+       if (!firstMatch) firstMatch = card;
+     }
+   });
+
+   // 3. If no accordion match, search doc-sections
+   if (!firstMatch) {
+     document.querySelectorAll('.doc-section').forEach(sec => {
+       if (!firstMatch && sec.textContent.toLowerCase().includes(q)) {
+         firstMatch = sec;
+       }
+     });
+   }
+
+   // 4. Scroll to first match
+   if (firstMatch) {
+     const y = firstMatch.getBoundingClientRect().top + window.scrollY - 90;
+     window.scrollTo({ top: y, behavior: 'smooth' });
+   }
  });
- wrap.classList.toggle('empty', visible === 0 && q.length > 0);
- });
- });
+
  inp.addEventListener('keydown', (e) => {
- if (e.key === 'Escape') {
- inp.value = '';
- inp.dispatchEvent(new Event('input'));
- inp.blur();
- }
+   if (e.key === 'Escape') {
+     inp.value = '';
+     inp.dispatchEvent(new Event('input'));
+     inp.blur();
+   }
  });
 }
 
