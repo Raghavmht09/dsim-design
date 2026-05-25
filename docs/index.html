@@ -9,480 +9,480 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-canvas: #F5F5F5;
-  --bg-surface: #FFFFFF;
-  --bg-sidebar: #2D2F45;
-  --bg-sidebar-hover: #3A3D5A;
-  --bg-topnav: #FFFFFF;
-  --border-subtle: #E5E7EB;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-tertiary: #94A3B8;
-  --brand-primary: #4A90D9;
-  --brand-hover: #3578B8;
-  --brand-tint: rgba(74, 144, 217, 0.08);
-  --semantic-success: #27AE60;
-  --semantic-warning: #F5C842;
-  --semantic-danger: #E74C3C;
-  --pillar-availability: #0D9488;
-  --pillar-content: #4F46E5;
-  --pillar-pricing: #E0922B;
-  --pillar-media: #7C3AED;
-  --pillar-search: #BE185D;
-  --pillar-reviews: #0891B2;
-  --pillar-competition: #EF4444;
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
-  --topnav-h: 56px;
-  --sidebar-w: 240px;
+ --bg-canvas: #F5F5F5;
+ --bg-surface: #FFFFFF;
+ --bg-sidebar: #2D2F45;
+ --bg-sidebar-hover: #3A3D5A;
+ --bg-topnav: #FFFFFF;
+ --border-subtle: #E5E7EB;
+ --text-primary: #0F172A;
+ --text-secondary: #475569;
+ --text-tertiary: #94A3B8;
+ --brand-primary: #4A90D9;
+ --brand-hover: #3578B8;
+ --brand-tint: rgba(74, 144, 217, 0.08);
+ --semantic-success: #27AE60;
+ --semantic-warning: #F5C842;
+ --semantic-danger: #E74C3C;
+ --pillar-availability: #0D9488;
+ --pillar-content: #4F46E5;
+ --pillar-pricing: #E0922B;
+ --pillar-media: #7C3AED;
+ --pillar-search: #BE185D;
+ --pillar-reviews: #0891B2;
+ --pillar-competition: #EF4444;
+ --shadow-card: 0 1px 3px rgba(0,0,0,0.06);
+ --shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
+ --topnav-h: 56px;
+ --sidebar-w: 240px;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--text-primary);
-  background: var(--bg-canvas);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+ font-size: 13px;
+ line-height: 1.6;
+ color: var(--text-primary);
+ background: var(--bg-canvas);
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
 }
 .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
 
 /* ============ TOP NAV ============ */
 .topnav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--topnav-h);
-  background: var(--bg-topnav);
-  border-bottom: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  gap: 16px;
-  z-index: 50;
+ position: fixed;
+ top: 0; left: 0; right: 0;
+ height: var(--topnav-h);
+ background: var(--bg-topnav);
+ border-bottom: 1px solid var(--border-subtle);
+ display: flex;
+ align-items: center;
+ padding: 0 20px;
+ gap: 16px;
+ z-index: 50;
 }
 .topnav-left {
-  display: flex; align-items: center; gap: 12px;
-  min-width: var(--sidebar-w);
+ display: flex; align-items: center; gap: 12px;
+ min-width: var(--sidebar-w);
 }
 .wordmark {
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
+ font-weight: 700;
+ font-size: 15px;
+ color: var(--text-primary);
+ letter-spacing: -0.01em;
 }
 .wordmark .dot {
-  display: inline-block;
-  width: 8px; height: 8px;
-  background: var(--brand-primary);
-  border-radius: 2px;
-  margin-right: 8px;
-  vertical-align: middle;
+ display: inline-block;
+ width: 8px; height: 8px;
+ background: var(--brand-primary);
+ border-radius: 2px;
+ margin-right: 8px;
+ vertical-align: middle;
 }
 .brand-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
+ display: inline-flex;
+ align-items: center;
+ gap: 10px;
+ text-decoration: none;
 }
 .brand-logo svg {
-  height: 28px;
-  width: auto;
-  display: block;
+ height: 28px;
+ width: auto;
+ display: block;
 }
 .context-chip {
-  background: var(--brand-tint);
-  color: var(--brand-primary);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 4px;
-  letter-spacing: 0.02em;
+ background: var(--brand-tint);
+ color: var(--brand-primary);
+ font-size: 11px;
+ font-weight: 600;
+ padding: 4px 10px;
+ border-radius: 4px;
+ letter-spacing: 0.02em;
 }
 .topnav-right {
-  display: flex; align-items: center; gap: 12px;
-  margin-left: auto;
+ display: flex; align-items: center; gap: 12px;
+ margin-left: auto;
 }
 .search-wrap {
-  position: relative;
-  width: 240px;
+ position: relative;
+ width: 240px;
 }
 .search-wrap svg {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14px; height: 14px;
-  color: var(--text-tertiary);
+ position: absolute;
+ left: 10px;
+ top: 50%;
+ transform: translateY(-50%);
+ width: 14px; height: 14px;
+ color: var(--text-tertiary);
 }
 .search-input {
-  width: 100%;
-  height: 32px;
-  padding: 0 32px 0 32px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 12px;
-  background: var(--bg-canvas);
-  color: var(--text-primary);
+ width: 100%;
+ height: 32px;
+ padding: 0 32px 0 32px;
+ border: 1px solid var(--border-subtle);
+ border-radius: 6px;
+ font-family: inherit;
+ font-size: 12px;
+ background: var(--bg-canvas);
+ color: var(--text-primary);
 }
 .search-input:focus {
-  outline: none;
-  border-color: var(--brand-primary);
-  background: white;
+ outline: none;
+ border-color: var(--brand-primary);
+ background: white;
 }
 .search-kbd {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--text-tertiary);
-  background: white;
-  border: 1px solid var(--border-subtle);
-  border-radius: 3px;
-  padding: 1px 5px;
+ position: absolute;
+ right: 8px;
+ top: 50%;
+ transform: translateY(-50%);
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 10px;
+ color: var(--text-tertiary);
+ background: white;
+ border: 1px solid var(--border-subtle);
+ border-radius: 3px;
+ padding: 1px 5px;
 }
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 32px;
-  padding: 0 14px;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 500;
-  border-radius: 6px;
-  cursor: pointer;
-  border: 1px solid transparent;
-  text-decoration: none;
-  transition: all 150ms ease;
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ height: 32px;
+ padding: 0 14px;
+ font-family: inherit;
+ font-size: 12px;
+ font-weight: 500;
+ border-radius: 6px;
+ cursor: pointer;
+ border: 1px solid transparent;
+ text-decoration: none;
+ transition: all 150ms ease;
 }
 .btn-primary {
-  background: var(--brand-primary);
-  color: white;
+ background: var(--brand-primary);
+ color: white;
 }
 .btn-primary:hover { background: var(--brand-hover); }
 .btn-secondary {
-  background: white;
-  color: var(--text-primary);
-  border-color: var(--border-subtle);
+ background: white;
+ color: var(--text-primary);
+ border-color: var(--border-subtle);
 }
 .btn-secondary:hover { border-color: var(--text-tertiary); }
 .btn-ghost {
-  background: transparent;
-  color: var(--text-secondary);
+ background: transparent;
+ color: var(--text-secondary);
 }
 .btn-ghost:hover { background: var(--bg-canvas); color: var(--text-primary); }
 
 /* ============ LAYOUT ============ */
 .layout {
-  display: flex;
-  padding-top: var(--topnav-h);
-  min-height: 100vh;
+ display: flex;
+ padding-top: var(--topnav-h);
+ min-height: 100vh;
 }
 .sidebar {
-  position: fixed;
-  top: var(--topnav-h);
-  left: 0;
-  bottom: 0;
-  width: var(--sidebar-w);
-  background: var(--bg-sidebar);
-  overflow-y: auto;
-  padding: 16px 0 16px 0;
-  z-index: 40;
+ position: fixed;
+ top: var(--topnav-h);
+ left: 0;
+ bottom: 0;
+ width: var(--sidebar-w);
+ background: var(--bg-sidebar);
+ overflow-y: auto;
+ padding: 16px 0 16px 0;
+ z-index: 40;
 }
 .sidebar::-webkit-scrollbar { width: 6px; }
 .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
 .toc-section-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.4);
-  padding: 16px 20px 8px;
-  font-weight: 600;
+ font-size: 10px;
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
+ color: rgba(255,255,255,0.4);
+ padding: 16px 20px 8px;
+ font-weight: 600;
 }
 .toc-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  color: rgba(255,255,255,0.6);
-  font-size: 13px;
-  text-decoration: none;
-  border-left: 3px solid transparent;
-  transition: all 120ms ease;
-  cursor: pointer;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ padding: 8px 20px;
+ color: rgba(255,255,255,0.6);
+ font-size: 13px;
+ text-decoration: none;
+ border-left: 3px solid transparent;
+ transition: all 120ms ease;
+ cursor: pointer;
 }
 .toc-item:hover {
-  color: white;
-  background: rgba(255,255,255,0.04);
+ color: white;
+ background: rgba(255,255,255,0.04);
 }
 .toc-item.active {
-  color: white;
-  background: var(--bg-sidebar-hover);
-  border-left-color: var(--brand-primary);
-  font-weight: 500;
+ color: white;
+ background: var(--bg-sidebar-hover);
+ border-left-color: var(--brand-primary);
+ font-weight: 500;
 }
 .toc-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: rgba(255,255,255,0.35);
-  min-width: 16px;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 11px;
+ color: rgba(255,255,255,0.35);
+ min-width: 16px;
 }
 .toc-item.active .toc-num { color: rgba(255,255,255,0.7); }
 .toc-sub {
-  padding-left: 48px;
-  font-size: 12px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+ padding-left: 48px;
+ font-size: 12px;
+ padding-top: 5px;
+ padding-bottom: 5px;
 }
 .toc-footer {
-  padding: 16px 20px;
-  margin-top: 24px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  font-size: 11px;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.5;
+ padding: 16px 20px;
+ margin-top: 24px;
+ border-top: 1px solid rgba(255,255,255,0.08);
+ font-size: 11px;
+ color: rgba(255,255,255,0.4);
+ line-height: 1.5;
 }
 .toc-footer .mono { color: rgba(255,255,255,0.55); }
 
 /* ============ MAIN ============ */
 .main {
-  margin-left: var(--sidebar-w);
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  padding: 32px 48px 96px;
+ margin-left: var(--sidebar-w);
+ flex: 1;
+ display: flex;
+ justify-content: center;
+ padding: 32px 48px 96px;
 }
 .main-inner {
-  width: 100%;
-  max-width: 920px;
+ width: 100%;
+ max-width: 920px;
 }
 section.doc-section {
-  margin-bottom: 64px;
-  scroll-margin-top: calc(var(--topnav-h) + 16px);
+ margin-bottom: 64px;
+ scroll-margin-top: calc(var(--topnav-h) + 16px);
 }
 h1.doc-h1 {
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  margin: 0 0 8px;
-  color: var(--text-primary);
+ font-size: 28px;
+ font-weight: 600;
+ line-height: 1.25;
+ letter-spacing: -0.01em;
+ margin: 0 0 8px;
+ color: var(--text-primary);
 }
 .doc-subtitle {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 32px;
-  max-width: 640px;
-  line-height: 1.55;
+ font-size: 14px;
+ color: var(--text-secondary);
+ margin-bottom: 32px;
+ max-width: 640px;
+ line-height: 1.55;
 }
 h2.doc-h2 {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.005em;
-  margin: 0 0 8px;
-  color: var(--text-primary);
+ font-size: 20px;
+ font-weight: 600;
+ letter-spacing: -0.005em;
+ margin: 0 0 8px;
+ color: var(--text-primary);
 }
 .section-helper {
-  color: var(--text-secondary);
-  font-size: 13px;
-  margin-bottom: 24px;
-  max-width: 720px;
+ color: var(--text-secondary);
+ font-size: 13px;
+ margin-bottom: 24px;
+ max-width: 720px;
 }
 h3.doc-h3 {
-  font-size: 14px;
-  font-weight: 600;
-  margin: 24px 0 8px;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: 11px;
-  color: var(--text-tertiary);
+ font-size: 14px;
+ font-weight: 600;
+ margin: 24px 0 8px;
+ color: var(--text-primary);
+ text-transform: uppercase;
+ letter-spacing: 0.04em;
+ font-size: 11px;
+ color: var(--text-tertiary);
 }
 .section-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--text-tertiary);
-  margin-bottom: 4px;
-  letter-spacing: 0.05em;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 11px;
+ color: var(--text-tertiary);
+ margin-bottom: 4px;
+ letter-spacing: 0.05em;
 }
 
 /* ============ CARDS ============ */
 .card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  box-shadow: var(--shadow-card);
-  padding: 20px;
+ background: var(--bg-surface);
+ border: 1px solid var(--border-subtle);
+ border-radius: 12px;
+ box-shadow: var(--shadow-card);
+ padding: 20px;
 }
 .card-grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 16px;
 }
 .callout {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
 }
 .callout-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+ display: flex;
+ align-items: center;
+ gap: 12px;
 }
 .callout-icon {
-  width: 36px; height: 36px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  flex-shrink: 0;
+ width: 36px; height: 36px;
+ border-radius: 8px;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 16px;
+ flex-shrink: 0;
 }
 .callout-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
+ font-size: 14px;
+ font-weight: 600;
+ color: var(--text-primary);
 }
 .callout-body {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.6;
+ font-size: 13px;
+ color: var(--text-secondary);
+ line-height: 1.6;
 }
 .callout-body ul {
-  margin: 8px 0 0;
-  padding-left: 18px;
+ margin: 8px 0 0;
+ padding-left: 18px;
 }
 .callout-body ul li { margin-bottom: 4px; }
 .callout-body strong { color: var(--text-primary); font-weight: 600; }
 
 .stepper {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+ display: flex;
+ flex-direction: column;
+ gap: 0;
 }
 .stepper-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  position: relative;
-  padding-bottom: 10px;
+ display: flex;
+ align-items: flex-start;
+ gap: 12px;
+ position: relative;
+ padding-bottom: 10px;
 }
 .stepper-item:not(:last-child)::before {
-  content: '';
-  position: absolute;
-  left: 11px;
-  top: 22px;
-  bottom: 0;
-  width: 2px;
-  background: var(--border-subtle);
+ content: '';
+ position: absolute;
+ left: 11px;
+ top: 22px;
+ bottom: 0;
+ width: 2px;
+ background: var(--border-subtle);
 }
 .stepper-dot {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: var(--brand-primary);
-  color: white;
-  font-size: 11px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'JetBrains Mono', monospace;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
+ width: 22px; height: 22px;
+ border-radius: 50%;
+ background: var(--brand-primary);
+ color: white;
+ font-size: 11px;
+ font-weight: 600;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ font-family: 'JetBrains Mono', monospace;
+ flex-shrink: 0;
+ position: relative;
+ z-index: 1;
 }
 .stepper-body { padding-top: 1px; }
 .stepper-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.4;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--text-primary);
+ line-height: 1.4;
 }
 .stepper-sub {
-  font-size: 12px;
-  color: var(--text-secondary);
-  margin-top: 2px;
+ font-size: 12px;
+ color: var(--text-secondary);
+ margin-top: 2px;
 }
 
 .navigate-card {
-  margin-top: 16px;
-  padding: 20px;
+ margin-top: 16px;
+ padding: 20px;
 }
 .navigate-card .navigate-list {
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: nav-counter;
+ margin: 12px 0 0;
+ padding: 0;
+ list-style: none;
+ counter-reset: nav-counter;
 }
 .navigate-card .navigate-list li {
-  counter-increment: nav-counter;
-  position: relative;
-  padding-left: 32px;
-  padding-bottom: 10px;
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.55;
+ counter-increment: nav-counter;
+ position: relative;
+ padding-left: 32px;
+ padding-bottom: 10px;
+ font-size: 13px;
+ color: var(--text-secondary);
+ line-height: 1.55;
 }
 .navigate-card .navigate-list li:before {
-  content: counter(nav-counter);
-  position: absolute;
-  left: 0; top: 0;
-  width: 22px; height: 22px;
-  background: var(--brand-tint);
-  color: var(--brand-primary);
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
+ content: counter(nav-counter);
+ position: absolute;
+ left: 0; top: 0;
+ width: 22px; height: 22px;
+ background: var(--brand-tint);
+ color: var(--brand-primary);
+ border-radius: 50%;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 11px;
+ font-weight: 600;
 }
 .navigate-card code, code.kbd {
-  background: var(--bg-canvas);
-  border: 1px solid var(--border-subtle);
-  border-radius: 3px;
-  padding: 1px 5px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--text-primary);
+ background: var(--bg-canvas);
+ border: 1px solid var(--border-subtle);
+ border-radius: 3px;
+ padding: 1px 5px;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 11px;
+ color: var(--text-primary);
 }
 
 /* ============ TABLES ============ */
 .tbl-wrap {
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  overflow: hidden;
-  background: white;
-  box-shadow: var(--shadow-card);
+ border: 1px solid var(--border-subtle);
+ border-radius: 12px;
+ overflow: hidden;
+ background: white;
+ box-shadow: var(--shadow-card);
 }
 table.doc-tbl {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+ width: 100%;
+ border-collapse: collapse;
+ font-size: 13px;
 }
 table.doc-tbl thead th {
-  background: var(--bg-canvas);
-  color: var(--text-tertiary);
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  text-align: left;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-subtle);
+ background: var(--bg-canvas);
+ color: var(--text-tertiary);
+ font-size: 11px;
+ font-weight: 500;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ text-align: left;
+ padding: 12px 16px;
+ border-bottom: 1px solid var(--border-subtle);
 }
 table.doc-tbl tbody td {
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--border-subtle);
-  vertical-align: top;
-  color: var(--text-secondary);
-  line-height: 1.55;
+ padding: 14px 16px;
+ border-bottom: 1px solid var(--border-subtle);
+ vertical-align: top;
+ color: var(--text-secondary);
+ line-height: 1.55;
 }
 table.doc-tbl tbody tr:last-child td { border-bottom: none; }
 table.doc-tbl tbody tr:nth-child(even) td { background: #FAFAFA; }
@@ -491,239 +491,239 @@ table.doc-tbl tbody tr.row-hidden { display: none; }
 
 /* Pillars table specifics */
 .pillar-cell {
-  display: flex; align-items: center; gap: 8px;
+ display: flex; align-items: center; gap: 8px;
 }
 .pillar-swatch {
-  width: 14px; height: 14px;
-  border-radius: 3px;
-  flex-shrink: 0;
+ width: 14px; height: 14px;
+ border-radius: 3px;
+ flex-shrink: 0;
 }
 .pillar-name-mono {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--text-primary);
-  font-weight: 500;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 12px;
+ color: var(--text-primary);
+ font-weight: 500;
 }
 .cust-name {
-  color: var(--brand-primary);
-  font-weight: 600;
-  font-size: 13px;
+ color: var(--brand-primary);
+ font-weight: 600;
+ font-size: 13px;
 }
 td .kpi-mono {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--text-primary);
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 12px;
+ color: var(--text-primary);
 }
 .lactalis-eg {
-  font-style: italic;
-  color: var(--text-secondary);
-  font-size: 12px;
+ font-style: italic;
+ color: var(--text-secondary);
+ font-size: 12px;
 }
 
 /* Glossary chip */
 .glossary-term {
-  background: var(--brand-tint);
-  color: var(--brand-primary);
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 4px;
-  display: inline-block;
-  font-size: 13px;
+ background: var(--brand-tint);
+ color: var(--brand-primary);
+ font-weight: 600;
+ padding: 2px 8px;
+ border-radius: 4px;
+ display: inline-block;
+ font-size: 13px;
 }
 .walmart-term {
-  background: rgba(224, 146, 43, 0.10);
-  color: #C97014;
+ background: rgba(224, 146, 43, 0.10);
+ color: #C97014;
 }
 td.term-cell { width: 220px; padding-top: 16px; }
 td.def-cell {
-  color: var(--text-secondary);
-  font-size: 13px;
-  line-height: 1.6;
+ color: var(--text-secondary);
+ font-size: 13px;
+ line-height: 1.6;
 }
 td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-primary); font-weight: 500;}
 
 /* Alphabet strip */
 .alpha-strip {
-  background: white;
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  padding: 12px 14px;
-  margin-bottom: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  z-index: 6;
+ background: white;
+ border: 1px solid var(--border-subtle);
+ border-radius: 10px;
+ padding: 12px 14px;
+ margin-bottom: 16px;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 4px;
+ z-index: 6;
 }
 .alpha-letter {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px; height: 24px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-tertiary);
-  border-radius: 4px;
-  cursor: pointer;
-  user-select: none;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ width: 24px; height: 24px;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 11px;
+ font-weight: 600;
+ color: var(--text-tertiary);
+ border-radius: 4px;
+ cursor: pointer;
+ user-select: none;
 }
 .alpha-letter.available {
-  color: var(--brand-primary);
-  background: white;
-  border: 1px solid var(--border-subtle);
+ color: var(--brand-primary);
+ background: white;
+ border: 1px solid var(--border-subtle);
 }
 .alpha-letter.available:hover {
-  background: var(--brand-primary);
-  color: white;
-  border-color: var(--brand-primary);
+ background: var(--brand-primary);
+ color: white;
+ border-color: var(--brand-primary);
 }
 
 /* ============ LEVER CARDS ============ */
 .lever-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ gap: 16px;
 }
 @media (max-width: 920px) {
-  .lever-grid { grid-template-columns: 1fr; }
+ .lever-grid { grid-template-columns: 1fr; }
 }
 .lever-card {
-  background: white;
-  border: 1px solid var(--border-subtle);
-  border-left: 6px solid;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: var(--shadow-card);
-  position: relative;
+ background: white;
+ border: 1px solid var(--border-subtle);
+ border-left: 6px solid;
+ border-radius: 12px;
+ padding: 20px;
+ box-shadow: var(--shadow-card);
+ position: relative;
 }
 .lever-card.direct { border-left-color: var(--brand-primary); }
 .lever-card.influenced { border-left-color: var(--semantic-warning); }
 .lever-card.external { border-left-color: var(--text-tertiary); }
 .lever-chip {
-  position: absolute;
-  top: 16px; right: 16px;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 4px;
+ position: absolute;
+ top: 16px; right: 16px;
+ font-size: 10px;
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ font-weight: 600;
+ padding: 3px 8px;
+ border-radius: 4px;
 }
 .lever-card.direct .lever-chip { background: var(--brand-tint); color: var(--brand-primary); }
 .lever-card.influenced .lever-chip { background: rgba(245, 200, 66, 0.18); color: #B07814; }
 .lever-card.external .lever-chip { background: rgba(148, 163, 184, 0.18); color: var(--text-secondary); }
 .lever-card h3 {
-  font-size: 15px;
-  font-weight: 600;
-  margin: 0 0 10px;
-  color: var(--text-primary);
+ font-size: 15px;
+ font-weight: 600;
+ margin: 0 0 10px;
+ color: var(--text-primary);
 }
 .lever-card .lever-section {
-  margin-top: 14px;
+ margin-top: 14px;
 }
 .lever-card .lever-section-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-tertiary);
-  font-weight: 600;
-  margin-bottom: 4px;
+ font-size: 10px;
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ color: var(--text-tertiary);
+ font-weight: 600;
+ margin-bottom: 4px;
 }
 .lever-card .lever-section-body {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.55;
+ font-size: 13px;
+ color: var(--text-secondary);
+ line-height: 1.55;
 }
 .lever-why {
-  margin-top: 16px;
-  background: var(--bg-canvas);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 16px 20px;
-  font-style: italic;
-  color: var(--text-secondary);
-  font-size: 13px;
-  line-height: 1.6;
+ margin-top: 16px;
+ background: var(--bg-canvas);
+ border: 1px solid var(--border-subtle);
+ border-radius: 8px;
+ padding: 16px 20px;
+ font-style: italic;
+ color: var(--text-secondary);
+ font-size: 13px;
+ line-height: 1.6;
 }
 .lever-why strong { font-style: normal; color: var(--text-primary); }
 .lever-why-list {
-  margin: 8px 0 0;
-  padding-left: 18px;
-  font-style: normal;
+ margin: 8px 0 0;
+ padding-left: 18px;
+ font-style: normal;
 }
 
 /* ============ ACCORDIONS ============ */
 .accordion {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
 }
 .acc-card {
-  background: white;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  transition: box-shadow 200ms ease;
+ background: white;
+ border: 1px solid var(--border-subtle);
+ border-radius: 12px;
+ box-shadow: var(--shadow-card);
+ overflow: hidden;
+ transition: box-shadow 200ms ease;
 }
 .acc-card.open { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
 .acc-head {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  cursor: pointer;
-  user-select: none;
-  background: white;
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ padding: 16px 20px;
+ cursor: pointer;
+ user-select: none;
+ background: white;
 }
 .acc-head:hover { background: #FAFAFA; }
 .acc-badge {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: var(--brand-primary);
-  color: white;
-  font-weight: 600;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+ width: 28px; height: 28px;
+ border-radius: 50%;
+ background: var(--brand-primary);
+ color: white;
+ font-weight: 600;
+ font-size: 14px;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ flex-shrink: 0;
 }
 .acc-title-wrap {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+ flex: 1;
+ display: flex;
+ flex-direction: column;
 }
 .acc-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.3;
+ font-size: 14px;
+ font-weight: 600;
+ color: var(--text-primary);
+ line-height: 1.3;
 }
 .acc-sub {
-  font-size: 11px;
-  color: var(--text-tertiary);
-  margin-top: 2px;
-  font-family: 'JetBrains Mono', monospace;
+ font-size: 11px;
+ color: var(--text-tertiary);
+ margin-top: 2px;
+ font-family: 'JetBrains Mono', monospace;
 }
 .acc-sub .kbd {
-  display: inline-block;
-  background: var(--bg-canvas);
-  border: 1px solid var(--border-subtle);
-  border-radius: 3px;
-  padding: 0px 5px;
-  margin-left: 4px;
-  font-size: 10px;
-  color: var(--text-secondary);
+ display: inline-block;
+ background: var(--bg-canvas);
+ border: 1px solid var(--border-subtle);
+ border-radius: 3px;
+ padding: 0px 5px;
+ margin-left: 4px;
+ font-size: 10px;
+ color: var(--text-secondary);
 }
 .stage-chip {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
+ font-size: 11px;
+ font-weight: 600;
+ padding: 4px 10px;
+ border-radius: 4px;
+ text-transform: uppercase;
+ letter-spacing: 0.04em;
+ white-space: nowrap;
 }
 .stage-1 { background: rgba(74, 144, 217, 0.12); color: var(--brand-primary); }
 .stage-2 { background: rgba(13, 148, 136, 0.12); color: var(--pillar-availability); }
@@ -731,383 +731,383 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 .stage-4 { background: rgba(224, 146, 43, 0.15); color: #B07814; }
 .stage-5 { background: rgba(39, 174, 96, 0.13); color: var(--semantic-success); }
 .acc-chevron {
-  width: 18px; height: 18px;
-  color: var(--text-tertiary);
-  transition: transform 220ms ease;
-  flex-shrink: 0;
+ width: 18px; height: 18px;
+ color: var(--text-tertiary);
+ transition: transform 220ms ease;
+ flex-shrink: 0;
 }
 .acc-card.open .acc-chevron { transform: rotate(180deg); color: var(--text-secondary); }
 
 .acc-body-wrap {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 250ms ease;
+ display: grid;
+ grid-template-rows: 0fr;
+ transition: grid-template-rows 250ms ease;
 }
 .acc-card.open .acc-body-wrap { grid-template-rows: 1fr; }
 .acc-body {
-  overflow: hidden;
+ overflow: hidden;
 }
 .acc-body-inner {
-  padding: 0 20px 24px 20px;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 20px;
-  position: relative;
+ padding: 0 20px 24px 20px;
+ border-top: 1px solid var(--border-subtle);
+ padding-top: 20px;
+ position: relative;
 }
 .acc-open-proto {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  font-size: 12px;
-  color: var(--brand-primary);
-  text-decoration: none;
-  font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 4px;
-  border: 1px solid var(--brand-tint);
+ position: absolute;
+ top: 16px;
+ right: 20px;
+ font-size: 12px;
+ color: var(--brand-primary);
+ text-decoration: none;
+ font-weight: 500;
+ padding: 4px 10px;
+ border-radius: 4px;
+ border: 1px solid var(--brand-tint);
 }
 .acc-open-proto:hover { background: var(--brand-tint); }
 .field-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-bottom: 6px;
-  margin-top: 18px;
+ font-size: 10px;
+ font-weight: 700;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ color: var(--text-tertiary);
+ margin-bottom: 6px;
+ margin-top: 18px;
 }
 .field-label:first-child { margin-top: 4px; }
 .field-body, .field-body p {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.6;
+ font-size: 13px;
+ color: var(--text-secondary);
+ line-height: 1.6;
 }
 .field-body strong { color: var(--text-primary); font-weight: 600; }
 .field-body ul, .field-body ol {
-  margin: 4px 0 0;
-  padding-left: 20px;
+ margin: 4px 0 0;
+ padding-left: 20px;
 }
 .field-body ul li, .field-body ol li { margin-bottom: 4px; }
 .field-body ol li { font-weight: 500; color: var(--text-primary); }
 .field-body ol li span.takeaway { font-weight: 400; color: var(--text-secondary); }
 .user-job {
-  font-size: 15px;
-  font-style: italic;
-  color: var(--text-primary);
-  line-height: 1.5;
-  font-weight: 500;
+ font-size: 15px;
+ font-style: italic;
+ color: var(--text-primary);
+ line-height: 1.5;
+ font-weight: 500;
 }
 .anti-misread {
-  background: rgba(245, 200, 66, 0.10);
-  border-left: 3px solid var(--semantic-warning);
-  border-radius: 6px;
-  padding: 12px 14px;
-  margin-top: 6px;
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
+ background: rgba(245, 200, 66, 0.10);
+ border-left: 3px solid var(--semantic-warning);
+ border-radius: 6px;
+ padding: 12px 14px;
+ margin-top: 6px;
+ display: flex;
+ gap: 10px;
+ align-items: flex-start;
 }
 .anti-misread-icon {
-  flex-shrink: 0;
-  font-size: 16px;
-  line-height: 1.4;
+ flex-shrink: 0;
+ font-size: 16px;
+ line-height: 1.4;
 }
 .anti-misread ul { margin: 0; padding-left: 18px; }
 .anti-misread ul li { margin-bottom: 4px; color: var(--text-secondary); font-size: 13px; }
 .where-list { list-style: none; padding: 0; margin: 0; }
 .where-list li {
-  padding: 4px 0;
-  font-size: 13px;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
+ padding: 4px 0;
+ font-size: 13px;
+ color: var(--text-secondary);
+ display: flex;
+ align-items: flex-start;
+ gap: 6px;
 }
 .where-list li::before {
-  content: '→';
-  color: var(--brand-primary);
-  font-weight: 600;
-  margin-top: -1px;
+ content: '→';
+ color: var(--brand-primary);
+ font-weight: 600;
+ margin-top: -1px;
 }
 .stage-inline-chip {
-  display: inline-flex;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+ display: inline-flex;
+ align-items: center;
+ font-size: 11px;
+ font-weight: 600;
+ padding: 4px 10px;
+ border-radius: 4px;
+ text-transform: uppercase;
+ letter-spacing: 0.04em;
 }
 
 /* ============ CHECKLIST ============ */
 .checklist-progress {
-  background: white;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
+ background: white;
+ border: 1px solid var(--border-subtle);
+ border-radius: 12px;
+ padding: 16px 20px;
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ margin-bottom: 16px;
 }
 .checklist-progress-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  min-width: 110px;
+ font-size: 13px;
+ font-weight: 600;
+ color: var(--text-primary);
+ min-width: 110px;
 }
 .checklist-progress-label span.count {
-  color: var(--brand-primary);
-  font-family: 'JetBrains Mono', monospace;
+ color: var(--brand-primary);
+ font-family: 'JetBrains Mono', monospace;
 }
 .checklist-bar {
-  flex: 1;
-  height: 6px;
-  background: var(--bg-canvas);
-  border-radius: 3px;
-  overflow: hidden;
+ flex: 1;
+ height: 6px;
+ background: var(--bg-canvas);
+ border-radius: 3px;
+ overflow: hidden;
 }
 .checklist-bar-fill {
-  height: 100%;
-  background: var(--brand-primary);
-  width: 0%;
-  transition: width 200ms ease;
-  border-radius: 3px;
+ height: 100%;
+ background: var(--brand-primary);
+ width: 0%;
+ transition: width 200ms ease;
+ border-radius: 3px;
 }
 .checklist-pct {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--text-secondary);
-  min-width: 36px;
-  text-align: right;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 12px;
+ color: var(--text-secondary);
+ min-width: 36px;
+ text-align: right;
 }
 .checklist {
-  background: white;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
+ background: white;
+ border: 1px solid var(--border-subtle);
+ border-radius: 12px;
+ box-shadow: var(--shadow-card);
+ overflow: hidden;
 }
 .check-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--border-subtle);
-  cursor: pointer;
+ display: flex;
+ align-items: flex-start;
+ gap: 14px;
+ padding: 14px 20px;
+ border-bottom: 1px solid var(--border-subtle);
+ cursor: pointer;
 }
 .check-item:last-child { border-bottom: none; }
 .check-item:hover { background: #FAFAFA; }
 .check-box {
-  width: 18px; height: 18px;
-  border: 1.5px solid var(--text-tertiary);
-  border-radius: 4px;
-  flex-shrink: 0;
-  margin-top: 1px;
-  position: relative;
-  transition: all 120ms ease;
-  background: white;
+ width: 18px; height: 18px;
+ border: 1.5px solid var(--text-tertiary);
+ border-radius: 4px;
+ flex-shrink: 0;
+ margin-top: 1px;
+ position: relative;
+ transition: all 120ms ease;
+ background: white;
 }
 .check-item.done .check-box {
-  background: var(--brand-primary);
-  border-color: var(--brand-primary);
+ background: var(--brand-primary);
+ border-color: var(--brand-primary);
 }
 .check-item.done .check-box::after {
-  content: '';
-  position: absolute;
-  left: 5px; top: 1px;
-  width: 5px; height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+ content: '';
+ position: absolute;
+ left: 5px; top: 1px;
+ width: 5px; height: 10px;
+ border: solid white;
+ border-width: 0 2px 2px 0;
+ transform: rotate(45deg);
 }
 .check-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--text-tertiary);
-  min-width: 20px;
-  margin-top: 2px;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 11px;
+ color: var(--text-tertiary);
+ min-width: 20px;
+ margin-top: 2px;
 }
 .check-text {
-  flex: 1;
-  font-size: 13px;
-  color: var(--text-primary);
-  line-height: 1.55;
+ flex: 1;
+ font-size: 13px;
+ color: var(--text-primary);
+ line-height: 1.55;
 }
 .check-item.done .check-text {
-  color: var(--text-tertiary);
-  text-decoration: line-through;
-  text-decoration-color: var(--text-tertiary);
+ color: var(--text-tertiary);
+ text-decoration: line-through;
+ text-decoration-color: var(--text-tertiary);
 }
 .check-sub {
-  display: block;
-  font-size: 12px;
-  font-style: italic;
-  color: var(--text-secondary);
-  margin-top: 2px;
+ display: block;
+ font-size: 12px;
+ font-style: italic;
+ color: var(--text-secondary);
+ margin-top: 2px;
 }
 .check-item.done .check-sub { color: var(--text-tertiary); }
 .checklist-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 12px;
+ display: flex;
+ justify-content: flex-end;
+ margin-top: 12px;
 }
 
 /* ============ QUESTIONS ============ */
 .questions {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+ display: flex;
+ flex-direction: column;
+ gap: 14px;
 }
 .q-card {
-  background: white;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  box-shadow: var(--shadow-card);
-  padding: 20px;
+ background: white;
+ border: 1px solid var(--border-subtle);
+ border-radius: 12px;
+ box-shadow: var(--shadow-card);
+ padding: 20px;
 }
 .q-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-tertiary);
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 11px;
+ font-weight: 600;
+ color: var(--text-tertiary);
+ letter-spacing: 0.05em;
+ margin-bottom: 6px;
 }
 .q-body {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-primary);
-  line-height: 1.5;
-  margin-bottom: 6px;
+ font-size: 14px;
+ font-weight: 500;
+ color: var(--text-primary);
+ line-height: 1.5;
+ margin-bottom: 6px;
 }
 .q-context {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 12px;
+ font-size: 13px;
+ color: var(--text-secondary);
+ line-height: 1.6;
+ margin-bottom: 12px;
 }
 .q-note-btn {
-  font-size: 12px;
-  background: transparent;
-  border: 1px dashed var(--border-subtle);
-  color: var(--text-secondary);
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: inherit;
+ font-size: 12px;
+ background: transparent;
+ border: 1px dashed var(--border-subtle);
+ color: var(--text-secondary);
+ padding: 6px 12px;
+ border-radius: 6px;
+ cursor: pointer;
+ font-family: inherit;
 }
 .q-note-btn:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
 .q-note-area {
-  display: none;
-  margin-top: 12px;
+ display: none;
+ margin-top: 12px;
 }
 .q-card.note-open .q-note-area { display: block; }
 .q-card.note-open .q-note-btn { display: none; }
 .q-note-area textarea {
-  width: 100%;
-  min-height: 80px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-family: inherit;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--text-primary);
-  resize: vertical;
-  background: var(--bg-canvas);
+ width: 100%;
+ min-height: 80px;
+ border: 1px solid var(--border-subtle);
+ border-radius: 8px;
+ padding: 10px 12px;
+ font-family: inherit;
+ font-size: 13px;
+ line-height: 1.5;
+ color: var(--text-primary);
+ resize: vertical;
+ background: var(--bg-canvas);
 }
 .q-note-area textarea:focus {
-  outline: none;
-  border-color: var(--brand-primary);
-  background: white;
+ outline: none;
+ border-color: var(--brand-primary);
+ background: white;
 }
 .q-note-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 6px;
-  font-size: 11px;
-  color: var(--text-tertiary);
+ display: flex;
+ justify-content: space-between;
+ margin-top: 6px;
+ font-size: 11px;
+ color: var(--text-tertiary);
 }
 .questions-footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 16px;
+ display: flex;
+ justify-content: flex-end;
+ margin-top: 16px;
 }
 
 /* ============ JOURNEY TABLE ============ */
 .journey-tbl {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 24px;
+ width: 100%;
+ border-collapse: collapse;
+ margin-top: 24px;
 }
 .journey-tbl thead th {
-  background: var(--bg-canvas);
-  color: var(--text-tertiary);
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  text-align: left;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--border-subtle);
+ background: var(--bg-canvas);
+ color: var(--text-tertiary);
+ font-size: 10px;
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ text-align: left;
+ padding: 10px 14px;
+ border-bottom: 1px solid var(--border-subtle);
 }
 .journey-tbl tbody td {
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--border-subtle);
-  font-size: 13px;
-  color: var(--text-secondary);
-  vertical-align: middle;
+ padding: 12px 14px;
+ border-bottom: 1px solid var(--border-subtle);
+ font-size: 13px;
+ color: var(--text-secondary);
+ vertical-align: middle;
 }
 .journey-tbl tbody tr:last-child td { border-bottom: none; }
 .journey-stage-cell {
-  font-weight: 600;
-  color: var(--text-primary);
+ font-weight: 600;
+ color: var(--text-primary);
 }
 .journey-stage-cell .num {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--brand-primary);
-  margin-right: 6px;
+ font-family: 'JetBrains Mono', monospace;
+ color: var(--brand-primary);
+ margin-right: 6px;
 }
 .journey-page-cell {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--text-primary);
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 12px;
+ color: var(--text-primary);
 }
 
 /* No-match state for search */
 .no-results {
-  padding: 20px;
-  text-align: center;
-  color: var(--text-tertiary);
-  font-style: italic;
-  display: none;
+ padding: 20px;
+ text-align: center;
+ color: var(--text-tertiary);
+ font-style: italic;
+ display: none;
 }
 .tbl-wrap.empty .no-results { display: block; }
 .tbl-wrap.empty table { display: none; }
 
 /* ============ PRINT ============ */
 @media print {
-  .topnav, .sidebar, .alpha-strip, .checklist-actions, .questions-footer, .q-note-btn, .acc-open-proto { display: none !important; }
-  body { background: white; }
-  .main { margin-left: 0; padding: 0 24px; }
-  .main-inner { max-width: none; }
-  .layout { padding-top: 0; }
-  section.doc-section { page-break-before: always; margin-bottom: 32px; }
-  section.doc-section:first-of-type { page-break-before: auto; }
-  .acc-card .acc-body-wrap { grid-template-rows: 1fr !important; }
-  .acc-card .acc-chevron { display: none; }
-  .card, .acc-card, .tbl-wrap, .lever-card, .q-card, .checklist, .checklist-progress { box-shadow: none; break-inside: avoid; }
-  table.doc-tbl thead th { position: static; }
+ .topnav, .sidebar, .alpha-strip, .checklist-actions, .questions-footer, .q-note-btn, .acc-open-proto { display: none !important; }
+ body { background: white; }
+ .main { margin-left: 0; padding: 0 24px; }
+ .main-inner { max-width: none; }
+ .layout { padding-top: 0; }
+ section.doc-section { page-break-before: always; margin-bottom: 32px; }
+ section.doc-section:first-of-type { page-break-before: auto; }
+ .acc-card .acc-body-wrap { grid-template-rows: 1fr !important; }
+ .acc-card .acc-chevron { display: none; }
+ .card, .acc-card, .tbl-wrap, .lever-card, .q-card, .checklist, .checklist-progress { box-shadow: none; break-inside: avoid; }
+ table.doc-tbl thead th { position: static; }
 }
 
 /* responsive */
 @media (max-width: 900px) {
-  .card-grid-2 { grid-template-columns: 1fr; }
-  .sidebar { display: none; }
-  .main { margin-left: 0; padding: 20px; }
-  .topnav-left { min-width: 0; }
-  .search-wrap { display: none; }
+ .card-grid-2 { grid-template-columns: 1fr; }
+ .sidebar { display: none; }
+ .main { margin-left: 0; padding: 20px; }
+ .topnav-left { min-width: 0; }
+ .search-wrap { display: none; }
 }
 </style>
 </head>
@@ -1115,58 +1115,58 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 
 <!-- ===== TOP NAV ===== -->
 <header class="topnav">
-  <div class="topnav-left">
-    <a class="brand-logo" href="#overview" aria-label="DataWeave">
-      <svg viewBox="0 0 21 23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <g transform="translate(-13.9275, -12)" fill="#524269">
-          <g transform="translate(4, 4)">
-            <path d="M28.3091374,19.0442763 C27.3344345,19.0442763 26.5444315,18.2467164 26.5444315,17.26269 C26.5444315,16.2791251 27.3344345,15.4815652 28.3091374,15.4815652 C29.2838402,15.4815652 30.0738432,16.2791251 30.0738432,17.26269 C30.0738432,18.2467164 29.2838402,19.0442763 28.3091374,19.0442763 M28.3091374,24.388343 C27.3344345,24.388343 26.5444315,23.5907831 26.5444315,22.6067567 C26.5444315,21.6231918 27.3344345,20.8256319 28.3091374,20.8256319 C29.2838402,20.8256319 30.0738432,21.6231918 30.0738432,22.6067567 C30.0738432,23.5907831 29.2838402,24.388343 28.3091374,24.388343 M23.603255,13.1064245 C22.6285522,13.1064245 21.8385491,12.3088646 21.8385491,11.3248382 C21.8385491,10.3412733 22.6285522,9.54371338 23.603255,9.54371338 C24.5779578,9.54371338 25.3679609,10.3412733 25.3679609,11.3248382 C25.3679609,12.3088646 24.5779578,13.1064245 23.603255,13.1064245 M23.3091374,19.0442763 C22.1719163,19.0442763 21.2503138,18.1136304 21.2503138,16.9662525 C21.2503138,15.818426 22.1719163,14.88778 23.3091374,14.88778 C24.4463584,14.88778 25.3679609,15.818426 25.3679609,16.9662525 C25.3679609,18.1136304 24.4463584,19.0442763 23.3091374,19.0442763 M23.3091374,24.388343 C22.1719163,24.388343 21.2503138,23.457697 21.2503138,22.3103192 C21.2503138,21.1624926 22.1719163,20.2318467 23.3091374,20.2318467 C24.4463584,20.2318467 25.3679609,21.1624926 25.3679609,22.3103192 C25.3679609,23.457697 24.4463584,24.388343 23.3091374,24.388343 M23.603255,29.7324096 C22.6285522,29.7324096 21.8385491,28.9348498 21.8385491,27.9508233 C21.8385491,26.9672584 22.6285522,26.1696985 23.603255,26.1696985 C24.5779578,26.1696985 25.3679609,26.9672584 25.3679609,27.9508233 C25.3679609,28.9348498 24.5779578,29.7324096 23.603255,29.7324096 M18.0150197,12.9728228 C16.8777987,12.9728228 15.9561962,12.0421769 15.9561962,10.894799 C15.9561962,9.74697247 16.8777987,8.81632653 18.0150197,8.81632653 C19.1522407,8.81632653 20.0738432,9.74697247 20.0738432,10.894799 C20.0738432,12.0421769 19.1522407,12.9728228 18.0150197,12.9728228 M18.3091374,19.0442763 C17.0096414,19.0442763 15.9561962,17.9809904 15.9561962,16.6693554 C15.9561962,15.3577203 17.0096414,14.2939949 18.3091374,14.2939949 C19.6086333,14.2939949 20.6620785,15.3577203 20.6620785,16.6693554 C20.6620785,17.9809904 19.6086333,19.0442763 18.3091374,19.0442763 M18.3091374,24.9821282 C17.0096414,24.9821282 15.9561962,23.9188423 15.9561962,22.6072072 C15.9561962,21.2955722 17.0096414,20.2318467 18.3091374,20.2318467 C19.6086333,20.2318467 20.6620785,21.2955722 20.6620785,22.6072072 C20.6620785,23.9188423 19.6086333,24.9821282 18.3091374,24.9821282 M18.0150197,30.4597965 C16.8777987,30.4597965 15.9561962,29.5291506 15.9561962,28.3817727 C15.9561962,27.2339461 16.8777987,26.3033002 18.0150197,26.3033002 C19.1522407,26.3033002 20.0738432,27.2339461 20.0738432,28.3817727 C20.0738432,29.5291506 19.1522407,30.4597965 18.0150197,30.4597965 M12.4267844,13.7002097 C11.1272885,13.7002097 10.0738432,12.6369238 10.0738432,11.3252887 C10.0738432,10.0136537 11.1272885,8.9499282 12.4267844,8.9499282 C13.7262803,8.9499282 14.7797256,10.0136537 14.7797256,11.3252887 C14.7797256,12.6369238 13.7262803,13.7002097 12.4267844,13.7002097 M12.4267844,19.0442763 C11.1272885,19.0442763 10.0738432,17.9809904 10.0738432,16.6693554 C10.0738432,15.3577203 11.1272885,14.2939949 12.4267844,14.2939949 C13.7262803,14.2939949 14.7797256,15.3577203 14.7797256,16.6693554 C14.7797256,17.9809904 13.7262803,19.0442763 12.4267844,19.0442763 M12.4267844,24.9821282 C11.1272885,24.9821282 10.0738432,23.9188423 10.0738432,22.6072072 C10.0738432,21.2955722 11.1272885,20.2318467 12.4267844,20.2318467 C13.7262803,20.2318467 14.7797256,21.2955722 14.7797256,22.6072072 C14.7797256,23.9188423 13.7262803,24.9821282 12.4267844,24.9821282 M12.4267844,30.3261948 C11.1272885,30.3261948 10.0738432,29.2629089 10.0738432,27.9512739 C10.0738432,26.6396388 11.1272885,25.5759134 12.4267844,25.5759134 C13.7262803,25.5759134 14.7797256,26.6396388 14.7797256,27.9512739 C14.7797256,29.2629089 13.7262803,30.3261948 12.4267844,30.3261948"></path>
-          </g>
-        </g>
-      </svg>
-    </a>
-    <div class="context-chip">DSIM Reviewer Docs</div>
-  </div>
-  <div class="topnav-right">
-    <div class="search-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="search-input" class="search-input" type="text" placeholder="Search docs…" autocomplete="off"/>
-      <span class="search-kbd">/</span>
-    </div>
-    <a class="btn btn-primary" href="https://raghavmht09.github.io/dsim-design/" target="_blank" rel="noopener">Open Prototype
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-    </a>
-    <button class="btn btn-ghost" onclick="window.print()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
-      Print
-    </button>
-  </div>
+ <div class="topnav-left">
+ <a class="brand-logo" href="#overview" aria-label="DataWeave">
+ <svg viewBox="0 0 21 23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+ <g transform="translate(-13.9275, -12)" fill="#524269">
+ <g transform="translate(4, 4)">
+ <path d="M28.3091374,19.0442763 C27.3344345,19.0442763 26.5444315,18.2467164 26.5444315,17.26269 C26.5444315,16.2791251 27.3344345,15.4815652 28.3091374,15.4815652 C29.2838402,15.4815652 30.0738432,16.2791251 30.0738432,17.26269 C30.0738432,18.2467164 29.2838402,19.0442763 28.3091374,19.0442763 M28.3091374,24.388343 C27.3344345,24.388343 26.5444315,23.5907831 26.5444315,22.6067567 C26.5444315,21.6231918 27.3344345,20.8256319 28.3091374,20.8256319 C29.2838402,20.8256319 30.0738432,21.6231918 30.0738432,22.6067567 C30.0738432,23.5907831 29.2838402,24.388343 28.3091374,24.388343 M23.603255,13.1064245 C22.6285522,13.1064245 21.8385491,12.3088646 21.8385491,11.3248382 C21.8385491,10.3412733 22.6285522,9.54371338 23.603255,9.54371338 C24.5779578,9.54371338 25.3679609,10.3412733 25.3679609,11.3248382 C25.3679609,12.3088646 24.5779578,13.1064245 23.603255,13.1064245 M23.3091374,19.0442763 C22.1719163,19.0442763 21.2503138,18.1136304 21.2503138,16.9662525 C21.2503138,15.818426 22.1719163,14.88778 23.3091374,14.88778 C24.4463584,14.88778 25.3679609,15.818426 25.3679609,16.9662525 C25.3679609,18.1136304 24.4463584,19.0442763 23.3091374,19.0442763 M23.3091374,24.388343 C22.1719163,24.388343 21.2503138,23.457697 21.2503138,22.3103192 C21.2503138,21.1624926 22.1719163,20.2318467 23.3091374,20.2318467 C24.4463584,20.2318467 25.3679609,21.1624926 25.3679609,22.3103192 C25.3679609,23.457697 24.4463584,24.388343 23.3091374,24.388343 M23.603255,29.7324096 C22.6285522,29.7324096 21.8385491,28.9348498 21.8385491,27.9508233 C21.8385491,26.9672584 22.6285522,26.1696985 23.603255,26.1696985 C24.5779578,26.1696985 25.3679609,26.9672584 25.3679609,27.9508233 C25.3679609,28.9348498 24.5779578,29.7324096 23.603255,29.7324096 M18.0150197,12.9728228 C16.8777987,12.9728228 15.9561962,12.0421769 15.9561962,10.894799 C15.9561962,9.74697247 16.8777987,8.81632653 18.0150197,8.81632653 C19.1522407,8.81632653 20.0738432,9.74697247 20.0738432,10.894799 C20.0738432,12.0421769 19.1522407,12.9728228 18.0150197,12.9728228 M18.3091374,19.0442763 C17.0096414,19.0442763 15.9561962,17.9809904 15.9561962,16.6693554 C15.9561962,15.3577203 17.0096414,14.2939949 18.3091374,14.2939949 C19.6086333,14.2939949 20.6620785,15.3577203 20.6620785,16.6693554 C20.6620785,17.9809904 19.6086333,19.0442763 18.3091374,19.0442763 M18.3091374,24.9821282 C17.0096414,24.9821282 15.9561962,23.9188423 15.9561962,22.6072072 C15.9561962,21.2955722 17.0096414,20.2318467 18.3091374,20.2318467 C19.6086333,20.2318467 20.6620785,21.2955722 20.6620785,22.6072072 C20.6620785,23.9188423 19.6086333,24.9821282 18.3091374,24.9821282 M18.0150197,30.4597965 C16.8777987,30.4597965 15.9561962,29.5291506 15.9561962,28.3817727 C15.9561962,27.2339461 16.8777987,26.3033002 18.0150197,26.3033002 C19.1522407,26.3033002 20.0738432,27.2339461 20.0738432,28.3817727 C20.0738432,29.5291506 19.1522407,30.4597965 18.0150197,30.4597965 M12.4267844,13.7002097 C11.1272885,13.7002097 10.0738432,12.6369238 10.0738432,11.3252887 C10.0738432,10.0136537 11.1272885,8.9499282 12.4267844,8.9499282 C13.7262803,8.9499282 14.7797256,10.0136537 14.7797256,11.3252887 C14.7797256,12.6369238 13.7262803,13.7002097 12.4267844,13.7002097 M12.4267844,19.0442763 C11.1272885,19.0442763 10.0738432,17.9809904 10.0738432,16.6693554 C10.0738432,15.3577203 11.1272885,14.2939949 12.4267844,14.2939949 C13.7262803,14.2939949 14.7797256,15.3577203 14.7797256,16.6693554 C14.7797256,17.9809904 13.7262803,19.0442763 12.4267844,19.0442763 M12.4267844,24.9821282 C11.1272885,24.9821282 10.0738432,23.9188423 10.0738432,22.6072072 C10.0738432,21.2955722 11.1272885,20.2318467 12.4267844,20.2318467 C13.7262803,20.2318467 14.7797256,21.2955722 14.7797256,22.6072072 C14.7797256,23.9188423 13.7262803,24.9821282 12.4267844,24.9821282 M12.4267844,30.3261948 C11.1272885,30.3261948 10.0738432,29.2629089 10.0738432,27.9512739 C10.0738432,26.6396388 11.1272885,25.5759134 12.4267844,25.5759134 C13.7262803,25.5759134 14.7797256,26.6396388 14.7797256,27.9512739 C14.7797256,29.2629089 13.7262803,30.3261948 12.4267844,30.3261948"></path>
+ </g>
+ </g>
+ </svg>
+ </a>
+ <div class="context-chip">DSIM Reviewer Docs</div>
+ </div>
+ <div class="topnav-right">
+ <div class="search-wrap">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+ <input id="search-input" class="search-input" type="text" placeholder="Search docs…" autocomplete="off"/>
+ <span class="search-kbd">/</span>
+ </div>
+ <a class="btn btn-primary" href="https://raghavmht09.github.io/dsim-design/" target="_blank" rel="noopener">Open Prototype
+ <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+ </a>
+ <button class="btn btn-ghost" onclick="window.print()">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+ Print
+ </button>
+ </div>
 </header>
 
 <div class="layout">
 
 <!-- ===== SIDEBAR ===== -->
 <nav class="sidebar" id="sidebar">
-  <div class="toc-section-label">Contents</div>
-  <a class="toc-item" data-target="overview"><span class="toc-num">01</span> Overview</a>
-  <a class="toc-item" data-target="pillars"><span class="toc-num">02</span> Pillars</a>
-  <a class="toc-item" data-target="methodology"><span class="toc-num">03</span> Methodology</a>
-  <a class="toc-item" data-target="walmart"><span class="toc-num">04</span> Walmart</a>
-  <a class="toc-item" data-target="levers"><span class="toc-num">05</span> Levers</a>
-  <a class="toc-item" data-target="screens"><span class="toc-num">06</span> Screens</a>
-  <a class="toc-item toc-sub" data-target="screen-1">· 1 Overview</a>
-  <a class="toc-item toc-sub" data-target="screen-2">· 2 Shelf Health</a>
-  <a class="toc-item toc-sub" data-target="screen-3">· 3 Sales Decomposition</a>
-  <a class="toc-item toc-sub" data-target="screen-4">· 4 Response Curves</a>
-  <a class="toc-item toc-sub" data-target="screen-5">· 5 Keyword Calculator</a>
-  <a class="toc-item toc-sub" data-target="screen-6">· 6 Scenario Simulator</a>
-  <a class="toc-item toc-sub" data-target="screen-7">· 7 ROI Looker</a>
-  <a class="toc-item" data-target="checklist"><span class="toc-num">07</span> Checklist</a>
-  <div class="toc-footer">
-    Doc <span class="mono">v1</span><br>
-    <span class="mono">2026-05-22</span><br>
-    for <span class="mono">wireframe-v1.html</span>
-  </div>
+ <div class="toc-section-label">Contents</div>
+ <a class="toc-item" data-target="overview"><span class="toc-num">01</span> Overview</a>
+ <a class="toc-item" data-target="pillars"><span class="toc-num">02</span> Pillars</a>
+ <a class="toc-item" data-target="methodology"><span class="toc-num">03</span> Methodology</a>
+ <a class="toc-item" data-target="walmart"><span class="toc-num">04</span> Walmart</a>
+ <a class="toc-item" data-target="levers"><span class="toc-num">05</span> Levers</a>
+ <a class="toc-item" data-target="screens"><span class="toc-num">06</span> Screens</a>
+ <a class="toc-item toc-sub" data-target="screen-1">· 1 Overview</a>
+ <a class="toc-item toc-sub" data-target="screen-2">· 2 Shelf Health</a>
+ <a class="toc-item toc-sub" data-target="screen-3">· 3 Sales Decomposition</a>
+ <a class="toc-item toc-sub" data-target="screen-4">· 4 Response Curves</a>
+ <a class="toc-item toc-sub" data-target="screen-5">· 5 Keyword Calculator</a>
+ <a class="toc-item toc-sub" data-target="screen-6">· 6 Scenario Simulator</a>
+ <a class="toc-item toc-sub" data-target="screen-7">· 7 ROI Looker</a>
+ <a class="toc-item" data-target="checklist"><span class="toc-num">07</span> Checklist</a>
+ <div class="toc-footer">
+ Doc <span class="mono">v1</span><br>
+ <span class="mono">2026-05-22</span><br>
+ prototype v1
+ </div>
 </nav>
 
 <!-- ===== MAIN ===== -->
@@ -1175,323 +1175,323 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 
 <!-- ============ SECTION 1: OVERVIEW ============ -->
 <section id="overview" class="doc-section">
-  <div class="section-num">SECTION 01</div>
-  <h1 class="doc-h1">DSIM Reviewer Documentation</h1>
-  <p class="doc-subtitle">For stakeholders reviewing the DSIM wireframe prototype with zero prior context on Lactalis, digital-shelf vocabulary, Bayesian MMM methodology, or the 5-stage customer journey. Read alongside with actual design prototype.</p>
+ <div class="section-num">SECTION 01</div>
+ <h1 class="doc-h1">DSIM Reviewer Documentation</h1>
+ <p class="doc-subtitle">For stakeholders reviewing the DSIM wireframe prototype with zero prior context on Lactalis, digital-shelf vocabulary, Bayesian MMM methodology, or the 5-stage customer journey. Read alongside with actual design prototype.</p>
 
-  <div class="card-grid-2">
+ <div class="card-grid-2">
 
-    <div class="card callout">
-      <div class="callout-head">
-        <div class="callout-icon" style="background:rgba(74,144,217,0.12); color: var(--brand-primary);">📊</div>
-        <div class="callout-title">What this is</div>
-      </div>
-      <div class="callout-body">
-        A 7-page interactive dashboard prototype for <strong>DSIM</strong> (Digital Shelf Impact Measurement) — DataWeave's Bayesian Marketing Mix Model product for CPG brands selling on Walmart.com. It quantifies how digital-shelf factors drive sales, sizes the upside from moving each lever, and tracks whether shipped plays delivered the predicted lift.
-      </div>
-    </div>
+ <div class="card callout">
+ <div class="callout-head">
+ <div class="callout-icon" style="background:rgba(74,144,217,0.12); color: var(--brand-primary);">📊</div>
+ <div class="callout-title">What this is</div>
+ </div>
+ <div class="callout-body">
+ A 7-page interactive dashboard prototype for <strong>DSIM</strong> (Digital Shelf Impact Measurement) — DataWeave's Bayesian Marketing Mix Model product for CPG brands selling on Walmart.com. It quantifies how digital-shelf factors drive sales, sizes the upside from moving each lever, and tracks whether shipped plays delivered the predicted lift.
+ </div>
+ </div>
 
-    <div class="card callout">
-      <div class="callout-head">
-        <div class="callout-icon" style="background:rgba(124,58,237,0.12); color: var(--pillar-media);">👤</div>
-        <div class="callout-title">Who the customer is</div>
-      </div>
-      <div class="callout-body">
-        VP or Director of <strong>eCommerce / Revenue Growth Management</strong> at a $100M+ Walmart.com CPG brand. They own the Walmart P&amp;L, allocate Walmart Connect spend, and answer to a CMO and CFO. <strong>Stats-literate, not statisticians.</strong> They want decisions, not models.
-      </div>
-    </div>
+ <div class="card callout">
+ <div class="callout-head">
+ <div class="callout-icon" style="background:rgba(124,58,237,0.12); color: var(--pillar-media);">👤</div>
+ <div class="callout-title">Who the customer is</div>
+ </div>
+ <div class="callout-body">
+ VP or Director of <strong>eCommerce / Revenue Growth Management</strong> at a $100M+ Walmart.com CPG brand. They own the Walmart P&amp;L, allocate Walmart Connect spend, and answer to a CMO and CFO. <strong>Stats-literate, not statisticians.</strong> They want decisions, not models.
+ </div>
+ </div>
 
-    <div class="card callout">
-      <div class="callout-head">
-        <div class="callout-icon" style="background:rgba(224,146,43,0.15); color: var(--pillar-pricing);">🎯</div>
-        <div class="callout-title">Lactalis case study</div>
-      </div>
-      <div class="callout-body">
-        Reference case used throughout the prototype:
-        <ul>
-          <li>Model fit: R² = <span class="mono">0.91</span>, MAPE = <span class="mono">5.9%</span></li>
-          <li><strong>17 Walmart stores</strong> in 4 mega-clusters</li>
-          <li>Headline: <strong>$30K/day reallocation upside</strong> (Onsite Search → Offsite Display) at 90% confidence</li>
-          <li>3 sub-brands: Adult (52%), Baby (28%), Kids (20%)</li>
-          <li>Cross-sub-brand halo: Kids/Baby media → <strong>+12%</strong> incremental Adult sales</li>
-        </ul>
-      </div>
-    </div>
+ <div class="card callout">
+ <div class="callout-head">
+ <div class="callout-icon" style="background:rgba(224,146,43,0.15); color: var(--pillar-pricing);">🎯</div>
+ <div class="callout-title">Lactalis case study</div>
+ </div>
+ <div class="callout-body">
+ Reference case used throughout the prototype:
+ <ul>
+ <li>Model fit: R² = <span class="mono">0.91</span>, MAPE = <span class="mono">5.9%</span></li>
+ <li><strong>17 Walmart stores</strong> in 4 mega-clusters</li>
+ <li>Headline: <strong>$30K/day reallocation upside</strong> (Onsite Search → Offsite Display) at 90% confidence</li>
+ <li>3 sub-brands: Adult (52%), Baby (28%), Kids (20%)</li>
+ <li>Cross-sub-brand halo: Kids/Baby media → <strong>+12%</strong> incremental Adult sales</li>
+ </ul>
+ </div>
+ </div>
 
-    <div class="card callout">
-      <div class="callout-head">
-        <div class="callout-icon" style="background:rgba(13,148,136,0.13); color: var(--pillar-availability);">🗺</div>
-        <div class="callout-title">5-stage journey</div>
-      </div>
-      <div class="callout-body">
-        <div class="stepper">
-          <div class="stepper-item"><div class="stepper-dot">1</div><div class="stepper-body"><div class="stepper-label">Scorecard</div><div class="stepper-sub">Am I winning the shelf?</div></div></div>
-          <div class="stepper-item"><div class="stepper-dot">2</div><div class="stepper-body"><div class="stepper-label">Mini-DSA</div><div class="stepper-sub">Which pillar is bleeding?</div></div></div>
-          <div class="stepper-item"><div class="stepper-dot">3</div><div class="stepper-body"><div class="stepper-label">Diagnose</div><div class="stepper-sub">What drove sales, where's headroom?</div></div></div>
-          <div class="stepper-item"><div class="stepper-dot">4</div><div class="stepper-body"><div class="stepper-label">Plan</div><div class="stepper-sub">If I move this lever, what happens?</div></div></div>
-          <div class="stepper-item"><div class="stepper-dot">5</div><div class="stepper-body"><div class="stepper-label">Trackability</div><div class="stepper-sub">Did our plays deliver?</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="card callout">
+ <div class="callout-head">
+ <div class="callout-icon" style="background:rgba(13,148,136,0.13); color: var(--pillar-availability);">🗺</div>
+ <div class="callout-title">5-stage journey</div>
+ </div>
+ <div class="callout-body">
+ <div class="stepper">
+ <div class="stepper-item"><div class="stepper-dot">1</div><div class="stepper-body"><div class="stepper-label">Scorecard</div><div class="stepper-sub">Am I winning the shelf?</div></div></div>
+ <div class="stepper-item"><div class="stepper-dot">2</div><div class="stepper-body"><div class="stepper-label">Mini-DSA</div><div class="stepper-sub">Which pillar is bleeding?</div></div></div>
+ <div class="stepper-item"><div class="stepper-dot">3</div><div class="stepper-body"><div class="stepper-label">Diagnose</div><div class="stepper-sub">What drove sales, where's headroom?</div></div></div>
+ <div class="stepper-item"><div class="stepper-dot">4</div><div class="stepper-body"><div class="stepper-label">Plan</div><div class="stepper-sub">If I move this lever, what happens?</div></div></div>
+ <div class="stepper-item"><div class="stepper-dot">5</div><div class="stepper-body"><div class="stepper-label">Trackability</div><div class="stepper-sub">Did our plays deliver?</div></div></div>
+ </div>
+ </div>
+ </div>
+ </div>
 
-  <h3 class="doc-h3" style="margin-top: 32px;">Journey map · pages</h3>
-  <div class="tbl-wrap">
-    <table class="journey-tbl">
-      <thead><tr><th>Stage</th><th>User intent</th><th>Page</th></tr></thead>
-      <tbody>
-        <tr><td class="journey-stage-cell"><span class="num">1</span> Scorecard</td><td>"Am I winning the shelf?" — triage at a glance</td><td class="journey-page-cell">Overview</td></tr>
-        <tr><td class="journey-stage-cell"><span class="num">2</span> Mini-DSA</td><td>"Which pillar is bleeding?" — diagnose the failing vital sign</td><td class="journey-page-cell">Shelf Health</td></tr>
-        <tr><td class="journey-stage-cell"><span class="num">3</span> Diagnose</td><td>"What actually drove sales, and where's headroom?"</td><td class="journey-page-cell">Sales Decomposition · Response Curves</td></tr>
-        <tr><td class="journey-stage-cell"><span class="num">4</span> Plan</td><td>"If I move this lever, what happens?" — size + commit</td><td class="journey-page-cell">Keyword Calculator · Scenario Simulator</td></tr>
-        <tr><td class="journey-stage-cell"><span class="num">5</span> Trackability</td><td>"Did our plays deliver?" — close the loop</td><td class="journey-page-cell">ROI Looker</td></tr>
-      </tbody>
-    </table>
-  </div>
+ <h3 class="doc-h3" style="margin-top: 32px;">Journey map · pages</h3>
+ <div class="tbl-wrap">
+ <table class="journey-tbl">
+ <thead><tr><th>Stage</th><th>User intent</th><th>Page</th></tr></thead>
+ <tbody>
+ <tr><td class="journey-stage-cell"><span class="num">1</span> Scorecard</td><td>"Am I winning the shelf?" — triage at a glance</td><td class="journey-page-cell">Overview</td></tr>
+ <tr><td class="journey-stage-cell"><span class="num">2</span> Mini-DSA</td><td>"Which pillar is bleeding?" — diagnose the failing vital sign</td><td class="journey-page-cell">Shelf Health</td></tr>
+ <tr><td class="journey-stage-cell"><span class="num">3</span> Diagnose</td><td>"What actually drove sales, and where's headroom?"</td><td class="journey-page-cell">Sales Decomposition · Response Curves</td></tr>
+ <tr><td class="journey-stage-cell"><span class="num">4</span> Plan</td><td>"If I move this lever, what happens?" — size + commit</td><td class="journey-page-cell">Keyword Calculator · Scenario Simulator</td></tr>
+ <tr><td class="journey-stage-cell"><span class="num">5</span> Trackability</td><td>"Did our plays deliver?" — close the loop</td><td class="journey-page-cell">ROI Looker</td></tr>
+ </tbody>
+ </table>
+ </div>
 
-  <div class="card navigate-card">
-    <div class="callout-title">How to navigate the prototype</div>
-    <ol class="navigate-list">
-      <li>Sidebar on the left (dark navy) has <strong>7 nav items + Settings</strong>.</li>
-      <li>Keyboard shortcuts: press <code class="kbd">1</code>…<code class="kbd">8</code> to switch pages (works when focus is outside a form input).</li>
-      <li>The model-refreshed status sits at the sidebar footer (<span class="mono">"Tue, May 19"</span>).</li>
-      <li>The top nav has three context selectors (Account, Brand, Date range) — these are <strong>non-functional</strong> in this wireframe; treat them as visual placeholders for global filters in v2.</li>
-      <li>Pages <strong>5, 6, 7 are interactive</strong> (sliders, quarter pills, save flows). Pages 1–4 are read-only data renderings with hover tooltips on charts.</li>
-    </ol>
-  </div>
+ <div class="card navigate-card">
+ <div class="callout-title">How to navigate the prototype</div>
+ <ol class="navigate-list">
+ <li>Sidebar on the left (dark navy) has <strong>7 nav items + Settings</strong>.</li>
+ <li>Keyboard shortcuts: press <code class="kbd">1</code>…<code class="kbd">8</code> to switch pages (works when focus is outside a form input).</li>
+ <li>The model-refreshed status sits at the sidebar footer (<span class="mono">"Tue, May 19"</span>).</li>
+ <li>The top nav has three context selectors (Account, Brand, Date range) — these are <strong>non-functional</strong> in this wireframe; treat them as visual placeholders for global filters in v2.</li>
+ <li>Pages <strong>5, 6, 7 are interactive</strong> (sliders, quarter pills, save flows). Pages 1–4 are read-only data renderings with hover tooltips on charts.</li>
+ </ol>
+ </div>
 </section>
 
 <!-- ============ SECTION 2: PILLARS ============ -->
 <section id="pillars" class="doc-section">
-  <div class="section-num">SECTION 02 · GLOSSARY</div>
-  <h2 class="doc-h2">Pillars</h2>
-  <p class="section-helper">DSIM uses customer-friendly pillar names that map to underlying KPIs. Throughout the product, the customer-facing name appears first; the technical KPI appears in tooltips and footnotes.</p>
+ <div class="section-num">SECTION 02 · GLOSSARY</div>
+ <h2 class="doc-h2">Pillars</h2>
+ <p class="section-helper">DSIM uses customer-friendly pillar names that map to underlying KPIs. Throughout the product, the customer-facing name appears first; the technical KPI appears in tooltips and footnotes.</p>
 
-  <div class="tbl-wrap" id="pillars-tbl-wrap">
-    <table class="doc-tbl" data-searchable="true">
-      <thead>
-        <tr>
-          <th style="width:140px;">Pillar</th>
-          <th style="width:170px;">Customer-facing</th>
-          <th style="width:180px;">Underlying KPI</th>
-          <th>Why it matters</th>
-          <th style="width:200px;">Lactalis example</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-availability)"></span><span class="pillar-name-mono">Availability</span></div></td>
-          <td><span class="cust-name">Always Available</span></td>
-          <td><span class="kpi-mono">On-Shelf Availability (OSA)</span> — share of expected facings actually stocked</td>
-          <td>Out-of-stock sessions are lost sessions. Even with perfect price and content, a sold-out PDP earns $0.</td>
-          <td class="lactalis-eg">Q3 OSA dipped to 78% during peak campaign → cost ~$2M lift</td>
-        </tr>
-        <tr>
-          <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-content)"></span><span class="pillar-name-mono">Content Quality</span></div></td>
-          <td><span class="cust-name">Looking Great</span></td>
-          <td><span class="kpi-mono">Content Quality Score (CQS)</span> — weighted index of title, bullets, images, A+ coverage</td>
-          <td>Walmart's search algorithm rewards complete content. Conversion lifts with image count and A+ presence.</td>
-          <td class="lactalis-eg">CQS = 7.2/10 across 142 SKUs; Q3 content fix landed 12 of 50 SKUs in window (capacity constraint)</td>
-        </tr>
-        <tr>
-          <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-pricing)"></span><span class="pillar-name-mono">Pricing</span></div></td>
-          <td><span class="cust-name">Right Price</span></td>
-          <td><span class="kpi-mono">Price index vs comp set; rollback presence; price elasticity</span></td>
-          <td>Walmart shoppers price-compare in basket. Out-of-band pricing kills add-to-cart.</td>
-          <td class="lactalis-eg">Southern Staples cluster facing private-label pressure on Adult cheese SKUs</td>
-        </tr>
-        <tr>
-          <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-media)"></span><span class="pillar-name-mono">Retail Media</span></div></td>
-          <td><span class="cust-name">Promoted</span></td>
-          <td><span class="kpi-mono">Walmart Connect spend, ROAS, iROI</span> per channel (Onsite Search, Offsite Display, Onsite Display, Sponsored Visibility)</td>
-          <td>Paid placement is one of the largest controllable levers. DSIM's job is to keep ROAS above saturation.</td>
-          <td class="lactalis-eg">Onsite Search at 0.83× iROI (saturated); Offsite Display at 1.55× iROI (headroom) → $30K/day reallocation upside</td>
-        </tr>
-        <tr>
-          <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-search)"></span><span class="pillar-name-mono">Share of Search</span></div></td>
-          <td><span class="cust-name">Easy To Find</span></td>
-          <td><span class="kpi-mono">Share of Search (SoS)</span> — % of category search impressions captured</td>
-          <td>If shoppers can't find the SKU in search results, no other lever matters. SoS is the upstream funnel.</td>
-          <td class="lactalis-eg">SoS = 24.1%, down 0.5 pts WoW; each +1 pt SoS ≈ +$45K quarterly sales</td>
-        </tr>
-        <tr>
-          <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-competition)"></span><span class="pillar-name-mono">Competition</span></div></td>
-          <td><span class="cust-name">Competition</span></td>
-          <td><span class="kpi-mono">Competitor share of voice / spend / pricing pressure</span> (treated as headwind in decomposition)</td>
-          <td>Sales drops can be your fault or theirs. Decomposition separates the two.</td>
-          <td class="lactalis-eg">Headwind contributed −5% in Q2 decomposition, concentrated in Southern Staples</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="no-results">No matching pillars.</div>
-  </div>
+ <div class="tbl-wrap" id="pillars-tbl-wrap">
+ <table class="doc-tbl" data-searchable="true">
+ <thead>
+ <tr>
+ <th style="width:140px;">Pillar</th>
+ <th style="width:170px;">Customer-facing</th>
+ <th style="width:180px;">Underlying KPI</th>
+ <th>Why it matters</th>
+ <th style="width:200px;">Lactalis example</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-availability)"></span><span class="pillar-name-mono">Availability</span></div></td>
+ <td><span class="cust-name">Always Available</span></td>
+ <td><span class="kpi-mono">On-Shelf Availability (OSA)</span> — share of expected facings actually stocked</td>
+ <td>Out-of-stock sessions are lost sessions. Even with perfect price and content, a sold-out PDP earns $0.</td>
+ <td class="lactalis-eg">Q3 OSA dipped to 78% during peak campaign → cost ~$2M lift</td>
+ </tr>
+ <tr>
+ <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-content)"></span><span class="pillar-name-mono">Content Quality</span></div></td>
+ <td><span class="cust-name">Looking Great</span></td>
+ <td><span class="kpi-mono">Content Quality Score (CQS)</span> — weighted index of title, bullets, images, A+ coverage</td>
+ <td>Walmart's search algorithm rewards complete content. Conversion lifts with image count and A+ presence.</td>
+ <td class="lactalis-eg">CQS = 7.2/10 across 142 SKUs; Q3 content fix landed 12 of 50 SKUs in window (capacity constraint)</td>
+ </tr>
+ <tr>
+ <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-pricing)"></span><span class="pillar-name-mono">Pricing</span></div></td>
+ <td><span class="cust-name">Right Price</span></td>
+ <td><span class="kpi-mono">Price index vs comp set; rollback presence; price elasticity</span></td>
+ <td>Walmart shoppers price-compare in basket. Out-of-band pricing kills add-to-cart.</td>
+ <td class="lactalis-eg">Southern Staples cluster facing private-label pressure on Adult cheese SKUs</td>
+ </tr>
+ <tr>
+ <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-media)"></span><span class="pillar-name-mono">Retail Media</span></div></td>
+ <td><span class="cust-name">Promoted</span></td>
+ <td><span class="kpi-mono">Walmart Connect spend, ROAS, iROI</span> per channel (Onsite Search, Offsite Display, Onsite Display, Sponsored Visibility)</td>
+ <td>Paid placement is one of the largest controllable levers. DSIM's job is to keep ROAS above saturation.</td>
+ <td class="lactalis-eg">Onsite Search at 0.83× iROI (saturated); Offsite Display at 1.55× iROI (headroom) → $30K/day reallocation upside</td>
+ </tr>
+ <tr>
+ <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-search)"></span><span class="pillar-name-mono">Share of Search</span></div></td>
+ <td><span class="cust-name">Easy To Find</span></td>
+ <td><span class="kpi-mono">Share of Search (SoS)</span> — % of category search impressions captured</td>
+ <td>If shoppers can't find the SKU in search results, no other lever matters. SoS is the upstream funnel.</td>
+ <td class="lactalis-eg">SoS = 24.1%, down 0.5 pts WoW; each +1 pt SoS ≈ +$45K quarterly sales</td>
+ </tr>
+ <tr>
+ <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-competition)"></span><span class="pillar-name-mono">Competition</span></div></td>
+ <td><span class="cust-name">Competition</span></td>
+ <td><span class="kpi-mono">Competitor share of voice / spend / pricing pressure</span> (treated as headwind in decomposition)</td>
+ <td>Sales drops can be your fault or theirs. Decomposition separates the two.</td>
+ <td class="lactalis-eg">Headwind contributed −5% in Q2 decomposition, concentrated in Southern Staples</td>
+ </tr>
+ </tbody>
+ </table>
+ <div class="no-results">No matching pillars.</div>
+ </div>
 </section>
 
 <!-- ============ SECTION 3: METHODOLOGY ============ -->
 <section id="methodology" class="doc-section">
-  <div class="section-num">SECTION 03 · GLOSSARY</div>
-  <h2 class="doc-h2">DSIM Methodology</h2>
-  <p class="section-helper">Plain English definitions for every modeling term used in the prototype. Use the alphabet jump strip to scan, or the search bar above to filter.</p>
+ <div class="section-num">SECTION 03 · GLOSSARY</div>
+ <h2 class="doc-h2">DSIM Methodology</h2>
+ <p class="section-helper">Plain English definitions for every modeling term used in the prototype. Use the alphabet jump strip to scan, or the search bar above to filter.</p>
 
-  <div class="alpha-strip" id="methodology-alpha"></div>
+ <div class="alpha-strip" id="methodology-alpha"></div>
 
-  <div class="tbl-wrap" id="methodology-tbl-wrap">
-    <table class="doc-tbl" data-searchable="true">
-      <thead><tr><th style="width:240px;">Term</th><th>Plain English</th></tr></thead>
-      <tbody id="methodology-body">
-        <tr data-letter="B"><td class="term-cell"><span class="glossary-term">Bayesian MMM</span></td><td class="def-cell">Marketing Mix Model that uses Bayesian inference — produces <strong>posterior distributions</strong> (confidence ranges) instead of single point estimates. Output: <span class="num">"$30K/day lift at 90% CI [$24K – $36K]."</span></td></tr>
-        <tr data-letter="R"><td class="term-cell"><span class="glossary-term">Robyn</span></td><td class="def-cell">Meta's open-source <span class="glossary-term">Bayesian MMM</span> library that DSIM is built on. Industry-credible reference.</td></tr>
-        <tr data-letter="M"><td class="term-cell"><span class="glossary-term">MAPE</span></td><td class="def-cell">Mean Absolute Percentage Error — average week-over-week prediction error. Lactalis = <span class="num">5.9%</span>. Below 10% is considered industry-grade.</td></tr>
-        <tr data-letter="R"><td class="term-cell"><span class="glossary-term">R²</span></td><td class="def-cell">Coefficient of determination — fraction of sales variance the model explains. Lactalis = <span class="num">0.91</span>, meaning 91% of weekly sales movement is explained by the model's inputs.</td></tr>
-        <tr data-letter="H"><td class="term-cell"><span class="glossary-term">Holdout</span></td><td class="def-cell">Data the model never saw during training, used to validate that fit is real and not overfit.</td></tr>
-        <tr data-letter="R"><td class="term-cell"><span class="glossary-term">Response Curve</span></td><td class="def-cell">The shape of the relationship between a driver (e.g. spend) and sales. Almost always S-shaped (<span class="glossary-term">Hill function</span>).</td></tr>
-        <tr data-letter="H"><td class="term-cell"><span class="glossary-term">Hill function</span></td><td class="def-cell">Mathematical form for a saturating curve: <code class="kbd">L_max · x^n / (K^n + x^n)</code>. Three parameters: maximum lift, steepness, half-saturation point. Used throughout Response Curves page.</td></tr>
-        <tr data-letter="F"><td class="term-cell"><span class="glossary-term">Flat zone</span></td><td class="def-cell">Low end of the response curve where adding more driver yields ~zero lift. Don't invest here.</td></tr>
-        <tr data-letter="G"><td class="term-cell"><span class="glossary-term">Growth zone</span></td><td class="def-cell">Steep middle of the curve where each dollar of driver yields meaningful lift. <strong>Invest here.</strong></td></tr>
-        <tr data-letter="S"><td class="term-cell"><span class="glossary-term">Saturation zone</span></td><td class="def-cell">High end of the curve where adding more driver yields diminishing returns. Stop investing here.</td></tr>
-        <tr data-letter="E"><td class="term-cell"><span class="glossary-term">Elasticity</span></td><td class="def-cell">The percentage sales change per percentage driver change at a given point. <span class="num">&gt;1</span> = elastic, <span class="num">&lt;1</span> = inelastic. Reported "at average" and "at optimal."</td></tr>
-        <tr data-letter="I"><td class="term-cell"><span class="glossary-term">iROI</span></td><td class="def-cell">Incremental Return on Investment — effect share ÷ investment share. <span class="num">iROI = 1.0</span> means the channel returns proportionally to its spend; <span class="num">&gt;1.0</span> = underinvested; <span class="num">&lt;1.0</span> = overinvested / saturated.</td></tr>
-        <tr data-letter="I"><td class="term-cell"><span class="glossary-term">iROAS</span></td><td class="def-cell">Incremental Return on Ad Spend — incremental revenue ÷ ad spend. The dollar-denominated cousin of <span class="glossary-term">iROI</span>.</td></tr>
-        <tr data-letter="E"><td class="term-cell"><span class="glossary-term">Effect Share</span></td><td class="def-cell">The fraction of total sales attributable to a driver (e.g., Promoted contributed 23% of Q2 sales).</td></tr>
-        <tr data-letter="I"><td class="term-cell"><span class="glossary-term">Investment Share</span></td><td class="def-cell">The fraction of total controllable spend allocated to a driver.</td></tr>
-        <tr data-letter="9"><td class="term-cell"><span class="glossary-term">90% Confidence Interval (CI)</span></td><td class="def-cell">The range within which the true value falls 90% of the time according to the Bayesian posterior. DSIM uses 90% CI throughout (note: Overview strip currently says 95% — known wording bug, see Critique).</td></tr>
-        <tr data-letter="S"><td class="term-cell"><span class="glossary-term">Store Clustering</span></td><td class="def-cell">Grouping Walmart stores by sales pattern similarity. Lactalis = <span class="num">17 stores in 4 mega-clusters</span>: Western High Performers, Northern Growth Engines, Southern Staples, Localized Stores.</td></tr>
-        <tr data-letter="H"><td class="term-cell"><span class="glossary-term">Halo Effect</span></td><td class="def-cell">Cross-product or cross-sub-brand sales lift driven by media or activity on a different SKU/sub-brand. Lactalis Kids/Baby media → <span class="num">+12%</span> Adult sales.</td></tr>
-        <tr data-letter="S"><td class="term-cell"><span class="glossary-term">Sub-brand modeling</span></td><td class="def-cell">Decomposing sales separately by sub-brand to isolate sub-brand-specific drivers and cross-sub-brand halos.</td></tr>
-        <tr data-letter="B"><td class="term-cell"><span class="glossary-term">Baseline</span></td><td class="def-cell">The sales the model predicts would have happened with zero marketing activity (organic demand). Lactalis Q2 baseline = <span class="num">49%</span> of total sales.</td></tr>
-        <tr data-letter="D"><td class="term-cell"><span class="glossary-term">Decomposition</span></td><td class="def-cell">Breaking total sales into baseline + each driver's contribution. Output: a waterfall chart that sums to total.</td></tr>
-        <tr data-letter="R"><td class="term-cell"><span class="glossary-term">Reallocation</span></td><td class="def-cell">Moving spend from a saturated channel to one in the growth zone, holding total spend constant. <strong>The headline lever DSIM produces.</strong></td></tr>
-      </tbody>
-    </table>
-    <div class="no-results">No matching terms.</div>
-  </div>
+ <div class="tbl-wrap" id="methodology-tbl-wrap">
+ <table class="doc-tbl" data-searchable="true">
+ <thead><tr><th style="width:240px;">Term</th><th>Plain English</th></tr></thead>
+ <tbody id="methodology-body">
+ <tr data-letter="B"><td class="term-cell"><span class="glossary-term">Bayesian MMM</span></td><td class="def-cell">Marketing Mix Model that uses Bayesian inference — produces <strong>posterior distributions</strong> (confidence ranges) instead of single point estimates. Output: <span class="num">"$30K/day lift at 90% CI [$24K – $36K]."</span></td></tr>
+ <tr data-letter="R"><td class="term-cell"><span class="glossary-term">Robyn</span></td><td class="def-cell">Meta's open-source <span class="glossary-term">Bayesian MMM</span> library that DSIM is built on. Industry-credible reference.</td></tr>
+ <tr data-letter="M"><td class="term-cell"><span class="glossary-term">MAPE</span></td><td class="def-cell">Mean Absolute Percentage Error — average week-over-week prediction error. Lactalis = <span class="num">5.9%</span>. Below 10% is considered industry-grade.</td></tr>
+ <tr data-letter="R"><td class="term-cell"><span class="glossary-term">R²</span></td><td class="def-cell">Coefficient of determination — fraction of sales variance the model explains. Lactalis = <span class="num">0.91</span>, meaning 91% of weekly sales movement is explained by the model's inputs.</td></tr>
+ <tr data-letter="H"><td class="term-cell"><span class="glossary-term">Holdout</span></td><td class="def-cell">Data the model never saw during training, used to validate that fit is real and not overfit.</td></tr>
+ <tr data-letter="R"><td class="term-cell"><span class="glossary-term">Response Curve</span></td><td class="def-cell">The shape of the relationship between a driver (e.g. spend) and sales. Almost always S-shaped (<span class="glossary-term">Hill function</span>).</td></tr>
+ <tr data-letter="H"><td class="term-cell"><span class="glossary-term">Hill function</span></td><td class="def-cell">Mathematical form for a saturating curve. Produces a saturating curve with a flat start, steep growth zone, and diminishing returns at high input.</td></tr>
+ <tr data-letter="F"><td class="term-cell"><span class="glossary-term">Flat zone</span></td><td class="def-cell">Low end of the response curve where adding more driver yields ~zero lift. Don't invest here.</td></tr>
+ <tr data-letter="G"><td class="term-cell"><span class="glossary-term">Growth zone</span></td><td class="def-cell">Steep middle of the curve where each dollar of driver yields meaningful lift. <strong>Invest here.</strong></td></tr>
+ <tr data-letter="S"><td class="term-cell"><span class="glossary-term">Saturation zone</span></td><td class="def-cell">High end of the curve where adding more driver yields diminishing returns. Stop investing here.</td></tr>
+ <tr data-letter="E"><td class="term-cell"><span class="glossary-term">Elasticity</span></td><td class="def-cell">The percentage sales change per percentage driver change at a given point. <span class="num">&gt;1</span> = elastic, <span class="num">&lt;1</span> = inelastic. Reported "at average" and "at optimal."</td></tr>
+ <tr data-letter="I"><td class="term-cell"><span class="glossary-term">iROI</span></td><td class="def-cell">Incremental Return on Investment — effect share ÷ investment share. <span class="num">iROI = 1.0</span> means the channel returns proportionally to its spend; <span class="num">&gt;1.0</span> = underinvested; <span class="num">&lt;1.0</span> = overinvested / saturated.</td></tr>
+ <tr data-letter="I"><td class="term-cell"><span class="glossary-term">iROAS</span></td><td class="def-cell">Incremental Return on Ad Spend — incremental revenue ÷ ad spend. The dollar-denominated cousin of <span class="glossary-term">iROI</span>.</td></tr>
+ <tr data-letter="E"><td class="term-cell"><span class="glossary-term">Effect Share</span></td><td class="def-cell">The fraction of total sales attributable to a driver (e.g., Promoted contributed 23% of Q2 sales).</td></tr>
+ <tr data-letter="I"><td class="term-cell"><span class="glossary-term">Investment Share</span></td><td class="def-cell">The fraction of total controllable spend allocated to a driver.</td></tr>
+ <tr data-letter="9"><td class="term-cell"><span class="glossary-term">90% Confidence Interval (CI)</span></td><td class="def-cell">The range within which the true value falls 90% of the time according to the Bayesian posterior. DSIM uses 90% CI throughout (note: Overview strip currently says 95% — known wording bug, see Critique).</td></tr>
+ <tr data-letter="S"><td class="term-cell"><span class="glossary-term">Store Clustering</span></td><td class="def-cell">Grouping Walmart stores by sales pattern similarity. Lactalis = <span class="num">17 stores in 4 mega-clusters</span>: Western High Performers, Northern Growth Engines, Southern Staples, Localized Stores.</td></tr>
+ <tr data-letter="H"><td class="term-cell"><span class="glossary-term">Halo Effect</span></td><td class="def-cell">Cross-product or cross-sub-brand sales lift driven by media or activity on a different SKU/sub-brand. Lactalis Kids/Baby media → <span class="num">+12%</span> Adult sales.</td></tr>
+ <tr data-letter="S"><td class="term-cell"><span class="glossary-term">Sub-brand modeling</span></td><td class="def-cell">Decomposing sales separately by sub-brand to isolate sub-brand-specific drivers and cross-sub-brand halos.</td></tr>
+ <tr data-letter="B"><td class="term-cell"><span class="glossary-term">Baseline</span></td><td class="def-cell">The sales the model predicts would have happened with zero marketing activity (organic demand). Lactalis Q2 baseline = <span class="num">49%</span> of total sales.</td></tr>
+ <tr data-letter="D"><td class="term-cell"><span class="glossary-term">Decomposition</span></td><td class="def-cell">Breaking total sales into baseline + each driver's contribution. Output: a waterfall chart that sums to total.</td></tr>
+ <tr data-letter="R"><td class="term-cell"><span class="glossary-term">Reallocation</span></td><td class="def-cell">Moving spend from a saturated channel to one in the growth zone, holding total spend constant. <strong>The headline lever DSIM produces.</strong></td></tr>
+ </tbody>
+ </table>
+ <div class="no-results">No matching terms.</div>
+ </div>
 </section>
 
 <!-- ============ SECTION 4: WALMART ============ -->
 <section id="walmart" class="doc-section">
-  <div class="section-num">SECTION 04 · GLOSSARY</div>
-  <h2 class="doc-h2">Walmart</h2>
-  <p class="section-helper">Walmart-specific terms surfaced in the product. Visually tinted orange to distinguish from methodology terms.</p>
+ <div class="section-num">SECTION 04 · GLOSSARY</div>
+ <h2 class="doc-h2">Walmart</h2>
+ <p class="section-helper">Walmart-specific terms surfaced in the product. Visually tinted orange to distinguish from methodology terms.</p>
 
-  <div class="tbl-wrap" id="walmart-tbl-wrap">
-    <table class="doc-tbl" data-searchable="true">
-      <thead><tr><th style="width:240px;">Term</th><th>Plain English</th></tr></thead>
-      <tbody>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">Walmart Connect</span></td><td class="def-cell">Walmart's retail media network — the ad platform Lactalis buys placements through.</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">Onsite Search</span></td><td class="def-cell">Paid sponsored placements above/within Walmart search results. High-intent, saturates fast.</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">Offsite Display</span></td><td class="def-cell">Programmatic display ads served on Walmart Connect inventory across the open web. Lower intent, larger reach.</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">Onsite Display</span></td><td class="def-cell">Banner placements on Walmart.com category pages, item pages, homepage.</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">Sponsored Visibility</span></td><td class="def-cell">Walmart's branded keyword takeover product — pay to dominate a branded search term.</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">OSA</span></td><td class="def-cell">On-Shelf Availability — share of expected facings that are actually stocked.</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">OOS</span></td><td class="def-cell">Out-of-stock. The opposite of OSA.</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">SKU</span></td><td class="def-cell">Stock Keeping Unit — a single sellable product variant (e.g., "Président Brie Wedge 8 oz" = SKU <span class="num">553042918</span>).</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">JBP</span></td><td class="def-cell">Joint Business Plan — the annual commitment between Lactalis and Walmart. DSIM outputs inform JBP negotiations.</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">Scintilla</span></td><td class="def-cell">Walmart's analytics/data product (paid). DSIM is positioned adjacent to Scintilla, not as a replacement.</td></tr>
-        <tr><td class="term-cell"><span class="glossary-term walmart-term">Walmart Luminate</span></td><td class="def-cell">Walmart's premium retail data platform. Higher-tier than Scintilla. DSIM consumes Luminate signals as inputs in the model.</td></tr>
-      </tbody>
-    </table>
-    <div class="no-results">No matching terms.</div>
-  </div>
+ <div class="tbl-wrap" id="walmart-tbl-wrap">
+ <table class="doc-tbl" data-searchable="true">
+ <thead><tr><th style="width:240px;">Term</th><th>Plain English</th></tr></thead>
+ <tbody>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">Walmart Connect</span></td><td class="def-cell">Walmart's retail media network — the ad platform Lactalis buys placements through.</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">Onsite Search</span></td><td class="def-cell">Paid sponsored placements above/within Walmart search results. High-intent, saturates fast.</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">Offsite Display</span></td><td class="def-cell">Programmatic display ads served on Walmart Connect inventory across the open web. Lower intent, larger reach.</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">Onsite Display</span></td><td class="def-cell">Banner placements on Walmart.com category pages, item pages, homepage.</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">Sponsored Visibility</span></td><td class="def-cell">Walmart's branded keyword takeover product — pay to dominate a branded search term.</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">OSA</span></td><td class="def-cell">On-Shelf Availability — share of expected facings that are actually stocked.</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">OOS</span></td><td class="def-cell">Out-of-stock. The opposite of OSA.</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">SKU</span></td><td class="def-cell">Stock Keeping Unit — a single sellable product variant (e.g., "Président Brie Wedge 8 oz" = SKU <span class="num">553042918</span>).</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">JBP</span></td><td class="def-cell">Joint Business Plan — the annual commitment between Lactalis and Walmart. DSIM outputs inform JBP negotiations.</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">Scintilla</span></td><td class="def-cell">Walmart's analytics/data product (paid). DSIM is positioned adjacent to Scintilla, not as a replacement.</td></tr>
+ <tr><td class="term-cell"><span class="glossary-term walmart-term">Walmart Luminate</span></td><td class="def-cell">Walmart's premium retail data platform. Higher-tier than Scintilla. DSIM consumes Luminate signals as inputs in the model.</td></tr>
+ </tbody>
+ </table>
+ <div class="no-results">No matching terms.</div>
+ </div>
 </section>
 
 <!-- ============ SECTION 5: LEVERS ============ -->
 <section id="levers" class="doc-section">
-  <div class="section-num">SECTION 05 · GLOSSARY</div>
-  <h2 class="doc-h2">Lever Taxonomy <span style="color: var(--text-tertiary); font-weight: 400; font-size: 16px;">(Scenario Simulator)</span></h2>
-  <p class="section-helper">The Simulator (Page 6) groups levers into three classes. Each class has a colored left border on the section card.</p>
+ <div class="section-num">SECTION 05 · GLOSSARY</div>
+ <h2 class="doc-h2">Lever Taxonomy <span style="color: var(--text-tertiary); font-weight: 400; font-size: 16px;">(Scenario Simulator)</span></h2>
+ <p class="section-helper">The Simulator (Page 6) groups levers into three classes. Each class has a colored left border on the section card.</p>
 
-  <div class="lever-grid">
+ <div class="lever-grid">
 
-    <div class="lever-card direct">
-      <span class="lever-chip">Direct</span>
-      <h3>Direct controls</h3>
-      <div class="lever-section">
-        <div class="lever-section-label">Plain English</div>
-        <div class="lever-section-body">Levers Lactalis can act on this week without anyone else's approval.</div>
-      </div>
-      <div class="lever-section">
-        <div class="lever-section-label">Who owns it</div>
-        <div class="lever-section-body">The eCommerce team / RGM team using DSIM.</div>
-      </div>
-      <div class="lever-section">
-        <div class="lever-section-label">Examples</div>
-        <div class="lever-section-body">Set Onsite Search spend; set Offsite Display spend; set rollback %; set content score target.</div>
-      </div>
-    </div>
+ <div class="lever-card direct">
+ <span class="lever-chip">Direct</span>
+ <h3>Direct controls</h3>
+ <div class="lever-section">
+ <div class="lever-section-label">Plain English</div>
+ <div class="lever-section-body">Levers Lactalis can act on this week without anyone else's approval.</div>
+ </div>
+ <div class="lever-section">
+ <div class="lever-section-label">Who owns it</div>
+ <div class="lever-section-body">The eCommerce team / RGM team using DSIM.</div>
+ </div>
+ <div class="lever-section">
+ <div class="lever-section-label">Examples</div>
+ <div class="lever-section-body">Set Onsite Search spend; set Offsite Display spend; set rollback %; set content score target.</div>
+ </div>
+ </div>
 
-    <div class="lever-card influenced">
-      <span class="lever-chip">Influenced</span>
-      <h3>Influenced targets</h3>
-      <div class="lever-section">
-        <div class="lever-section-label">Plain English</div>
-        <div class="lever-section-body">Outcomes another team owns. Lactalis sets the goal, then briefs the partner team to execute.</div>
-      </div>
-      <div class="lever-section">
-        <div class="lever-section-label">Who owns it</div>
-        <div class="lever-section-body">Adjacent functions: Sales (for price), Ops (for availability), SEO/Merchandising (for SoS rank), Brand (for assortment expansion).</div>
-      </div>
-      <div class="lever-section">
-        <div class="lever-section-label">Examples</div>
-        <div class="lever-section-body">Push to list price; lift availability target; improve SoS rank; expand assortment.</div>
-      </div>
-    </div>
+ <div class="lever-card influenced">
+ <span class="lever-chip">Influenced</span>
+ <h3>Influenced targets</h3>
+ <div class="lever-section">
+ <div class="lever-section-label">Plain English</div>
+ <div class="lever-section-body">Outcomes another team owns. Lactalis sets the goal, then briefs the partner team to execute.</div>
+ </div>
+ <div class="lever-section">
+ <div class="lever-section-label">Who owns it</div>
+ <div class="lever-section-body">Adjacent functions: Sales (for price), Ops (for availability), SEO/Merchandising (for SoS rank), Brand (for assortment expansion).</div>
+ </div>
+ <div class="lever-section">
+ <div class="lever-section-label">Examples</div>
+ <div class="lever-section-body">Push to list price; lift availability target; improve SoS rank; expand assortment.</div>
+ </div>
+ </div>
 
-    <div class="lever-card external">
-      <span class="lever-chip">External</span>
-      <h3>External sensitivities</h3>
-      <div class="lever-section">
-        <div class="lever-section-label">Plain English</div>
-        <div class="lever-section-body">Things Lactalis cannot control. Used to test how robust the plan is to outside conditions.</div>
-      </div>
-      <div class="lever-section">
-        <div class="lever-section-label">Who owns it</div>
-        <div class="lever-section-body">Nobody — they are the market.</div>
-      </div>
-      <div class="lever-section">
-        <div class="lever-section-label">Examples</div>
-        <div class="lever-section-body">Competitor sponsored spend; category seasonality index; Walmart traffic shift.</div>
-      </div>
-    </div>
+ <div class="lever-card external">
+ <span class="lever-chip">External</span>
+ <h3>External sensitivities</h3>
+ <div class="lever-section">
+ <div class="lever-section-label">Plain English</div>
+ <div class="lever-section-body">Things Lactalis cannot control. Used to test how robust the plan is to outside conditions.</div>
+ </div>
+ <div class="lever-section">
+ <div class="lever-section-label">Who owns it</div>
+ <div class="lever-section-body">Nobody — they are the market.</div>
+ </div>
+ <div class="lever-section">
+ <div class="lever-section-label">Examples</div>
+ <div class="lever-section-body">Competitor sponsored spend; category seasonality index; Walmart traffic shift.</div>
+ </div>
+ </div>
 
-  </div>
+ </div>
 
-  <div class="lever-why">
-    <strong>Why this matters:</strong> the same dashboard produces three different kinds of artifacts depending on which class you move:
-    <ul class="lever-why-list">
-      <li>Move only <strong>Direct</strong> → produces a plan you can ship Monday.</li>
-      <li>Move <strong>Direct + Influenced</strong> → produces a plan + a brief for the partner team.</li>
-      <li>Move <strong>External</strong> → produces a sensitivity / what-if for the leadership review.</li>
-    </ul>
-    <p style="margin: 12px 0 0;">The "Commitment summary" in the prediction panel <span class="mono">(line 3187)</span> counts moves in each class to make this triage visible.</p>
-  </div>
+ <div class="lever-why">
+ <strong>Why this matters:</strong> the same dashboard produces three different kinds of artifacts depending on which class you move:
+ <ul class="lever-why-list">
+ <li>Move only <strong>Direct</strong> → produces a plan you can ship Monday.</li>
+ <li>Move <strong>Direct + Influenced</strong> → produces a plan + a brief for the partner team.</li>
+ <li>Move <strong>External</strong> → produces a sensitivity / what-if for the leadership review.</li>
+ </ul>
+ <p style="margin: 12px 0 0;">The "Commitment summary" in the prediction panel <span class="mono"></span> counts moves in each class to make this triage visible.</p>
+ </div>
 </section>
 
 <!-- ============ SECTION 6: PER-SCREEN WALKTHROUGH ============ -->
 <section id="screens" class="doc-section">
-  <div class="section-num">SECTION 06</div>
-  <h2 class="doc-h2">Per-Screen Walkthrough</h2>
-  <p class="section-helper">Each of the 7 prototype pages explained. Click any page header to expand. Multiple can be open at once.</p>
+ <div class="section-num">SECTION 06</div>
+ <h2 class="doc-h2">Per-Screen Walkthrough</h2>
+ <p class="section-helper">Each of the 7 prototype pages explained. Click any page header to expand. Multiple can be open at once.</p>
 
-  <div class="accordion" id="accordion"></div>
+ <div class="accordion" id="accordion"></div>
 </section>
 
 <!-- ============ SECTION 7: CHECKLIST ============ -->
 <section id="checklist" class="doc-section">
-  <div class="section-num">SECTION 07</div>
-  <h2 class="doc-h2">Reviewer Checklist</h2>
-  <p class="section-helper">Run through this in order. Tick each as you go. Most can be done in under 5 minutes total. State persists across reloads.</p>
+ <div class="section-num">SECTION 07</div>
+ <h2 class="doc-h2">Reviewer Checklist</h2>
+ <p class="section-helper">Run through this in order. Tick each as you go. Most can be done in under 5 minutes total. State persists across reloads.</p>
 
-  <div class="checklist-progress">
-    <div class="checklist-progress-label">Checked <span class="count" id="check-count">0</span> of 12</div>
-    <div class="checklist-bar"><div class="checklist-bar-fill" id="check-bar"></div></div>
-    <div class="checklist-pct" id="check-pct">0%</div>
-  </div>
+ <div class="checklist-progress">
+ <div class="checklist-progress-label">Checked <span class="count" id="check-count">0</span> of 12</div>
+ <div class="checklist-bar"><div class="checklist-bar-fill" id="check-bar"></div></div>
+ <div class="checklist-pct" id="check-pct">0%</div>
+ </div>
 
-  <div class="checklist" id="checklist-list"></div>
+ <div class="checklist" id="checklist-list"></div>
 
-  <div class="checklist-actions">
-    <button class="btn btn-ghost" id="checklist-reset">Reset all</button>
-  </div>
+ <div class="checklist-actions">
+ <button class="btn btn-ghost" id="checklist-reset">Reset all</button>
+ </div>
 </section>
 
 </div>
@@ -1503,311 +1503,311 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 // SCREENS DATA
 // ============================================================
 const SCREENS = [
-  {
-    n: 1, name: 'Overview', side: 'Sidebar position: 1st (top)', kbd: '1',
-    stage: 1, stageLabel: 'Stage 1 — Scorecard',
-    whatShows: [
-      'Page header with Lactalis context (line 2204): account, channel, time window, cluster count.',
-      'Hero scorecard (line 2228): 1 overall DSIM Score (76/100, line 2237) + 5 pillar tiles in a 6-column grid. Each pillar tile shows score, score bar, delta vs prior 13 wks, the underlying KPI (OSA, CQS, ROAS, SoS), and a sparkline.',
-      'Shelf Health strip (line 2354): 4 cells — in-stock rate (96.3%), SKUs at risk (11 of 142), avg content score (7.2/10), reallocation upside ($30K/day at 95% CI — wording bug, should be 90%).',
-      'Score trend chart (line 2402): 13-week line chart with Overall + 5 pillars.',
-      'Mega-cluster panel (line 2428): 4 clusters with score, score bar, status pill, delta.',
-      'Top movers table (line 2515): 5 SKUs with the largest WoW score change, including the pillar that drove the change.',
-      'Model quality footer strip (line 2604): R² = 0.91, MAPE = 5.9%, method = Bayesian MMM (Robyn), refreshed Tue May 19.'
-    ],
-    userJob: 'Triage — should I act this week, and where?',
-    comprehends: [
-      ['Overall DSIM score is 76, trending up 3.2 pts', '— the brand is healthy and improving.'],
-      ['Promoted (Retail Media) is the weakest pillar at 64/100 but the fastest-growing (+4.2)', ". It's where the action is."],
-      ['$30K/day reallocation opportunity sitting on the table', '— click through to investigate.']
-    ],
-    insights: [
-      'Reallocation upside = $30K/day at confidence interval (the headline number).',
-      'Localized Stores cluster scoring 66 with ↓1.1 trend → underperformer needing diagnosis.',
-      '11 of 142 SKUs at risk — manageable but watch list.'
-    ],
-    links: [
-      'Pillar tiles → Shelf Health (Page 2).',
-      'Mega-cluster "View all →" → Shelf Health.',
-      '"New scenario" button → Scenario Simulator (Page 6).',
-      '"View model diagnostics →" → dead link in wireframe.'
-    ],
-    antiMisreads: [
-      'The pillar deltas are vs prior 13 wks, not WoW. The strip below shows WoW. Two different time frames coexist on one page.',
-      'Score 76/100 is a weighted composite — the weights aren\'t disclosed on this page. A user may want to know "is this weighted by revenue or equally?" — open question.'
-    ]
-  },
-  {
-    n: 2, name: 'Shelf Health (Mini-DSA)', side: 'Sidebar position: 2nd', kbd: '2',
-    stage: 2, stageLabel: 'Stage 2 — Mini-DSA',
-    whatShows: [
-      '3-column grid of 6 pillar vital-sign cards (line 2650, populated via JS at line 4811).',
-      'Each card: pillar name + sub-label, status dot (green/yellow/red), 30-day sparkline, current value with formatted unit (%, /100, /10, stars), delta with direction arrow, verdict sentence, and an insight callout with semantic color.',
-      'Three filter chips at the top: Cluster / Sub-brand / Product Type (non-functional in wireframe).',
-      'The 6 pillars: Always Available (78%, danger), Easy To Find (23%, warning), Looking Great (84, success), Right Price (7.8/10, success), Promoted (64%, success), Reviews (4.3★, success).'
-    ],
-    userJob: 'Diagnose — which pillar is bleeding and is it widespread or local?',
-    comprehends: [
-      ['Availability is the urgent fire', '— 3 clusters below 75% OSA, est. $24K Q2 sales suppressed.'],
-      ['Easy To Find is trending sideways with a warning watch', '— Northern Growth declining.'],
-      ['Most pillars are healthy', '→ only one to two need attention.']
-    ],
-    insights: [
-      'Availability collapse is localized — verdict says "3 clusters below 75%" not all 17. Frames the response: cluster-targeted, not brand-wide.',
-      'Each +1 pt SoS ≈ +$45K quarterly sales — quantified mental model of search elasticity.',
-      '$30K/day reallocation upside repeats (Onsite Search → Offsite Display) — consistent with Overview strip.'
-    ],
-    links: [
-      'Pillar card click → Sales Decomposition (Page 3) with `activePillar` context stored (line 4847).',
-      'Footer link "Drill into Sales Decomposition →" → Page 3.'
-    ],
-    antiMisreads: [
-      'This page shows <strong>6 pillars</strong> including Reviews. The Overview page shows <strong>5</strong> (no Reviews). The mental model of "how many pillars are there?" is contradicted. Reviewer should confirm whether Reviews is in scope or out.',
-      'The filter chips are non-functional but look interactive — user will try them.'
-    ]
-  },
-  {
-    n: 3, name: 'Sales Decomposition', side: 'Sidebar position: 3rd', kbd: '3',
-    stage: 3, stageLabel: 'Stage 3 — Diagnose (backward)',
-    whatShows: [
-      'Page header with R² = 0.91 context.',
-      '3-tab strip: National, By Sub-brand, By Cluster (line 2675).',
-      '<strong>National pane:</strong> Waterfall chart (line 2693) showing baseline + 6 pillar contributions + competition headwind + total. Beside it, a "What this means" interp panel calling out Promoted at 23%, Offsite Display 1.55× vs Onsite Search 0.83× iROI, and Competition headwind concentrated in Southern Staples. Below: a 4-card Promoted-breakdown row showing each retail-media channel\'s contribution and iROI.',
-      '<strong>Sub-brand pane:</strong> 3 mini-waterfalls (Adult $8.2M, Baby $4.1M, Kids $2.8M) + a halo callout — "Kids/Baby media drove +12% incremental Adult sales."',
-      '<strong>Cluster pane:</strong> 17-column heatmap (17 stores × 17 factors) with stores grouped into the 4 mega-clusters. R² and MAPE rows at the bottom. Red→amber→white→blue scale (line 1287).'
-    ],
-    userJob: 'Understand what actually drove last quarter\'s sales.',
-    comprehends: [
-      ['Baseline is 49%', '— half of Lactalis Walmart sales would happen with zero activity. Marketing is moving the other half.'],
-      ['Promoted (Retail Media) is doing 23% of the lift', ', but the dollar efficiency is wildly uneven — Onsite Search is saturated, Offsite Display is underinvested.'],
-      ['The halo from Kids/Baby media → Adult sales is real and big (+12%)', '. Single-brand attribution would miss this.']
-    ],
-    insights: [
-      'Specific iROI numbers: Offsite Display 1.55×, Onsite Display 1.12×, Sponsored Visibility 0.94×, Onsite Search 0.83×.',
-      'Competition headwind −5% is geographically concentrated, not uniform.',
-      'Cluster heatmap shows Western High Performers carry positive contribution on nearly every factor; Localized Stores show negative on most.'
-    ],
-    links: [
-      'Tab switching is in-page only.',
-      'Export button — non-functional.',
-      'No explicit link from here to Response Curves (a missing journey step).'
-    ],
-    antiMisreads: [
-      'The waterfall sums to ~91% not 100% — Baseline + 6 pillar contributions − Competition = 91% (the model\'s explained variance). The unexplained 9% is implicit. A reviewer may ask "where\'s the missing 9%?"',
-      'The Cluster heatmap values are simulated from a deterministic JS function (line 4449), not real Lactalis data. Treat as illustrative.'
-    ]
-  },
-  {
-    n: 4, name: 'Response Curves', side: 'Sidebar position: 4th', kbd: '4',
-    stage: 3, stageLabel: 'Stage 3 — Diagnose (forward)',
-    whatShows: [
-      '7 driver pills across the top: Availability, Content Quality, Onsite Search, Offsite Display, Sponsored Visibility, Assortment (default active), Right Price.',
-      'Large response curve chart (line 2844, height 380px) showing the Hill curve from index 0 to 100, with three colored zones — Flat (0–31, blue tint), Growth (32–87, green tint), Saturation (88–100, amber tint).',
-      'Three operating-point markers: Today (yellow dashed), Target (green dashed), Full Potential (orange solid).',
-      'Right column: 7 metric cards — Current Index, Target Index, Max Growth Index, Sales lift today, Sales lift at target (with delta %), Sales lift at max growth, Elasticity at avg (with elasticity at optimal in subtitle).',
-      'Bottom: a full-width recommendation card — "You\'re in the Growth Zone. Increasing Assortment from index 50 → 69 unlocks ~$6,943 incremental sales [CI $5,200 – $8,700]. Diminishing returns kick in past 87."'
-    ],
-    userJob: 'Identify the highest-leverage lever and the right operating point.',
-    comprehends: [
-      ['Each driver has a sweet spot.', ' Past it, more spend / effort yields less. Stop overspending Onsite Search.'],
-      ['Today / Target / Max Growth are three distinct points', ' — DSIM gives a defensible target index, not just "spend more."'],
-      ['The CI band on the lift estimate ($5,200 – $8,700)', ' tells the user the model is confident enough to act on.']
-    ],
-    insights: [
-      'For Assortment specifically: today index 50, target 69, max 87. +171% lift between today and target.',
-      'Onsite Search elastAvg = 0.83 (inelastic — saturated); Offsite Display elastAvg = 1.55 (elastic — invest more). Confirms the Decomposition takeaway.',
-      'Elasticity-at-optimal is negative for every driver — diminishing returns confirmed past the saturation point.'
-    ],
-    links: [
-      '"Open in Simulator" button → Scenario Simulator (Page 6). NOTE: does NOT preload the active driver — known issue.'
-    ],
-    antiMisreads: [
-      '"Index 0–100" is an abstract scale, not dollars. New users may think "50" means "$50K." It does not — it\'s a normalized position on the curve.',
-      'Different drivers have different curve shapes (different L_max, n, K parameters at line 4521) — the Y-axis is in dollars but the X-axis is dimensionless. Cross-driver comparisons of index-points-to-move are not directly meaningful.'
-    ]
-  },
-  {
-    n: 5, name: 'Keyword Calculator', side: 'Sidebar position: 5th', kbd: '5',
-    stage: 4, stageLabel: 'Stage 4 — Plan (keyword)',
-    whatShows: [
-      'Sticky 4-column input panel (line 2951): Keyword + assortment coverage bar | Current organic SoS rank + current sponsored spend slider | Target rank dropdown + target sponsored spend slider | Calculate + Reset buttons.',
-      '3-card output row (line 3012): Opportunity Sizing card (big +$8,400 number with CI band, required spend, iROI, payback), Rising-Star Opportunity card (SoS gap, assortment coverage), Channel Saturation Alert card (auto-shown when iROI < 1.0).',
-      'Full-width keyword opportunity table (line 3052) — 8 sample keywords ranked by lift: chocolate spread, marshmallow fluff, whipped cream, cottage cheese, mascarpone, feta cheese, greek yogurt, brie wedge. Each row shows current SoS, current spend, suggested spend, est. $ lift, zone pill (Growth / Flat / Saturation), and an arrow.'
-    ],
-    userJob: 'Size the opportunity for a specific keyword and decide whether to bid.',
-    comprehends: [
-      ['Lift = function of (rank improvement, spend delta, assortment coverage).', ' The formula is deterministic in the wireframe (line 3443).'],
-      ['Saturation alerts auto-surface when iROI drops below 1.0', ' → tells the user "more spend here is throwing money away."'],
-      ['The 8-keyword opportunity table is a workbench', ' — click any row to load it above and see its sizing.']
-    ],
-    insights: [
-      'Marshmallow fluff at rank 8, current spend $2.5K/day, target spend $4K/day → +$8,400 lift at 1.42× iROI, ~14 day payback.',
-      'Chocolate spread is the biggest opportunity at +$12.1K lift (top row in table, sorted by lift).',
-      'Brie wedge at rank 3 is already in Saturation zone — only +$600 lift even with action. Don\'t bother.'
-    ],
-    links: [
-      'Within the page only — clicking a table row loads the row above.'
-    ],
-    antiMisreads: [
-      'The lift formula is a wireframe stand-in, not the production Bayesian output. Numbers will be different in v2.',
-      'The "iROI at target" is also computed from a closed-form formula (<code class="kbd">max(0.30, 1.92 − targetSpend/8000)</code>, line 3446) — feels-responsive but not the real model.',
-      '8 keywords are illustrative — production would have hundreds.'
-    ]
-  },
-  {
-    n: 6, name: 'Scenario Simulator', side: 'Sidebar position: 6th', kbd: '6',
-    stage: 4, stageLabel: 'Stage 4 — Plan (scenario)',
-    whatShows: [
-      'Left column (65% width): 3 stacked lever sections — Direct controls (blue border, 6 sliders), Influence targets (yellow border, 4 sliders), External sensitivities (gray border, 3 sliders). Each section has a class chip and a one-sentence helper text.',
-      'Right column (35% width, sticky): Prediction panel with horizon toggle (Week / Month / Quarter / Year), Predicted Units (with 90% CI), Predicted Dollars, ASP, then a divider, then Δ vs baseline (units, dollars, percentage), then a Commitment summary (count of moves per class).',
-      'Save Scenario button in page header opens an inline save bar.',
-      'Saved scenarios table below the levers shows 3 pre-seeded scenarios (Q3 Plan A · Aggressive Display Shift · Conservative Hold) with predicted lift and a Load button.'
-    ],
-    userJob: 'Build a scenario you can either ship (Direct), brief a partner team on (Influenced), or stress-test the plan against (External).',
-    comprehends: [
-      ['Three classes of lever, and they behave differently', ' — the colored borders enforce the mental model.'],
-      ['Every slider move re-predicts units, dollars, ASP, and Δ vs baseline in real time.', ''],
-      ['Saving a scenario gives you a named, comparable plan to share with leadership.', '']
-    ],
-    insights: [
-      'Pre-seeded Q3 Plan A predicts +$10.9M annual lift — matches the Q3 expected number in ROI Looker. Self-consistent.',
-      'Aggressive Display Shift predicts +$13.2M but moves 9 levers — high-commitment plan.',
-      'Conservative Hold predicts +$3.1M with only 3 moves — minimum viable plan.'
-    ],
-    links: [
-      'Within the page only. Load a scenario → all sliders snap to that scenario\'s positions and the prediction recomputes.'
-    ],
-    antiMisreads: [
-      'The prediction formula at line 3981 is a linear combination of slider deltas from baseline, scaled to the horizon. Wireframe stand-in for the real Bayesian draws.',
-      'Negative slider positions (e.g., Walmart traffic shift = −20%) can drive the predicted dollars below baseline. This is correct behavior, not a bug.',
-      'The horizon multipliers (Week=1, Month=4.33, Quarter=13, Year=52) are linear scaling — they do not model time-varying effects like decay or buildup. Production model will be more sophisticated.'
-    ]
-  },
-  {
-    n: 7, name: 'ROI Looker', side: 'Sidebar position: 7th', kbd: '7',
-    stage: 5, stageLabel: 'Stage 5 — Trackability',
-    whatShows: [
-      'Quarter pills in page header: Q1 / Q2 / <strong>Q3</strong> (default).',
-      'Realization Hero card: half-doughnut gauge showing 68% realization, big headline "68% of expected lift realized," sub-line "Of $10.9M expected, $7.4M actual," and a flank panel showing 3 Adopted / 1 Modified / 1 Rejected of 5 plays recommended.',
-      'Play-by-play outcome table (line 3247): 5 rows with Play ID, description, decision pill, expected $, actual $, realization bar (color-coded green ≥100%, amber 60–99%, red <60%), and a variance note.',
-      'Two side-by-side charts: "Walmart sales — actual vs DSIM counterfactual" (90 days, daily) and "Channel iROI — before vs after" (4 channels).',
-      'Two bottom cards: "What we learned" (3 learnings) and "Q4 plan implications" (3 forward actions).'
-    ],
-    userJob: 'Did DSIM-recommended plays deliver? What do we change for next quarter?',
-    comprehends: [
-      ['Of $10.9M expected, $7.4M actually landed.', ' The gap has named causes (OSA spike Wk 8, content slip 12/50, etc.).'],
-      ['Some plays over-delivered:', ' Halo at 127% (proved the modeling assumption), Availability fix at 119% (exceeded plan).'],
-      ['The system learns', ' — each quarter\'s variance notes feed next quarter\'s implications. Content scope was reduced from 50 SKUs to 20 to match agency capacity, based on Q2 and Q3 evidence.']
-    ],
-    insights: [
-      'OSA spike during Week 8 campaign cost ~$2M — supply chain handoff is the named failure mode.',
-      'Halo confirmed at +27% above prediction — the Kids/Baby → Adult mechanism is now empirically validated.',
-      'iROI shifts after the reallocation: Onsite Search 0.83×→1.21×, Offsite Display 1.55×→1.42× — convergence toward equilibrium, exactly what the model predicted.'
-    ],
-    links: [
-      'Quarter pills re-render the whole page.',
-      'Per-play rows have no drill path — closing the loop is observation-only in this wireframe.'
-    ],
-    antiMisreads: [
-      'The 90-day actual vs counterfactual chart is generated from a deterministic formula (line 3698, <code class="kbd">genActCounter</code>) — illustrative, not real Lactalis daily sales.',
-      '"Counterfactual" means "what we project would have happened with no DSIM action" — it\'s a model output, not observed reality.',
-      'Realization >100% (Halo at 127%, Availability at 119%) is real over-delivery — these plays beat expectations.'
-    ]
-  }
+ {
+ n: 1, name: 'Overview', side: 'Sidebar position: 1st (top)', kbd: '1',
+ stage: 1, stageLabel: 'Stage 1 — Scorecard',
+ whatShows: [
+ 'Page header with Lactalis context: account, channel, time window, cluster count.',
+ 'Hero scorecard: 1 overall DSIM Score (76/100, line 2237) + 5 pillar tiles in a 6-column grid. Each pillar tile shows score, score bar, delta vs prior 13 wks, the underlying KPI (OSA, CQS, ROAS, SoS), and a sparkline.',
+ 'Shelf Health strip: 4 cells — in-stock rate (96.3%), SKUs at risk (11 of 142), avg content score (7.2/10), reallocation upside ($30K/day at 95% CI — wording bug, should be 90%).',
+ 'Score trend chart: 13-week line chart with Overall + 5 pillars.',
+ 'Mega-cluster panel: 4 clusters with score, score bar, status pill, delta.',
+ 'Top movers table: 5 SKUs with the largest WoW score change, including the pillar that drove the change.',
+ 'Model quality footer strip: R² = 0.91, MAPE = 5.9%, method = Bayesian MMM (Robyn), refreshed Tue May 19.'
+ ],
+ userJob: 'Triage — should I act this week, and where?',
+ comprehends: [
+ ['Overall DSIM score is 76, trending up 3.2 pts', '— the brand is healthy and improving.'],
+ ['Promoted (Retail Media) is the weakest pillar at 64/100 but the fastest-growing (+4.2)', ". It's where the action is."],
+ ['$30K/day reallocation opportunity sitting on the table', '— click through to investigate.']
+ ],
+ insights: [
+ 'Reallocation upside = $30K/day at confidence interval (the headline number).',
+ 'Localized Stores cluster scoring 66 with ↓1.1 trend → underperformer needing diagnosis.',
+ '11 of 142 SKUs at risk — manageable but watch list.'
+ ],
+ links: [
+ 'Pillar tiles → Shelf Health (Page 2).',
+ 'Mega-cluster "View all →" → Shelf Health.',
+ '"New scenario" button → Scenario Simulator (Page 6).',
+ '"View model diagnostics →" → dead link in wireframe.'
+ ],
+ antiMisreads: [
+ 'The pillar deltas are vs prior 13 wks, not WoW. The strip below shows WoW. Two different time frames coexist on one page.',
+ 'Score 76/100 is a weighted composite — the weights aren\'t disclosed on this page. A user may want to know "is this weighted by revenue or equally?" — open question.'
+ ]
+ },
+ {
+ n: 2, name: 'Shelf Health (Mini-DSA)', side: 'Sidebar position: 2nd', kbd: '2',
+ stage: 2, stageLabel: 'Stage 2 — Mini-DSA',
+ whatShows: [
+ '3-column grid of 6 pillar vital-sign cards.',
+ 'Each card: pillar name + sub-label, status dot (green/yellow/red), 30-day sparkline, current value with formatted unit (%, /100, /10, stars), delta with direction arrow, verdict sentence, and an insight callout with semantic color.',
+ 'Three filter chips at the top: Cluster / Sub-brand / Product Type (non-functional in wireframe).',
+ 'The 6 pillars: Always Available (78%, danger), Easy To Find (23%, warning), Looking Great (84, success), Right Price (7.8/10, success), Promoted (64%, success), Reviews (4.3★, success).'
+ ],
+ userJob: 'Diagnose — which pillar is bleeding and is it widespread or local?',
+ comprehends: [
+ ['Availability is the urgent fire', '— 3 clusters below 75% OSA, est. $24K Q2 sales suppressed.'],
+ ['Easy To Find is trending sideways with a warning watch', '— Northern Growth declining.'],
+ ['Most pillars are healthy', '→ only one to two need attention.']
+ ],
+ insights: [
+ 'Availability collapse is localized — verdict says "3 clusters below 75%" not all 17. Frames the response: cluster-targeted, not brand-wide.',
+ 'Each +1 pt SoS ≈ +$45K quarterly sales — quantified mental model of search elasticity.',
+ '$30K/day reallocation upside repeats (Onsite Search → Offsite Display) — consistent with Overview strip.'
+ ],
+ links: [
+ 'Pillar card click → Sales Decomposition (Page 3) .',
+ 'Footer link "Drill into Sales Decomposition →" → Page 3.'
+ ],
+ antiMisreads: [
+ 'This page shows <strong>6 pillars</strong> including Reviews. The Overview page shows <strong>5</strong> (no Reviews). The mental model of "how many pillars are there?" is contradicted. Reviewer should confirm whether Reviews is in scope or out.',
+ 'The filter chips are non-functional but look interactive — user will try them.'
+ ]
+ },
+ {
+ n: 3, name: 'Sales Decomposition', side: 'Sidebar position: 3rd', kbd: '3',
+ stage: 3, stageLabel: 'Stage 3 — Diagnose (backward)',
+ whatShows: [
+ 'Page header with R² = 0.91 context.',
+ '3-tab strip: National, By Sub-brand, By Cluster.',
+ '<strong>National pane:</strong> Waterfall chart showing baseline + 6 pillar contributions + competition headwind + total. Beside it, a "What this means" interp panel calling out Promoted at 23%, Offsite Display 1.55× vs Onsite Search 0.83× iROI, and Competition headwind concentrated in Southern Staples. Below: a 4-card Promoted-breakdown row showing each retail-media channel\'s contribution and iROI.',
+ '<strong>Sub-brand pane:</strong> 3 mini-waterfalls (Adult $8.2M, Baby $4.1M, Kids $2.8M) + a halo callout — "Kids/Baby media drove +12% incremental Adult sales."',
+ '<strong>Cluster pane:</strong> 17-column heatmap (17 stores × 17 factors) with stores grouped into the 4 mega-clusters. R² and MAPE rows at the bottom. Red→amber→white→blue scale.'
+ ],
+ userJob: 'Understand what actually drove last quarter\'s sales.',
+ comprehends: [
+ ['Baseline is 49%', '— half of Lactalis Walmart sales would happen with zero activity. Marketing is moving the other half.'],
+ ['Promoted (Retail Media) is doing 23% of the lift', ', but the dollar efficiency is wildly uneven — Onsite Search is saturated, Offsite Display is underinvested.'],
+ ['The halo from Kids/Baby media → Adult sales is real and big (+12%)', '. Single-brand attribution would miss this.']
+ ],
+ insights: [
+ 'Specific iROI numbers: Offsite Display 1.55×, Onsite Display 1.12×, Sponsored Visibility 0.94×, Onsite Search 0.83×.',
+ 'Competition headwind −5% is geographically concentrated, not uniform.',
+ 'Cluster heatmap shows Western High Performers carry positive contribution on nearly every factor; Localized Stores show negative on most.'
+ ],
+ links: [
+ 'Tab switching is in-page only.',
+ 'Export button — non-functional.',
+ 'No explicit link from here to Response Curves (a missing journey step).'
+ ],
+ antiMisreads: [
+ 'The waterfall sums to ~91% not 100% — Baseline + 6 pillar contributions − Competition = 91% (the model\'s explained variance). The unexplained 9% is implicit. A reviewer may ask "where\'s the missing 9%?"',
+ 'The Cluster heatmap values are illustrative, not real Lactalis data. Treat as illustrative.'
+ ]
+ },
+ {
+ n: 4, name: 'Response Curves', side: 'Sidebar position: 4th', kbd: '4',
+ stage: 3, stageLabel: 'Stage 3 — Diagnose (forward)',
+ whatShows: [
+ '7 driver pills across the top: Availability, Content Quality, Onsite Search, Offsite Display, Sponsored Visibility, Assortment (default active), Right Price.',
+ 'Large response curve chart showing the Hill curve from index 0 to 100, with three colored zones — Flat (0–31, blue tint), Growth (32–87, green tint), Saturation (88–100, amber tint).',
+ 'Three operating-point markers: Today (yellow dashed), Target (green dashed), Full Potential (orange solid).',
+ 'Right column: 7 metric cards — Current Index, Target Index, Max Growth Index, Sales lift today, Sales lift at target (with delta %), Sales lift at max growth, Elasticity at avg (with elasticity at optimal in subtitle).',
+ 'Bottom: a full-width recommendation card — "You\'re in the Growth Zone. Increasing Assortment from index 50 → 69 unlocks ~$6,943 incremental sales [CI $5,200 – $8,700]. Diminishing returns kick in past 87."'
+ ],
+ userJob: 'Identify the highest-leverage lever and the right operating point.',
+ comprehends: [
+ ['Each driver has a sweet spot.', ' Past it, more spend / effort yields less. Stop overspending Onsite Search.'],
+ ['Today / Target / Max Growth are three distinct points', ' — DSIM gives a defensible target index, not just "spend more."'],
+ ['The CI band on the lift estimate ($5,200 – $8,700)', ' tells the user the model is confident enough to act on.']
+ ],
+ insights: [
+ 'For Assortment specifically: today index 50, target 69, max 87. +171% lift between today and target.',
+ 'Onsite Search elastAvg = 0.83 (inelastic — saturated); Offsite Display elastAvg = 1.55 (elastic — invest more). Confirms the Decomposition takeaway.',
+ 'Elasticity-at-optimal is negative for every driver — diminishing returns confirmed past the saturation point.'
+ ],
+ links: [
+ '"Open in Simulator" button → Scenario Simulator (Page 6). NOTE: does NOT preload the active driver — known issue.'
+ ],
+ antiMisreads: [
+ '"Index 0–100" is an abstract scale, not dollars. New users may think "50" means "$50K." It does not — it\'s a normalized position on the curve.',
+ 'Different drivers have different curve shapes (different L_max, n, K parameters) — the Y-axis is in dollars but the X-axis is dimensionless. Cross-driver comparisons of index-points-to-move are not directly meaningful.'
+ ]
+ },
+ {
+ n: 5, name: 'Keyword Calculator', side: 'Sidebar position: 5th', kbd: '5',
+ stage: 4, stageLabel: 'Stage 4 — Plan (keyword)',
+ whatShows: [
+ 'Sticky 4-column input panel: Keyword + assortment coverage bar | Current organic SoS rank + current sponsored spend slider | Target rank dropdown + target sponsored spend slider | Calculate + Reset buttons.',
+ '3-card output row: Opportunity Sizing card (big +$8,400 number with CI band, required spend, iROI, payback), Rising-Star Opportunity card (SoS gap, assortment coverage), Channel Saturation Alert card (auto-shown when iROI < 1.0).',
+ 'Full-width keyword opportunity table — 8 sample keywords ranked by lift: chocolate spread, marshmallow fluff, whipped cream, cottage cheese, mascarpone, feta cheese, greek yogurt, brie wedge. Each row shows current SoS, current spend, suggested spend, est. $ lift, zone pill (Growth / Flat / Saturation), and an arrow.'
+ ],
+ userJob: 'Size the opportunity for a specific keyword and decide whether to bid.',
+ comprehends: [
+ ['Lift = function of (rank improvement, spend delta, assortment coverage).', ' The formula is a wireframe approximation.'],
+ ['Saturation alerts auto-surface when iROI drops below 1.0', ' → tells the user "more spend here is throwing money away."'],
+ ['The 8-keyword opportunity table is a workbench', ' — click any row to load it above and see its sizing.']
+ ],
+ insights: [
+ 'Marshmallow fluff at rank 8, current spend $2.5K/day, target spend $4K/day → +$8,400 lift at 1.42× iROI, ~14 day payback.',
+ 'Chocolate spread is the biggest opportunity at +$12.1K lift (top row in table, sorted by lift).',
+ 'Brie wedge at rank 3 is already in Saturation zone — only +$600 lift even with action. Don\'t bother.'
+ ],
+ links: [
+ 'Within the page only — clicking a table row loads the row above.'
+ ],
+ antiMisreads: [
+ 'The lift formula is a wireframe stand-in, not the production Bayesian output. Numbers will be different in v2.',
+ 'The "iROI at target" is a wireframe approximation — the real model uses Bayesian posterior draws.',
+ '8 keywords are illustrative — production would have hundreds.'
+ ]
+ },
+ {
+ n: 6, name: 'Scenario Simulator', side: 'Sidebar position: 6th', kbd: '6',
+ stage: 4, stageLabel: 'Stage 4 — Plan (scenario)',
+ whatShows: [
+ 'Left column (65% width): 3 stacked lever sections — Direct controls (blue border, 6 sliders), Influence targets (yellow border, 4 sliders), External sensitivities (gray border, 3 sliders). Each section has a class chip and a one-sentence helper text.',
+ 'Right column (35% width, sticky): Prediction panel with horizon toggle (Week / Month / Quarter / Year), Predicted Units (with 90% CI), Predicted Dollars, ASP, then a divider, then Δ vs baseline (units, dollars, percentage), then a Commitment summary (count of moves per class).',
+ 'Save Scenario button in page header opens an inline save bar.',
+ 'Saved scenarios table below the levers shows 3 pre-seeded scenarios (Q3 Plan A · Aggressive Display Shift · Conservative Hold) with predicted lift and a Load button.'
+ ],
+ userJob: 'Build a scenario you can either ship (Direct), brief a partner team on (Influenced), or stress-test the plan against (External).',
+ comprehends: [
+ ['Three classes of lever, and they behave differently', ' — the colored borders enforce the mental model.'],
+ ['Every slider move re-predicts units, dollars, ASP, and Δ vs baseline in real time.', ''],
+ ['Saving a scenario gives you a named, comparable plan to share with leadership.', '']
+ ],
+ insights: [
+ 'Pre-seeded Q3 Plan A predicts +$10.9M annual lift — matches the Q3 expected number in ROI Looker. Self-consistent.',
+ 'Aggressive Display Shift predicts +$13.2M but moves 9 levers — high-commitment plan.',
+ 'Conservative Hold predicts +$3.1M with only 3 moves — minimum viable plan.'
+ ],
+ links: [
+ 'Within the page only. Load a scenario → all sliders snap to that scenario\'s positions and the prediction recomputes.'
+ ],
+ antiMisreads: [
+ 'The prediction formula is a linear combination of slider deltas from baseline, scaled to the horizon. Wireframe stand-in for the real Bayesian draws.',
+ 'Negative slider positions (e.g., Walmart traffic shift = −20%) can drive the predicted dollars below baseline. This is correct behavior, not a bug.',
+ 'The horizon multipliers (Week=1, Month=4.33, Quarter=13, Year=52) are linear scaling — they do not model time-varying effects like decay or buildup. Production model will be more sophisticated.'
+ ]
+ },
+ {
+ n: 7, name: 'ROI Looker', side: 'Sidebar position: 7th', kbd: '7',
+ stage: 5, stageLabel: 'Stage 5 — Trackability',
+ whatShows: [
+ 'Quarter pills in page header: Q1 / Q2 / <strong>Q3</strong> (default).',
+ 'Realization Hero card: half-doughnut gauge showing 68% realization, big headline "68% of expected lift realized," sub-line "Of $10.9M expected, $7.4M actual," and a flank panel showing 3 Adopted / 1 Modified / 1 Rejected of 5 plays recommended.',
+ 'Play-by-play outcome table: 5 rows with Play ID, description, decision pill, expected $, actual $, realization bar (color-coded green ≥100%, amber 60–99%, red <60%), and a variance note.',
+ 'Two side-by-side charts: "Walmart sales — actual vs DSIM counterfactual" (90 days, daily) and "Channel iROI — before vs after" (4 channels).',
+ 'Two bottom cards: "What we learned" (3 learnings) and "Q4 plan implications" (3 forward actions).'
+ ],
+ userJob: 'Did DSIM-recommended plays deliver? What do we change for next quarter?',
+ comprehends: [
+ ['Of $10.9M expected, $7.4M actually landed.', ' The gap has named causes (OSA spike Wk 8, content slip 12/50, etc.).'],
+ ['Some plays over-delivered:', ' Halo at 127% (proved the modeling assumption), Availability fix at 119% (exceeded plan).'],
+ ['The system learns', ' — each quarter\'s variance notes feed next quarter\'s implications. Content scope was reduced from 50 SKUs to 20 to match agency capacity, based on Q2 and Q3 evidence.']
+ ],
+ insights: [
+ 'OSA spike during Week 8 campaign cost ~$2M — supply chain handoff is the named failure mode.',
+ 'Halo confirmed at +27% above prediction — the Kids/Baby → Adult mechanism is now empirically validated.',
+ 'iROI shifts after the reallocation: Onsite Search 0.83×→1.21×, Offsite Display 1.55×→1.42× — convergence toward equilibrium, exactly what the model predicted.'
+ ],
+ links: [
+ 'Quarter pills re-render the whole page.',
+ 'Per-play rows have no drill path — closing the loop is observation-only in this wireframe.'
+ ],
+ antiMisreads: [
+ 'The 90-day actual vs counterfactual chart is generated from a deterministic formula — illustrative, not real Lactalis daily sales.',
+ '"Counterfactual" means "what we project would have happened with no DSIM action" — it\'s a model output, not observed reality.',
+ 'Realization >100% (Halo at 127%, Availability at 119%) is real over-delivery — these plays beat expectations.'
+ ]
+ }
 ];
 
 // ============================================================
 // CHECKLIST DATA
 // ============================================================
 const CHECKLIST = [
-  { txt: 'Open <code class="kbd">wireframe-v1.html</code> in a browser at 1440px width. Confirm you land on Overview with Lactalis context.' },
-  { txt: 'Press keyboard <code class="kbd">1</code> through <code class="kbd">7</code> — confirm each page loads.' },
-  { txt: 'On Overview, click a pillar tile (e.g., Promoted). Confirm it navigates to Shelf Health.' },
-  { txt: 'On Shelf Health, click any pillar card. Confirm it navigates to Sales Decomposition.' },
-  { txt: 'On Sales Decomposition, click the "By Sub-brand" tab. Confirm 3 mini-waterfalls render and the halo callout reads correctly.' },
-  { txt: 'On Sales Decomposition, click "By Cluster" tab. Confirm the 17-column heatmap renders with sticky factor column on the left.' },
-  { txt: 'On Response Curves, click each of the 7 driver pills. Confirm the chart updates and the recommendation card text changes to the new driver.' },
-  { txt: 'On Response Curves, click "Open in Simulator."', sub: 'Does it preload the active driver, or arrive at defaults? (Should preload, currently does not.)' },
-  { txt: 'On Keyword Calculator, drag the target spend slider. Confirm the +$8,400 number updates within ~50ms.' },
-  { txt: 'On Scenario Simulator, drag any Direct slider. Confirm the prediction panel updates and the Commitment summary counts increment.' },
-  { txt: 'On Scenario Simulator, click Save Scenario, type a name, press Enter. Confirm it appears in the saved table.' },
-  { txt: 'On ROI Looker, switch quarter Q3 → Q2 → Q1. Confirm gauge, table, and both charts re-render.' }
+ { txt: 'Open the prototype in a browser at 1440px width. Confirm you land on Overview with Lactalis context.' },
+ { txt: 'Press keyboard <code class="kbd">1</code> through <code class="kbd">7</code> — confirm each page loads.' },
+ { txt: 'On Overview, click a pillar tile (e.g., Promoted). Confirm it navigates to Shelf Health.' },
+ { txt: 'On Shelf Health, click any pillar card. Confirm it navigates to Sales Decomposition.' },
+ { txt: 'On Sales Decomposition, click the "By Sub-brand" tab. Confirm 3 mini-waterfalls render and the halo callout reads correctly.' },
+ { txt: 'On Sales Decomposition, click "By Cluster" tab. Confirm the 17-column heatmap renders with sticky factor column on the left.' },
+ { txt: 'On Response Curves, click each of the 7 driver pills. Confirm the chart updates and the recommendation card text changes to the new driver.' },
+ { txt: 'On Response Curves, click "Open in Simulator."', sub: 'Does it preload the active driver, or arrive at defaults? (Should preload, currently does not.)' },
+ { txt: 'On Keyword Calculator, drag the target spend slider. Confirm the +$8,400 number updates within ~50ms.' },
+ { txt: 'On Scenario Simulator, drag any Direct slider. Confirm the prediction panel updates and the Commitment summary counts increment.' },
+ { txt: 'On Scenario Simulator, click Save Scenario, type a name, press Enter. Confirm it appears in the saved table.' },
+ { txt: 'On ROI Looker, switch quarter Q3 → Q2 → Q1. Confirm gauge, table, and both charts re-render.' }
 ];
 
 // ============================================================
 // OPEN QUESTIONS DATA
 // ============================================================
 const QUESTIONS = [
-  { q: 'Pillar count — is it 5 or 6?', ctx: 'Overview hero shows 5 pillars. Shelf Health shows 6 (adds Reviews). Is Reviews a first-class pillar of DSIM or a secondary signal? If first-class, it needs an Overview tile and a position in the Sales Decomposition waterfall.' },
-  { q: 'Should there be a dedicated Brand Manager (Persona 3) view, or remain absorbed under Overview?', ctx: 'Today the dashboard is built for VP eCom / RGM. Brand Managers care about a single sub-brand or product line — do they get a filtered version, a dedicated tab, or just inherit the same view?' },
-  { q: '90% CI vs 95% CI — which is the canonical confidence interval?', ctx: 'The Overview Shelf Health strip says "$30K /day at 95% CI." The Scenario Simulator prediction panel says "90% CI from the Bayesian posterior." Pick one.' },
-  { q: 'Should the Keyword Calculator be merged into the Scenario Simulator as a "Keyword tab," or remain free-standing?', ctx: 'Today they are two separate destinations with no cross-link. The user job is similar ("size an opportunity"). Could be one product surface with two views.' },
-  { q: 'The cluster heatmap shows 17 stores and 17 factors — is this the right granularity?', ctx: 'At 1440px, the cells are 6×4px padded with 11px monospace numbers. Drillable from the heatmap to a per-store view, or is the heatmap itself the terminal view?' },
-  { q: 'Top-nav Account / Brand / Date filters — should they be global state (affecting all pages) or removed for this version?', ctx: 'Today they look functional but aren\'t wired up. Either commit to making them global or remove them so users don\'t try to use them.' },
-  { q: 'The "Open in Simulator" link from Response Curves — should it preload the active driver, the recommended target index, OR just navigate?', ctx: 'Currently navigates with no state. Highest-value cross-page integration in the prototype if fixed.' },
-  { q: 'What is the role of "Settings" (Page 8 stub)?', ctx: 'Account preferences, model configuration, integrations, team access — but in what priority order? Is model configuration (e.g., re-cluster, re-train) self-serve in v1 or DataWeave-driven?' },
-  { q: 'Should there be a sortable / filterable table on Top Movers (Overview) and Per-Play (ROI Looker)?', ctx: 'Today neither table has column sort. Both are scenarios where a user wants to re-sort.' },
-  { q: 'Does the dashboard need a "what changed since last login" patch-notes view?', ctx: 'The model refreshes weekly. A user logging in after a refresh should see "here\'s what\'s new" — currently absent.' },
-  { q: 'Should Pages 3 and 4 (Decomposition + Response Curves) be merged into a single "Diagnose" surface with tabs, or remain peers in the sidebar?', ctx: 'They share data, share drivers, and share the user job. Today they share zero navigation.' },
-  { q: 'What does a 0% realization or a negative-lift outcome look like on Page 7?', ctx: 'Today the lowest realization shown is 40% (red). A rejected play shows "—" with no actual. What if a play actively hurt sales — does the realization gauge support negative values?' }
+ { q: 'Pillar count — is it 5 or 6?', ctx: 'Overview hero shows 5 pillars. Shelf Health shows 6 (adds Reviews). Is Reviews a first-class pillar of DSIM or a secondary signal? If first-class, it needs an Overview tile and a position in the Sales Decomposition waterfall.' },
+ { q: 'Should there be a dedicated Brand Manager (Persona 3) view, or remain absorbed under Overview?', ctx: 'Today the dashboard is built for VP eCom / RGM. Brand Managers care about a single sub-brand or product line — do they get a filtered version, a dedicated tab, or just inherit the same view?' },
+ { q: '90% CI vs 95% CI — which is the canonical confidence interval?', ctx: 'The Overview Shelf Health strip says "$30K /day at 95% CI." The Scenario Simulator prediction panel says "90% CI from the Bayesian posterior." Pick one.' },
+ { q: 'Should the Keyword Calculator be merged into the Scenario Simulator as a "Keyword tab," or remain free-standing?', ctx: 'Today they are two separate destinations with no cross-link. The user job is similar ("size an opportunity"). Could be one product surface with two views.' },
+ { q: 'The cluster heatmap shows 17 stores and 17 factors — is this the right granularity?', ctx: 'At 1440px, the cells are 6×4px padded with 11px monospace numbers. Drillable from the heatmap to a per-store view, or is the heatmap itself the terminal view?' },
+ { q: 'Top-nav Account / Brand / Date filters — should they be global state (affecting all pages) or removed for this version?', ctx: 'Today they look functional but aren\'t wired up. Either commit to making them global or remove them so users don\'t try to use them.' },
+ { q: 'The "Open in Simulator" link from Response Curves — should it preload the active driver, the recommended target index, OR just navigate?', ctx: 'Currently navigates with no state. Highest-value cross-page integration in the prototype if fixed.' },
+ { q: 'What is the role of "Settings" (Page 8 stub)?', ctx: 'Account preferences, model configuration, integrations, team access — but in what priority order? Is model configuration (e.g., re-cluster, re-train) self-serve in v1 or DataWeave-driven?' },
+ { q: 'Should there be a sortable / filterable table on Top Movers (Overview) and Per-Play (ROI Looker)?', ctx: 'Today neither table has column sort. Both are scenarios where a user wants to re-sort.' },
+ { q: 'Does the dashboard need a "what changed since last login" patch-notes view?', ctx: 'The model refreshes weekly. A user logging in after a refresh should see "here\'s what\'s new" — currently absent.' },
+ { q: 'Should Pages 3 and 4 (Decomposition + Response Curves) be merged into a single "Diagnose" surface with tabs, or remain peers in the sidebar?', ctx: 'They share data, share drivers, and share the user job. Today they share zero navigation.' },
+ { q: 'What does a 0% realization or a negative-lift outcome look like on Page 7?', ctx: 'Today the lowest realization shown is 40% (red). A rejected play shows "—" with no actual. What if a play actively hurt sales — does the realization gauge support negative values?' }
 ];
 
 // ============================================================
 // RENDER: ACCORDIONS
 // ============================================================
 function renderAccordions() {
-  const wrap = document.getElementById('accordion');
-  wrap.innerHTML = SCREENS.map((s, idx) => {
-    const compHTML = s.comprehends.map((c, i) => `<li><strong>${c[0]}</strong><span class="takeaway">${c[1]}</span></li>`).join('');
-    const insHTML = s.insights.map(i => `<li>${i}</li>`).join('');
-    const linksHTML = s.links.map(l => `<li>${l}</li>`).join('');
-    const showsHTML = s.whatShows.map(w => `<li>${w}</li>`).join('');
-    const antiHTML = s.antiMisreads.map(a => `<li>${a}</li>`).join('');
-    const openCls = idx === 0 ? 'open' : '';
-    return `
+ const wrap = document.getElementById('accordion');
+ wrap.innerHTML = SCREENS.map((s, idx) => {
+ const compHTML = s.comprehends.map((c, i) => `<li><strong>${c[0]}</strong><span class="takeaway">${c[1]}</span></li>`).join('');
+ const insHTML = s.insights.map(i => `<li>${i}</li>`).join('');
+ const linksHTML = s.links.map(l => `<li>${l}</li>`).join('');
+ const showsHTML = s.whatShows.map(w => `<li>${w}</li>`).join('');
+ const antiHTML = s.antiMisreads.map(a => `<li>${a}</li>`).join('');
+ const openCls = idx === 0 ? 'open' : '';
+ return `
 <div class="acc-card ${openCls}" data-screen="${s.n}" id="screen-${s.n}">
-  <div class="acc-head">
-    <div class="acc-badge">${s.n}</div>
-    <div class="acc-title-wrap">
-      <div class="acc-title">${s.name}</div>
-      <div class="acc-sub">${s.side} <span class="kbd">${s.kbd}</span></div>
-    </div>
-    <span class="stage-chip stage-${s.stage}">${s.stageLabel}</span>
-    <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-  </div>
-  <div class="acc-body-wrap">
-    <div class="acc-body">
-      <div class="acc-body-inner">
-        <a class="acc-open-proto" href="https://raghavmht09.github.io/dsim-design/#page-${s.n}" target="_blank" rel="noopener">Open in prototype →</a>
-        <div class="field-label">What it shows</div>
-        <div class="field-body"><ul>${showsHTML}</ul></div>
-        <div class="field-label">User job</div>
-        <div class="field-body user-job">${s.userJob}</div>
-        <div class="field-label">Where in the journey</div>
-        <div class="field-body"><span class="stage-inline-chip stage-${s.stage}">${s.stageLabel}</span></div>
-        <div class="field-label">What the user comprehends</div>
-        <div class="field-body"><ol>${compHTML}</ol></div>
-        <div class="field-label">Key insights surfaced</div>
-        <div class="field-body"><ul>${insHTML}</ul></div>
-        <div class="field-label">Where this links to</div>
-        <div class="field-body"><ul class="where-list">${linksHTML}</ul></div>
-        <div class="field-label">Anti-misreads</div>
-        <div class="anti-misread">
-          <span class="anti-misread-icon">💡</span>
-          <ul>${antiHTML}</ul>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="acc-head">
+ <div class="acc-badge">${s.n}</div>
+ <div class="acc-title-wrap">
+ <div class="acc-title">${s.name}</div>
+ <div class="acc-sub">${s.side} <span class="kbd">${s.kbd}</span></div>
+ </div>
+ <span class="stage-chip stage-${s.stage}">${s.stageLabel}</span>
+ <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+ </div>
+ <div class="acc-body-wrap">
+ <div class="acc-body">
+ <div class="acc-body-inner">
+ <a class="acc-open-proto" href="https://raghavmht09.github.io/dsim-design/#page-${s.n}" target="_blank" rel="noopener">Open in prototype →</a>
+ <div class="field-label">What it shows</div>
+ <div class="field-body"><ul>${showsHTML}</ul></div>
+ <div class="field-label">User job</div>
+ <div class="field-body user-job">${s.userJob}</div>
+ <div class="field-label">Where in the journey</div>
+ <div class="field-body"><span class="stage-inline-chip stage-${s.stage}">${s.stageLabel}</span></div>
+ <div class="field-label">What the user comprehends</div>
+ <div class="field-body"><ol>${compHTML}</ol></div>
+ <div class="field-label">Key insights surfaced</div>
+ <div class="field-body"><ul>${insHTML}</ul></div>
+ <div class="field-label">Where this links to</div>
+ <div class="field-body"><ul class="where-list">${linksHTML}</ul></div>
+ <div class="field-label">Anti-misreads</div>
+ <div class="anti-misread">
+ <span class="anti-misread-icon">💡</span>
+ <ul>${antiHTML}</ul>
+ </div>
+ </div>
+ </div>
+ </div>
 </div>`;
-  }).join('');
+ }).join('');
 
-  // accordion toggle
-  wrap.querySelectorAll('.acc-head').forEach(head => {
-    head.addEventListener('click', () => {
-      head.parentElement.classList.toggle('open');
-    });
-  });
+ // accordion toggle
+ wrap.querySelectorAll('.acc-head').forEach(head => {
+ head.addEventListener('click', () => {
+ head.parentElement.classList.toggle('open');
+ });
+ });
 }
 
 // ============================================================
@@ -1815,50 +1815,50 @@ function renderAccordions() {
 // ============================================================
 const CHECK_KEY = 'dsim-doc-checklist';
 function getChecklistState() {
-  try { return JSON.parse(localStorage.getItem(CHECK_KEY) || '[]'); } catch (e) { return []; }
+ try { return JSON.parse(localStorage.getItem(CHECK_KEY) || '[]'); } catch (e) { return []; }
 }
 function saveChecklistState(arr) {
-  localStorage.setItem(CHECK_KEY, JSON.stringify(arr));
+ localStorage.setItem(CHECK_KEY, JSON.stringify(arr));
 }
 function renderChecklist() {
-  const state = getChecklistState();
-  const wrap = document.getElementById('checklist-list');
-  wrap.innerHTML = CHECKLIST.map((c, i) => {
-    const doneCls = state.includes(i) ? 'done' : '';
-    const sub = c.sub ? `<span class="check-sub">${c.sub}</span>` : '';
-    return `
+ const state = getChecklistState();
+ const wrap = document.getElementById('checklist-list');
+ wrap.innerHTML = CHECKLIST.map((c, i) => {
+ const doneCls = state.includes(i) ? 'done' : '';
+ const sub = c.sub ? `<span class="check-sub">${c.sub}</span>` : '';
+ return `
 <div class="check-item ${doneCls}" data-i="${i}">
-  <div class="check-box"></div>
-  <div class="check-num">${String(i+1).padStart(2,'0')}</div>
-  <div class="check-text">${c.txt}${sub}</div>
+ <div class="check-box"></div>
+ <div class="check-num">${String(i+1).padStart(2,'0')}</div>
+ <div class="check-text">${c.txt}${sub}</div>
 </div>`;
-  }).join('');
-  updateProgress();
+ }).join('');
+ updateProgress();
 
-  wrap.querySelectorAll('.check-item').forEach(el => {
-    el.addEventListener('click', () => {
-      const i = +el.dataset.i;
-      const s = getChecklistState();
-      const idx = s.indexOf(i);
-      if (idx >= 0) s.splice(idx, 1); else s.push(i);
-      saveChecklistState(s);
-      el.classList.toggle('done');
-      updateProgress();
-    });
-  });
+ wrap.querySelectorAll('.check-item').forEach(el => {
+ el.addEventListener('click', () => {
+ const i = +el.dataset.i;
+ const s = getChecklistState();
+ const idx = s.indexOf(i);
+ if (idx >= 0) s.splice(idx, 1); else s.push(i);
+ saveChecklistState(s);
+ el.classList.toggle('done');
+ updateProgress();
+ });
+ });
 }
 function updateProgress() {
-  const s = getChecklistState();
-  const n = s.filter(i => i >= 0 && i < CHECKLIST.length).length;
-  document.getElementById('check-count').textContent = n;
-  const pct = Math.round((n / CHECKLIST.length) * 100);
-  document.getElementById('check-bar').style.width = pct + '%';
-  document.getElementById('check-pct').textContent = pct + '%';
+ const s = getChecklistState();
+ const n = s.filter(i => i >= 0 && i < CHECKLIST.length).length;
+ document.getElementById('check-count').textContent = n;
+ const pct = Math.round((n / CHECKLIST.length) * 100);
+ document.getElementById('check-bar').style.width = pct + '%';
+ document.getElementById('check-pct').textContent = pct + '%';
 }
 document.getElementById('checklist-reset').addEventListener('click', () => {
-  saveChecklistState([]);
-  document.querySelectorAll('.check-item').forEach(el => el.classList.remove('done'));
-  updateProgress();
+ saveChecklistState([]);
+ document.querySelectorAll('.check-item').forEach(el => el.classList.remove('done'));
+ updateProgress();
 });
 
 // ============================================================
@@ -1866,192 +1866,192 @@ document.getElementById('checklist-reset').addEventListener('click', () => {
 // ============================================================
 const NOTES_KEY = 'dsim-doc-notes';
 function getNotes() {
-  try { return JSON.parse(localStorage.getItem(NOTES_KEY) || '{}'); } catch (e) { return {}; }
+ try { return JSON.parse(localStorage.getItem(NOTES_KEY) || '{}'); } catch (e) { return {}; }
 }
 function saveNotes(obj) { localStorage.setItem(NOTES_KEY, JSON.stringify(obj)); }
 function renderQuestions() {
-  const notes = getNotes();
-  const wrap = document.getElementById('questions-list');
-  wrap.innerHTML = QUESTIONS.map((q, i) => {
-    const has = notes[i];
-    const openCls = has ? 'note-open' : '';
-    const val = has ? notes[i].replace(/</g, '&lt;') : '';
-    return `
+ const notes = getNotes();
+ const wrap = document.getElementById('questions-list');
+ wrap.innerHTML = QUESTIONS.map((q, i) => {
+ const has = notes[i];
+ const openCls = has ? 'note-open' : '';
+ const val = has ? notes[i].replace(/</g, '&lt;') : '';
+ return `
 <div class="q-card ${openCls}" data-i="${i}">
-  <div class="q-num">Q${i+1}</div>
-  <div class="q-body">${q.q}</div>
-  <div class="q-context">${q.ctx}</div>
-  <button class="q-note-btn">+ Add a note</button>
-  <div class="q-note-area">
-    <textarea placeholder="Capture your take on this question…">${val}</textarea>
-    <div class="q-note-meta"><span>Auto-saved locally</span><span class="char-count">${val.length} chars</span></div>
-  </div>
+ <div class="q-num">Q${i+1}</div>
+ <div class="q-body">${q.q}</div>
+ <div class="q-context">${q.ctx}</div>
+ <button class="q-note-btn">+ Add a note</button>
+ <div class="q-note-area">
+ <textarea placeholder="Capture your take on this question…">${val}</textarea>
+ <div class="q-note-meta"><span>Auto-saved locally</span><span class="char-count">${val.length} chars</span></div>
+ </div>
 </div>`;
-  }).join('');
+ }).join('');
 
-  wrap.querySelectorAll('.q-card').forEach(card => {
-    const i = +card.dataset.i;
-    const btn = card.querySelector('.q-note-btn');
-    const ta = card.querySelector('textarea');
-    const cc = card.querySelector('.char-count');
-    btn.addEventListener('click', () => {
-      card.classList.add('note-open');
-      setTimeout(() => ta.focus(), 50);
-    });
-    ta.addEventListener('input', () => {
-      const n = getNotes();
-      const v = ta.value;
-      if (v.trim()) n[i] = v; else delete n[i];
-      saveNotes(n);
-      cc.textContent = v.length + ' chars';
-    });
-  });
+ wrap.querySelectorAll('.q-card').forEach(card => {
+ const i = +card.dataset.i;
+ const btn = card.querySelector('.q-note-btn');
+ const ta = card.querySelector('textarea');
+ const cc = card.querySelector('.char-count');
+ btn.addEventListener('click', () => {
+ card.classList.add('note-open');
+ setTimeout(() => ta.focus(), 50);
+ });
+ ta.addEventListener('input', () => {
+ const n = getNotes();
+ const v = ta.value;
+ if (v.trim()) n[i] = v; else delete n[i];
+ saveNotes(n);
+ cc.textContent = v.length + ' chars';
+ });
+ });
 }
 document.getElementById('export-notes')?.addEventListener('click', () => {
-  const n = getNotes();
-  const lines = ['DSIM Reviewer Notes', '====================', '', `Exported: ${new Date().toISOString().slice(0,19).replace('T',' ')}`, ''];
-  QUESTIONS.forEach((q, i) => {
-    lines.push(`Q${i+1}: ${q.q}`);
-    if (n[i]) {
-      lines.push('  Note:');
-      n[i].split('\n').forEach(l => lines.push('    ' + l));
-    } else {
-      lines.push('  (no note)');
-    }
-    lines.push('');
-  });
-  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'dsim-reviewer-notes.txt';
-  document.body.appendChild(a); a.click();
-  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+ const n = getNotes();
+ const lines = ['DSIM Reviewer Notes', '====================', '', `Exported: ${new Date().toISOString().slice(0,19).replace('T',' ')}`, ''];
+ QUESTIONS.forEach((q, i) => {
+ lines.push(`Q${i+1}: ${q.q}`);
+ if (n[i]) {
+ lines.push(' Note:');
+ n[i].split('\n').forEach(l => lines.push(' ' + l));
+ } else {
+ lines.push(' (no note)');
+ }
+ lines.push('');
+ });
+ const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url; a.download = 'dsim-reviewer-notes.txt';
+ document.body.appendChild(a); a.click();
+ setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
 });
 
 // ============================================================
 // METHODOLOGY ALPHABET STRIP
 // ============================================================
 function buildAlphaStrip() {
-  const wrap = document.getElementById('methodology-alpha');
-  const rows = document.querySelectorAll('#methodology-body tr');
-  const present = new Set();
-  rows.forEach(r => { const l = (r.dataset.letter || '').toUpperCase(); if (l) present.add(l); });
-  const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c => /[A-Z0-9]/.test(c));
-  // Show only those alphabet letters used
-  const used = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(l => present.has(l));
-  // Numerics first (only "9" used)
-  const nums = '0123456789'.split('').filter(l => present.has(l));
-  const all = [...nums, ...used];
-  wrap.innerHTML = all.map(c => `<span class="alpha-letter available" data-letter="${c}">${c}</span>`).join('');
-  wrap.querySelectorAll('.alpha-letter.available').forEach(el => {
-    el.addEventListener('click', () => {
-      const l = el.dataset.letter;
-      const target = document.querySelector(`#methodology-body tr[data-letter="${l}"]`);
-      if (target) {
-        const y = target.getBoundingClientRect().top + window.scrollY - 130;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    });
-  });
+ const wrap = document.getElementById('methodology-alpha');
+ const rows = document.querySelectorAll('#methodology-body tr');
+ const present = new Set();
+ rows.forEach(r => { const l = (r.dataset.letter || '').toUpperCase(); if (l) present.add(l); });
+ const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c => /[A-Z0-9]/.test(c));
+ // Show only those alphabet letters used
+ const used = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(l => present.has(l));
+ // Numerics first (only "9" used)
+ const nums = '0123456789'.split('').filter(l => present.has(l));
+ const all = [...nums, ...used];
+ wrap.innerHTML = all.map(c => `<span class="alpha-letter available" data-letter="${c}">${c}</span>`).join('');
+ wrap.querySelectorAll('.alpha-letter.available').forEach(el => {
+ el.addEventListener('click', () => {
+ const l = el.dataset.letter;
+ const target = document.querySelector(`#methodology-body tr[data-letter="${l}"]`);
+ if (target) {
+ const y = target.getBoundingClientRect().top + window.scrollY - 130;
+ window.scrollTo({ top: y, behavior: 'smooth' });
+ }
+ });
+ });
 }
 
 // ============================================================
 // TOC ACTIVE STATE
 // ============================================================
 function initTOC() {
-  const items = document.querySelectorAll('.toc-item');
-  items.forEach(it => {
-    it.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.getElementById(it.dataset.target);
-      if (!target) return;
-      // Expand accordion if needed
-      if (it.dataset.target.startsWith('screen-') && it.dataset.target !== 'screens') {
-        const acc = target;
-        if (!acc.classList.contains('open')) acc.classList.add('open');
-      }
-      const y = target.getBoundingClientRect().top + window.scrollY - 70;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    });
-  });
+ const items = document.querySelectorAll('.toc-item');
+ items.forEach(it => {
+ it.addEventListener('click', (e) => {
+ e.preventDefault();
+ const target = document.getElementById(it.dataset.target);
+ if (!target) return;
+ // Expand accordion if needed
+ if (it.dataset.target.startsWith('screen-') && it.dataset.target !== 'screens') {
+ const acc = target;
+ if (!acc.classList.contains('open')) acc.classList.add('open');
+ }
+ const y = target.getBoundingClientRect().top + window.scrollY - 70;
+ window.scrollTo({ top: y, behavior: 'smooth' });
+ });
+ });
 
-  // IntersectionObserver
-  const sections = [];
-  ['overview','pillars','methodology','walmart','levers','screens','checklist'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) sections.push(el);
-  });
-  SCREENS.forEach(s => {
-    const el = document.getElementById('screen-' + s.n);
-    if (el) sections.push(el);
-  });
+ // IntersectionObserver
+ const sections = [];
+ ['overview','pillars','methodology','walmart','levers','screens','checklist'].forEach(id => {
+ const el = document.getElementById(id);
+ if (el) sections.push(el);
+ });
+ SCREENS.forEach(s => {
+ const el = document.getElementById('screen-' + s.n);
+ if (el) sections.push(el);
+ });
 
-  const seenMap = new Map();
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(en => seenMap.set(en.target.id, en));
-    // find topmost intersecting section
-    let best = null;
-    let bestTop = Infinity;
-    seenMap.forEach((en, id) => {
-      if (en.isIntersecting) {
-        const top = en.boundingClientRect.top;
-        if (top < bestTop && top < window.innerHeight * 0.5) {
-          bestTop = top;
-          best = id;
-        }
-      }
-    });
-    if (best) {
-      items.forEach(it => it.classList.toggle('active', it.dataset.target === best));
-    }
-  }, { rootMargin: '-70px 0px -40% 0px', threshold: [0, 0.1, 0.5, 1] });
-  sections.forEach(s => obs.observe(s));
+ const seenMap = new Map();
+ const obs = new IntersectionObserver((entries) => {
+ entries.forEach(en => seenMap.set(en.target.id, en));
+ // find topmost intersecting section
+ let best = null;
+ let bestTop = Infinity;
+ seenMap.forEach((en, id) => {
+ if (en.isIntersecting) {
+ const top = en.boundingClientRect.top;
+ if (top < bestTop && top < window.innerHeight * 0.5) {
+ bestTop = top;
+ best = id;
+ }
+ }
+ });
+ if (best) {
+ items.forEach(it => it.classList.toggle('active', it.dataset.target === best));
+ }
+ }, { rootMargin: '-70px 0px -40% 0px', threshold: [0, 0.1, 0.5, 1] });
+ sections.forEach(s => obs.observe(s));
 }
 
 // ============================================================
 // SEARCH FILTER
 // ============================================================
 function initSearch() {
-  const inp = document.getElementById('search-input');
-  const tables = document.querySelectorAll('table[data-searchable="true"]');
-  inp.addEventListener('input', () => {
-    const q = inp.value.trim().toLowerCase();
-    tables.forEach(tbl => {
-      const wrap = tbl.closest('.tbl-wrap');
-      let visible = 0;
-      tbl.querySelectorAll('tbody tr').forEach(tr => {
-        const txt = tr.textContent.toLowerCase();
-        const match = !q || txt.includes(q);
-        tr.classList.toggle('row-hidden', !match);
-        if (match) visible++;
-      });
-      wrap.classList.toggle('empty', visible === 0 && q.length > 0);
-    });
-  });
-  inp.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      inp.value = '';
-      inp.dispatchEvent(new Event('input'));
-      inp.blur();
-    }
-  });
+ const inp = document.getElementById('search-input');
+ const tables = document.querySelectorAll('table[data-searchable="true"]');
+ inp.addEventListener('input', () => {
+ const q = inp.value.trim().toLowerCase();
+ tables.forEach(tbl => {
+ const wrap = tbl.closest('.tbl-wrap');
+ let visible = 0;
+ tbl.querySelectorAll('tbody tr').forEach(tr => {
+ const txt = tr.textContent.toLowerCase();
+ const match = !q || txt.includes(q);
+ tr.classList.toggle('row-hidden', !match);
+ if (match) visible++;
+ });
+ wrap.classList.toggle('empty', visible === 0 && q.length > 0);
+ });
+ });
+ inp.addEventListener('keydown', (e) => {
+ if (e.key === 'Escape') {
+ inp.value = '';
+ inp.dispatchEvent(new Event('input'));
+ inp.blur();
+ }
+ });
 }
 
 // ============================================================
 // KEYBOARD SHORTCUTS
 // ============================================================
 function initShortcuts() {
-  document.addEventListener('keydown', (e) => {
-    const inForm = ['INPUT','TEXTAREA'].includes(document.activeElement?.tagName);
-    if (e.key === '/' && !inForm) {
-      e.preventDefault();
-      document.getElementById('search-input').focus();
-    }
-    if (e.key === 'Escape' && !inForm) {
-      document.getElementById('search-input').value = '';
-      document.getElementById('search-input').dispatchEvent(new Event('input'));
-    }
-  });
+ document.addEventListener('keydown', (e) => {
+ const inForm = ['INPUT','TEXTAREA'].includes(document.activeElement?.tagName);
+ if (e.key === '/' && !inForm) {
+ e.preventDefault();
+ document.getElementById('search-input').focus();
+ }
+ if (e.key === 'Escape' && !inForm) {
+ document.getElementById('search-input').value = '';
+ document.getElementById('search-input').dispatchEvent(new Event('input'));
+ }
+ });
 }
 
 // ============================================================
