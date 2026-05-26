@@ -1052,7 +1052,7 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  <input id="search-input" class="search-input" type="text" placeholder="Search docs…" autocomplete="off"/>
  <span class="search-kbd">/</span>
  </div>
- <a class="btn btn-primary" href="https://raghavmht09.github.io/dsim-design/" target="_blank" rel="noopener">Open Prototype
+ <a class="btn btn-primary" href="./wireframe-v2.html" target="_blank" rel="noopener">Open Prototype
  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
  </a>
  <button class="btn btn-ghost" onclick="window.print()">
@@ -1075,16 +1075,17 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  <a class="toc-item" data-target="screens"><span class="toc-num">06</span> Screens</a>
  <a class="toc-item toc-sub" data-target="screen-1">· 1 Overview</a>
  <a class="toc-item toc-sub" data-target="screen-2">· 2 Shelf Health</a>
- <a class="toc-item toc-sub" data-target="screen-3">· 3 Sales Decomposition</a>
- <a class="toc-item toc-sub" data-target="screen-4">· 4 Response Curves</a>
- <a class="toc-item toc-sub" data-target="screen-5">· 5 Keyword Calculator</a>
- <a class="toc-item toc-sub" data-target="screen-6">· 6 Scenario Simulator</a>
- <a class="toc-item toc-sub" data-target="screen-7">· 7 ROI Looker</a>
- <a class="toc-item" data-target="checklist"><span class="toc-num">07</span> Checklist</a>
+ <a class="toc-item toc-sub" data-target="screen-3">· 3 Marketing &amp; Sales</a>
+ <a class="toc-item toc-sub" data-target="screen-4">· 4 Diagnose</a>
+ <a class="toc-item toc-sub" data-target="screen-5">· 5 Scenario Builder</a>
+ <a class="toc-item toc-sub" data-target="screen-6">· 6 ROI Looker</a>
+ <a class="toc-item toc-sub" data-target="screen-7">· 7 Settings</a>
+ <a class="toc-item" data-target="open-questions"><span class="toc-num">07</span> Open Questions</a>
+ <a class="toc-item" data-target="checklist"><span class="toc-num">08</span> Checklist</a>
  <div class="toc-footer">
- Doc <span class="mono">v1</span><br>
- <span class="mono">2026-05-22</span><br>
- prototype v1
+ Doc <span class="mono">v2</span><br>
+ <span class="mono">2026-05-26</span><br>
+ prototype v2
  </div>
 </nav>
 
@@ -1096,7 +1097,7 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 <section id="overview" class="doc-section">
  <div class="section-num">SECTION 01</div>
  <h1 class="doc-h1">DSIM Reviewer Documentation</h1>
- <p class="doc-subtitle">For stakeholders reviewing the DSIM wireframe prototype (an early visual mockup of the product) with zero prior context on Lactalis, digital-shelf vocabulary, Bayesian MMM methodology, or the 5-stage customer journey. Read alongside with actual design prototype.</p>
+ <p class="doc-subtitle">For stakeholders reviewing the DSIM wireframe prototype v2 (an early visual mockup of the product) with zero prior context on Lactalis, digital-shelf vocabulary, Bayesian MMM methodology, or the 5-stage customer journey. Read alongside with actual design prototype.</p>
 
  <div class="card-grid-2">
 
@@ -1106,7 +1107,7 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  <div class="callout-title">What this is</div>
  </div>
  <div class="callout-body">
- A 7-page interactive dashboard prototype for <strong>DSIM</strong> (Digital Shelf Impact Measurement) — DataWeave's Bayesian Marketing Mix Model product for CPG brands selling on Walmart.com. It quantifies how digital-shelf factors drive sales, sizes the upside from moving each lever, and tracks whether shipped plays delivered the predicted lift.
+ A 7-page interactive dashboard prototype for <strong>DSIM</strong> (Digital Shelf Impact Measurement) — DataWeave's Bayesian Marketing Mix Model product for CPG brands selling on Walmart.com. It quantifies how <strong>6 digital-shelf pillars</strong> drive sales, sizes the upside from moving each lever, and tracks whether shipped plays delivered the predicted lift. v2 adds a Marketing &amp; Sales context page, Goal Builder entry on the Scenario Builder, and a team-shared Decision Log.
  </div>
  </div>
 
@@ -1130,7 +1131,7 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  <ul>
  <li>Model fit: R² = <span class="mono">0.91</span>, MAPE = <span class="mono">5.9%</span></li>
  <li><strong>17 Walmart stores</strong> in 4 mega-clusters</li>
- <li>Headline: <strong>$30K/day reallocation upside</strong> (Onsite Search → Offsite Display) at 90% confidence</li>
+ <li>Headline: <strong>$30K/day reallocation upside</strong> ($10.9M/yr, Onsite Search → Offsite Display) at 90% CI</li>
  <li>3 sub-brands: Adult (52%), Baby (28%), Kids (20%)</li>
  <li>Cross-sub-brand halo: Kids/Baby media → <strong>+12%</strong> incremental Adult sales</li>
  </ul>
@@ -1161,8 +1162,9 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  <tbody>
  <tr><td class="journey-stage-cell"><span class="num">1</span> Scorecard</td><td>"Am I winning the shelf?" — triage at a glance</td><td class="journey-page-cell">Overview</td></tr>
  <tr><td class="journey-stage-cell"><span class="num">2</span> Mini-DSA</td><td>"Which pillar is bleeding?" — diagnose the failing vital sign</td><td class="journey-page-cell">Shelf Health</td></tr>
- <tr><td class="journey-stage-cell"><span class="num">3</span> Diagnose</td><td>"What actually drove sales, and where's headroom?"</td><td class="journey-page-cell">Sales Decomposition · Response Curves</td></tr>
- <tr><td class="journey-stage-cell"><span class="num">4</span> Plan</td><td>"If I move this lever, what happens?" — size + commit</td><td class="journey-page-cell">Keyword Calculator · Scenario Simulator</td></tr>
+ <tr><td class="journey-stage-cell"><span class="num">1.5</span> Context</td><td>"How is my media performing against campaign?" — marketing KPIs</td><td class="journey-page-cell">Marketing &amp; Sales</td></tr>
+ <tr><td class="journey-stage-cell"><span class="num">3</span> Diagnose</td><td>"What actually drove sales, and where's headroom?"</td><td class="journey-page-cell">Diagnose (2 tabs: waterfall + response curves)</td></tr>
+ <tr><td class="journey-stage-cell"><span class="num">4</span> Plan</td><td>"If I move this lever, what happens?" — size + commit</td><td class="journey-page-cell">Scenario Builder (Goal Builder entry + levers)</td></tr>
  <tr><td class="journey-stage-cell"><span class="num">5</span> Trackability</td><td>"Did our plays deliver?" — close the loop</td><td class="journey-page-cell">ROI Looker</td></tr>
  </tbody>
  </table>
@@ -1171,11 +1173,11 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  <div class="card navigate-card">
  <div class="callout-title">How to navigate the prototype</div>
  <ol class="navigate-list">
- <li>Sidebar on the left (dark navy) has <strong>7 nav items + Settings</strong>.</li>
- <li>Keyboard shortcuts: press <code class="kbd">1</code>…<code class="kbd">8</code> to switch pages (works when focus is outside a form input).</li>
+ <li>Sidebar on the left (dark navy) has <strong>7 nav items + Settings</strong>: Overview · Shelf Health · Marketing &amp; Sales · Diagnose · Scenario Builder · ROI Looker · Settings.</li>
+ <li>Keyboard shortcuts: press <code class="kbd">1</code>…<code class="kbd">7</code> to switch pages (works when focus is outside a form input).</li>
  <li>The model-refreshed status sits at the sidebar footer (<span class="mono">"Tue, May 19"</span>).</li>
- <li>The top nav has three context selectors (Account, Brand, Date range) — these are <strong>non-functional</strong> in this wireframe; treat them as visual placeholders for global filters in v2.</li>
- <li>Pages <strong>5, 6, 7 are interactive</strong> (sliders, quarter pills, save flows). Pages 1–4 are read-only data renderings with hover tooltips on charts.</li>
+ <li>The top nav has three context selectors (Account, Brand, Date range) — these are wired as <strong>global filters</strong> affecting all pages simultaneously.</li>
+ <li>Pages <strong>5 and 6 are highly interactive</strong> (Goal Builder, sliders, Decision Log, save flows). Pages 1–4 and 7 are primarily read-only with hover tooltips.</li>
  </ol>
  </div>
 </section>
@@ -1184,7 +1186,7 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 <section id="pillars" class="doc-section">
  <div class="section-num">SECTION 02 · GLOSSARY</div>
  <h2 class="doc-h2">Pillars</h2>
- <p class="section-helper">DSIM uses customer-friendly pillar names that map to underlying KPIs. Throughout the product, the customer-facing name appears first; the technical KPI appears in tooltips and footnotes.</p>
+ <p class="section-helper">DSIM tracks <strong>6 pillars</strong> using customer-friendly names that map to underlying KPIs. Throughout the product, the customer-facing name appears first; the technical KPI appears in tooltips and footnotes. Competition is a headwind measured in decomposition, not a scored pillar.</p>
 
  <div class="tbl-wrap" id="pillars-tbl-wrap">
  <table class="doc-tbl" data-searchable="true">
@@ -1234,10 +1236,17 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  <td class="lactalis-eg">SoS = 24.1%, down 0.5 pts WoW (Week-over-Week — comparing this week to last week); each +1 pt SoS ≈ +$45K quarterly sales</td>
  </tr>
  <tr>
+ <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-reviews)"></span><span class="pillar-name-mono">Reviews</span></div></td>
+ <td><span class="cust-name">Reviews</span></td>
+ <td><span class="kpi-mono">Star rating, review count, review velocity, review sentiment score</span></td>
+ <td>Walmart's algorithm surfaces high-reviewed products; conversion rates correlate with rating. Poor reviews suppress media ROI — spend can't compensate for a 2-star product.</td>
+ <td class="lactalis-eg">4.3★ avg across tracked SKUs; Localized Stores cluster below 4.0★ flagged as watch</td>
+ </tr>
+ <tr>
  <td><div class="pillar-cell"><span class="pillar-swatch" style="background:var(--pillar-competition)"></span><span class="pillar-name-mono">Competition</span></div></td>
- <td><span class="cust-name">Competition</span></td>
- <td><span class="kpi-mono">Competitor share of voice / spend / pricing pressure</span> (treated as headwind in decomposition)</td>
- <td>Sales drops can be your fault or theirs. Decomposition separates the two.</td>
+ <td><span class="cust-name">Competition headwind</span></td>
+ <td><span class="kpi-mono">Competitor share of voice / spend / pricing pressure</span> (treated as headwind in decomposition — not a pillar you improve, a force you account for)</td>
+ <td>Sales drops can be your fault or theirs. Decomposition separates the two — Competition is shown as a negative bar, not a scored pillar.</td>
  <td class="lactalis-eg">Headwind contributed −5% in Q2 decomposition, concentrated in Southern Staples</td>
  </tr>
  </tbody>
@@ -1273,7 +1282,7 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
  <tr data-letter="I"><td class="term-cell"><span class="glossary-term">iROAS</span></td><td class="def-cell">Incremental Return on Ad Spend — incremental revenue ÷ ad spend. The dollar-denominated cousin of <span class="glossary-term">iROI</span>.</td></tr>
  <tr data-letter="E"><td class="term-cell"><span class="glossary-term">Effect Share</span></td><td class="def-cell">The fraction of total sales attributable to a driver (e.g., Promoted contributed 23% of Q2 sales).</td></tr>
  <tr data-letter="I"><td class="term-cell"><span class="glossary-term">Investment Share</span></td><td class="def-cell">The fraction of total controllable spend allocated to a driver.</td></tr>
- <tr data-letter="9"><td class="term-cell"><span class="glossary-term">90% Confidence Interval (CI)</span></td><td class="def-cell">The range within which the true value falls 90% of the time according to the Bayesian posterior. DSIM uses 90% CI throughout (note: Overview strip currently says 95% — known wording note (the label may be clearer in the final product), see Critique).</td></tr>
+ <tr data-letter="9"><td class="term-cell"><span class="glossary-term">90% Confidence Interval (CI)</span></td><td class="def-cell">The range within which the true value falls 90% of the time according to the Bayesian posterior. DSIM uses <strong>90% CI throughout</strong> (v2 fix — v1.1 corrected the v1 bug where the Overview strip showed 95%). All CI references in v2 should read 90%.</td></tr>
  <tr data-letter="S"><td class="term-cell"><span class="glossary-term">Store Clustering</span></td><td class="def-cell">Grouping Walmart stores by sales pattern similarity. Lactalis = <span class="num">17 stores in 4 mega-clusters</span>: Western High Performers, Northern Growth Engines, Southern Staples, Localized Stores.</td></tr>
  <tr data-letter="H"><td class="term-cell"><span class="glossary-term">Halo Effect</span></td><td class="def-cell">Cross-product or cross-sub-brand sales lift driven by media or activity on a different SKU/sub-brand. Lactalis Kids/Baby media → <span class="num">+12%</span> Adult sales.</td></tr>
  <tr data-letter="S"><td class="term-cell"><span class="glossary-term">Sub-brand modeling</span></td><td class="def-cell">Decomposing sales separately by sub-brand to isolate sub-brand-specific drivers and cross-sub-brand halos.</td></tr>
@@ -1316,8 +1325,13 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 <!-- ============ SECTION 5: LEVERS ============ -->
 <section id="levers" class="doc-section">
  <div class="section-num">SECTION 05 · GLOSSARY</div>
- <h2 class="doc-h2">Lever Taxonomy <span style="color: var(--text-tertiary); font-weight: 400; font-size: 16px;">(Scenario Simulator)</span></h2>
- <p class="section-helper">The Simulator (Page 6) groups levers into three classes. Each class has a colored left border on the section card.</p>
+ <h2 class="doc-h2">Lever Taxonomy <span style="color: var(--text-tertiary); font-weight: 400; font-size: 16px;">(Scenario Builder)</span></h2>
+ <p class="section-helper">The Scenario Builder (Page 5) groups levers into three classes. Each class has a colored left border on the section card. In v2, before seeing any lever sliders, users first select a <strong>Goal</strong> via the Goal Builder entry step.</p>
+ <div class="card" style="margin-bottom: 20px; background: var(--brand-tint); border-color: rgba(74,144,217,0.2);">
+   <div class="callout-title" style="margin-bottom: 8px;">Goal Builder entry step (v2 new)</div>
+   <div class="callout-body">Before exposing the 3 lever classes, users select a goal: <strong>Maximize Revenue</strong> · <strong>Protect Margin</strong> · <strong>Improve Share of Voice</strong> · <strong>Improve a Pillar</strong> · <strong>Custom</strong>. The selected goal contextually surfaces only the relevant lever subset — e.g. "Improve a Pillar" first asks which pillar, then shows only levers that influence that pillar. Pick <strong>Custom</strong> to see all 3 classes simultaneously. This reduces cognitive load for the most common use cases and makes the "right" lever set discoverable without scrolling through 13 sliders.
+   </div>
+ </div>
 
  <div class="lever-grid">
 
@@ -1389,22 +1403,85 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 <section id="screens" class="doc-section">
  <div class="section-num">SECTION 06</div>
  <h2 class="doc-h2">Per-Screen Walkthrough</h2>
- <p class="section-helper">Each of the 7 prototype pages explained. Click any page header to expand. Multiple can be open at once.</p>
+ <p class="section-helper">Each of the 7 v2 prototype pages explained. Click any page header to expand. Multiple can be open at once. Page order: Overview · Shelf Health · Marketing &amp; Sales · Diagnose · Scenario Builder · ROI Looker · Settings.</p>
 
  <div class="accordion" id="accordion"></div>
 </section>
 
-<!-- ============ SECTION 7: CHECKLIST ============ -->
+<!-- ============ SECTION 7: OPEN QUESTIONS ============ -->
+<section id="open-questions" class="doc-section">
+ <div class="section-num">SECTION 07 · POST-v2</div>
+ <h2 class="doc-h2">Open Questions for v2.1</h2>
+ <p class="section-helper">14 design decisions locked (D1–D14). These items are deferred to v2.1 — they are not blocking the v2 wireframe review, but reviewers should be aware of them and can offer input.</p>
+
+ <div class="tbl-wrap">
+ <table class="doc-tbl">
+ <thead><tr><th style="width:60px;">#</th><th style="width:220px;">Area</th><th>Open question</th><th style="width:140px;">Status</th></tr></thead>
+ <tbody>
+ <tr>
+   <td class="kpi-mono">OQ1</td>
+   <td><strong>Goal Builder sub-flow</strong></td>
+   <td>"Improve a Pillar" goal — when the user selects this goal, how do they pick the pillar? Dropdown vs button grid? Dropdown is compact but adds a step; button grid is visual but takes more space.</td>
+   <td><span class="stage-chip stage-4">Needs UX decision</span></td>
+ </tr>
+ <tr>
+   <td class="kpi-mono">OQ2</td>
+   <td><strong>Brand Manager access scope</strong></td>
+   <td>D5 locked Brand Manager to a filtered Overview with no Scenario Builder access. But Marketing &amp; Sales and ROI Looker are more neutral — should Brand Managers see them? Current wireframe hides both from Brand Manager login flow.</td>
+   <td><span class="stage-chip stage-4">Needs team decision</span></td>
+ </tr>
+ <tr>
+   <td class="kpi-mono">OQ3</td>
+   <td><strong>Diagnose default tab</strong></td>
+   <td>On cold load, should Diagnose open to Tab 1 ("What drove sales" — backward-looking) or Tab 2 ("Where is the headroom" — forward-looking)? Depends on primary use case: monthly reporting vs. weekly planning.</td>
+   <td><span class="stage-chip stage-3">Deferred DF-class</span></td>
+ </tr>
+ <tr>
+   <td class="kpi-mono">OQ4</td>
+   <td><strong>Reviews bar position in waterfall</strong></td>
+   <td>In the Diagnose waterfall, where does the Reviews bar sit? Between Looking Great and Right Price (thematically adjacent to content quality), or grouped under Looking Great? Affects visual flow and the story the chart tells.</td>
+   <td><span class="stage-chip stage-3">Deferred DF-class</span></td>
+ </tr>
+ <tr>
+   <td class="kpi-mono">OQ5</td>
+   <td><strong>Decision Log conflict resolution</strong></td>
+   <td>D14 made Decision Log team-shared. What happens if two team members edit the same play simultaneously? Role-based edit gating (only the play owner can modify)? Last-write-wins? This is deferred to v2.1 (DF4).</td>
+   <td><span class="stage-chip stage-3">Deferred DF-class</span></td>
+ </tr>
+ <tr>
+   <td class="kpi-mono">OQ6</td>
+   <td><strong>Scintilla integration timing</strong></td>
+   <td>The Marketing &amp; Sales keyword panel shows a Scintilla stub. When does the actual integration land? Depends on a parallel research track with Eng (DF1). Current wireframe shows illustrative data only.</td>
+   <td><span class="stage-chip stage-3">Parallel track</span></td>
+ </tr>
+ <tr>
+   <td class="kpi-mono">OQ7</td>
+   <td><strong>Role-based defaults on Scenario Builder</strong></td>
+   <td>Should the Goal Builder pre-select a goal based on the user's role? e.g., eCommerce Lead → "Reallocate Budget" as default; Brand Manager (if they get access) → "Improve a Pillar." Deferred to v2.1 (DF2) — needs user interviews.</td>
+   <td><span class="stage-chip stage-3">Deferred DF-class</span></td>
+ </tr>
+ <tr>
+   <td class="kpi-mono">OQ8</td>
+   <td><strong>Marketing &amp; Sales — Brand Manager access</strong></td>
+   <td>Related to OQ2. Marketing &amp; Sales shows spend and attribution data that agency partners use. Should Brand Managers have read access even if they can't plan scenarios? Awaiting role-access decision.</td>
+   <td><span class="stage-chip stage-4">Needs team decision</span></td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+</section>
+
+<!-- ============ SECTION 8: CHECKLIST ============ -->
 <section id="checklist" class="doc-section">
- <div class="section-num">SECTION 07</div>
+ <div class="section-num">SECTION 08</div>
  <h2 class="doc-h2">First-Time Reviewer Checklist</h2>
- <p class="section-helper">New to the prototype? Use this as your guided walk-through. Open the prototype alongside this doc, follow the steps in order, and tick each one as you go. You should be able to cover all 12 steps in about 10 minutes. Your progress saves automatically — pick up where you left off if you close the tab.</p>
+ <p class="section-helper">New to the v2 prototype? Use this as your guided walk-through. Open the prototype alongside this doc, follow the steps in order, and tick each one as you go. You should be able to cover all 14 steps in about 15 minutes. Your progress saves automatically — pick up where you left off if you close the tab.</p>
  <div style="background:rgba(74,144,217,0.06);border:1px solid rgba(74,144,217,0.18);border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#1e3a5f;">
    <strong>Before you start:</strong> Open the DSIM prototype in a separate browser tab at full desktop width. Keep this doc open for reference. The prototype link should have been shared with you alongside this document.
  </div>
 
  <div class="checklist-progress">
- <div class="checklist-progress-label">Checked <span class="count" id="check-count">0</span> of 12</div>
+ <div class="checklist-progress-label">Checked <span class="count" id="check-count">0</span> of 14</div>
  <div class="checklist-bar"><div class="checklist-bar-fill" id="check-bar"></div></div>
  <div class="checklist-pct" id="check-pct">0%</div>
  </div>
@@ -1426,53 +1503,54 @@ td.def-cell .num { font-family: 'JetBrains Mono', monospace; color: var(--text-p
 // ============================================================
 const SCREENS = [
  {
- n: 1, name: 'Overview', side: 'Sidebar position: 1st (top)', kbd: '1',
+ n: 1, name: 'Overview', side: 'Sidebar position: 1 of 7', kbd: '1',
  stage: 1, stageLabel: 'Stage 1 — Scorecard',
  whatShows: [
- 'Page header with Lactalis context: account, channel, time window, cluster count.',
- 'Hero scorecard: 1 overall DSIM Score (76/100) + 5 pillar tiles in a 6-column grid. Each pillar tile shows score, score bar, delta vs prior 13 wks, the underlying KPI (OSA, CQS, ROAS, SoS), and a mini trend chart.',
- 'Shelf Health strip: 4 cells — in-stock rate (96.3%), SKUs at risk (11 of 142), avg content score (7.2/10), reallocation upside ($30K/day at 95% CI — wording note (the label may be clearer in the final product), should be 90%).',
- 'Score trend chart: 13-week line chart with Overall + 5 pillars.',
- 'Mega-cluster panel: 4 clusters with score, score bar, status pill, delta.',
+ 'Page header with Demo Brand context: account, channel, time window, cluster count. (Lactalis is a switchable example — select from the account dropdown.)',
+ 'Hero scorecard: 1 overall Shelf Health Score (76/100) + <strong>6 pillar tiles</strong> in a 7-column grid. Each tile shows score, score bar, delta vs prior 13 wks, the underlying KPI (OSA, SoS, CQS, ROAS, Price Index, Star Rating), and a mini trend chart.',
+ 'Marketing &amp; Sales KPI strip: 4 cells — total media spend, attributed revenue, blended iROAS, and reallocation upside ($30K/day at 90% CI).',
+ 'Score trend chart: 13-week line chart with Overall + 6 pillars.',
+ 'Mega-cluster panel: 4 clusters with score, score bar, status pill, delta. Clicking a cluster routes to Shelf Health with that cluster pre-filtered.',
  'Top movers table: 5 SKUs with the largest WoW score change, including the pillar that drove the change.',
  'Model quality footer strip: R² = 0.91, MAPE = 5.9%, method = Bayesian MMM (Robyn), refreshed Tue May 19.'
  ],
  userJob: 'Triage — should I act this week, and where?',
  comprehends: [
- ['Overall DSIM score is 76, trending up 3.2 pts', '— the brand is healthy and improving.'],
- ['Promoted (Retail Media) is the weakest pillar at 64/100 but the fastest-growing (+4.2)', ". It's where the action is."],
- ['$30K/day reallocation opportunity sitting on the table', '— click through to investigate.']
+ ['Overall Shelf Health Score is 76, trending up 3.2 pts', '— the brand is healthy and improving.'],
+ ['Promoted (Retail Media) is the weakest pillar at 64/100 but the fastest-growing (+4.2)', ". It\'s where the action is."],
+ ['$30K/day reallocation opportunity ($10.9M/yr) is surfaced in the marketing KPI strip', '— click through to Marketing &amp; Sales or Diagnose to investigate.']
  ],
  insights: [
- 'Reallocation upside = $30K/day at confidence interval (the headline number).',
+ 'Reallocation upside = $30K/day at 90% CI — that\'s $10.9M annualized, the headline number.',
  'Localized Stores cluster scoring 66 with ↓1.1 trend → underperformer needing diagnosis.',
  '11 of 142 SKUs at risk — manageable but watch list.'
  ],
  links: [
  'Pillar tiles → Shelf Health (Page 2).',
- 'Mega-cluster "View all →" → Shelf Health.',
- '"New scenario" button → Scenario Simulator (Page 6).',
- '"View model diagnostics →" → dead link in wireframe.'
+ 'Mega-cluster card click → Shelf Health with that cluster pre-filtered.',
+ '"New scenario" button → Scenario Builder (Page 5).',
+ 'Marketing &amp; Sales KPI strip → Marketing &amp; Sales page (Page 3).'
  ],
  antiMisreads: [
- 'The pillar deltas are vs prior 13 wks, not WoW. The strip below shows WoW. Two different time frames coexist on one page.',
- 'Score 76/100 is a weighted composite — the weights aren\'t disclosed on this page. A user may want to know "is this weighted by revenue or equally?" — open question.'
+ 'The pillar deltas are vs prior 13 wks, not WoW. The KPI strip shows current-week reallocation upside. Two different time frames coexist on one page — this is intentional (strategic view vs tactical alert).',
+ 'Score 76/100 is a weighted composite — the weights aren\'t disclosed on this page. A user may ask "weighted by revenue or equally?" — open question for the team.',
+ 'The overall score is now labeled Shelf Health Score (v2 rename from DSIM Score) to better describe what it measures.'
  ]
  },
  {
- n: 2, name: 'Shelf Health (Mini-DSA)', side: 'Sidebar position: 2nd', kbd: '2',
+ n: 2, name: 'Shelf Health', side: 'Sidebar position: 2 of 7', kbd: '2',
  stage: 2, stageLabel: 'Stage 2 — Mini-DSA',
  whatShows: [
- '3-column grid of 6 pillar vital-sign cards.',
- 'Each card: pillar name + sub-label, status dot (green = good, yellow = needs attention, red = critical issue), 30-day mini trend chart, current value with formatted unit (%, /100, /10, stars), delta with direction arrow, verdict sentence, and an insight callout with color-coded status indicator.',
- 'Three filter chips at the top: Cluster / Sub-brand / Product Type (non-functional in wireframe).',
- 'The 6 pillars: Always Available (78%, danger), Easy To Find (23%, warning), Looking Great (84, success), Right Price (7.8/10, success), Promoted (64%, success), Reviews (4.3★, success).'
+ '3-column grid of <strong>6 pillar vital-sign cards</strong> (all 6 pillars, consistent with Overview).',
+ 'Each card: pillar name + sub-label, status dot (green = good, yellow = needs attention, red = critical issue), 30-day mini trend chart with 90% CI band, current value with formatted unit (%, /100, /10, ★), delta with direction arrow, verdict sentence, and an insight callout with color-coded status indicator.',
+ 'Four cluster filter chips at the top: Western High Performers · Northern Growth Engines · Southern Staples · Localized Stores. Clicking isolates that cluster across all 6 cards.',
+ 'The 6 pillars: Always Available (78%, danger), Easy To Find (23.4%, warning), Looking Great (84, success), Right Price (7.8/10, success), Promoted (64%, success), Reviews (4.3★, success).'
  ],
  userJob: 'Diagnose — which pillar is bleeding and is it widespread or local?',
  comprehends: [
  ['Availability is the urgent fire', '— 3 clusters below 75% OSA, est. $24K Q2 sales suppressed.'],
- ['Easy To Find is trending sideways with a warning watch', '— Northern Growth declining.'],
- ['Most pillars are healthy', '→ only one to two need attention.']
+ ['Easy To Find is trending sideways with a warning watch', '— Northern Growth Engines declining.'],
+ ['All 6 pillars visible here match the Overview scorecard', '— no pillar count discrepancy in v2.']
  ],
  insights: [
  'Availability collapse is localized — verdict says "3 clusters below 75%" not all 17. Frames the response: cluster-targeted, not brand-wide.',
@@ -1480,160 +1558,165 @@ const SCREENS = [
  '$30K/day reallocation upside repeats (Onsite Search → Offsite Display) — consistent with Overview strip.'
  ],
  links: [
- 'Pillar card click → Sales Decomposition (Page 3) .',
- 'Footer link "Drill into Sales Decomposition →" → Page 3.'
+ 'Pillar card click → Diagnose (Page 4), pre-selected to that pillar\'s waterfall bar.',
+ 'Footer link "Drill into Diagnose →" → Page 4.'
  ],
  antiMisreads: [
- 'This page shows <strong>6 pillars</strong> including Reviews. The Overview page shows <strong>5</strong> (no Reviews). The mental model of "how many pillars are there?" is contradicted. Reviewer should confirm whether Reviews is in scope or out.',
- 'The filter chips are non-functional but look interactive — user will try them.'
+ 'The cluster heatmap on this page shows pillar-level cluster scores. The full 17-store heatmap (store × factor) lives on the Diagnose page. These are two different heatmap views.',
+ 'Filter chips apply to all 6 pillar cards simultaneously — selecting "Southern Staples" doesn\'t navigate away, it resets the card metrics to that cluster\'s values.'
  ]
  },
  {
- n: 3, name: 'Sales Decomposition', side: 'Sidebar position: 3rd', kbd: '3',
- stage: 3, stageLabel: 'Stage 3 — Diagnose (What drove past sales)',
+ n: 3, name: 'Marketing & Sales', side: 'Sidebar position: 3 of 7 (NEW in v2)', kbd: '3',
+ stage: 1, stageLabel: 'Stage 1.5 — Context',
  whatShows: [
- 'Page header with R² = 0.91 context.',
- '3-tab strip: National, By Sub-brand, By Cluster.',
- '<strong>National pane:</strong> Waterfall chart showing baseline + 6 pillar contributions + competition headwind + total. Beside it, a "What this means" interp panel calling out Promoted at 23%, Offsite Display 1.55× vs Onsite Search 0.83× iROI, and Competition headwind concentrated in Southern Staples. Below: a 4-card Promoted-breakdown row showing each retail-media channel\'s contribution and iROI.',
- '<strong>Sub-brand pane:</strong> 3 mini-waterfalls (Adult $8.2M, Baby $4.1M, Kids $2.8M) + a halo callout — "Kids/Baby media drove +12% incremental Adult sales."',
- '<strong>Cluster pane:</strong> 17-column heatmap (17 stores × 17 factors) with stores grouped into the 4 mega-clusters. R² (how well the model fits the data, 0–100%) and MAPE (Mean Absolute Percentage Error — how far off predictions are on average) rows at the bottom. Red→amber→white→blue scale.'
+ 'KPI strip at top: Total spend ($1.2M/quarter), Attributed revenue ($8.4M), Blended iROAS (7.0×), and Reallocation upside ($30K/day).',
+ 'Sortable campaign table: active campaigns with columns for campaign name, channel, spend, attributed revenue, iROAS, and a zone pill (Growth / Saturation / Flat). Default sort by iROAS descending.',
+ 'Channel ROI comparison chart: side-by-side bars for Onsite Search, Offsite Display, Onsite Display, Sponsored Products — showing spend share vs. effect share vs. iROI. Saturated channels flagged in amber.',
+ 'Keyword share-of-voice panel: trend chart of SoS for 3–5 tracked keywords (e.g., protein bar, iced tea, dish soap) with WoW delta. Powered by a Scintilla keyword stub — indicates integration status.',
+ 'Page footer note: "Marketing &amp; Sales surfaces spend and attribution data. Model-based lift estimates are on the Diagnose and Scenario Builder pages."'
  ],
- userJob: 'Understand what actually drove last quarter\'s sales.',
+ userJob: 'Orient agency partners and media leads — what is our spend posture and where is the channel-level ROI imbalance?',
  comprehends: [
- ['Baseline is 49%', '— half of Lactalis Walmart sales would happen with zero activity. Marketing is moving the other half.'],
- ['Promoted (Retail Media) is doing 23% of the lift', ', but the dollar efficiency is wildly uneven — Onsite Search is saturated, Offsite Display is underinvested.'],
- ['The halo from Kids/Baby media → Adult sales is real and big (+12%)', '. Single-brand attribution would miss this.']
+ ['Onsite Search is saturated (iROI 0.83×)', '— the channel ROI chart makes the imbalance visible at a glance without needing to go to Diagnose.'],
+ ['Offsite Display is underinvested (iROI 1.55×)', '— the reallocation opportunity is pre-calculated and surfaced in the KPI strip.'],
+ ['This page is context, not planning.', ' Agency partners use it to understand current posture before opening the Scenario Builder.']
  ],
  insights: [
- 'Specific iROI numbers: Offsite Display 1.55×, Onsite Display 1.12×, Sponsored Visibility 0.94×, Onsite Search 0.83×.',
- 'Competition headwind −5% is geographically concentrated, not uniform.',
- 'Cluster heatmap shows Western High Performers carry positive contribution on nearly every factor; Localized Stores show negative on most.'
+ 'Blended iROAS 7.0× masks wide channel spread: best channel at 1.55× (Offsite Display), worst at 0.83× (Onsite Search). Blended number flatters the portfolio.',
+ 'Scintilla keyword panel shows SoS trend — protein bar declining WoW while dish soap gaining. Indicates where to move spend in the Keyword tab of Scenario Builder.',
+ 'Agency partners (Woven Commerce, etc.) spend most review time on this page — it maps to their reporting cadence.'
  ],
  links: [
- 'Tab switching is in-page only.',
- 'Export button — non-functional.',
- 'No explicit link from here to Response Curves (a missing journey step).'
+ 'Campaign table row click → Diagnose (Page 4), pre-filtered to that channel.',
+ '"Open Scenario Builder" button → Page 5 with Goal = "Reallocate Budget" pre-selected.',
+ 'Keyword panel → Scenario Builder Keyword tab.'
  ],
  antiMisreads: [
- 'The waterfall sums to ~91% not 100% — Baseline + 6 pillar contributions − Competition = 91% (the model\'s explained variance). The unexplained 9% is implicit. A reviewer may ask "where\'s the missing 9%?"',
- 'The Cluster heatmap values are illustrative, not real Lactalis data. Treat as illustrative.'
+ 'This page shows spend attribution, not sales decomposition. Attribution ≠ causal contribution. The Bayesian causal contribution lives on the Diagnose waterfall.',
+ 'The Scintilla keyword panel is a stub in v2 — the data connection is confirmed in concept but integration timing is deferred (DF1). Treat keyword trend data as illustrative.',
+ 'Brand Manager access to this page is an open question (see Open Questions section). Current wireframe shows it accessible to all roles.'
  ]
  },
  {
- n: 4, name: 'Response Curves', side: 'Sidebar position: 4th', kbd: '4',
- stage: 3, stageLabel: 'Stage 3 — Diagnose (What to change next)',
+ n: 4, name: 'Diagnose', side: 'Sidebar position: 4 of 7 (merged: Sales Decomposition + Response Curves)', kbd: '4',
+ stage: 3, stageLabel: 'Stage 3 — Diagnose',
  whatShows: [
- '7 driver pills across the top: Availability, Content Quality, Onsite Search, Offsite Display, Sponsored Visibility, Assortment (default active), Right Price.',
- 'Large response curve chart showing the Hill curve from index 0 to 100, with three colored zones — Flat (0–31, blue tint), Growth (32–87, green tint), Saturation (88–100, amber tint).',
- 'Three markers showing your current spend level on the curve: Today (yellow dashed), Target (green dashed), Full Potential (orange solid).',
- 'Right column: 7 metric cards — Current Index (score out of 100), Target Index, Max Growth Index, Sales lift today, Sales lift at target (with delta %), Sales lift at max growth, Elasticity at avg (with elasticity at optimal in subtitle).',
- 'Bottom: a full-width recommendation card — "You\'re in the Growth Zone. Increasing Assortment from index 50 → 69 unlocks ~$6,943 incremental sales [CI $5,200 – $8,700]. Diminishing returns kick in past 87."'
+ '<strong>Two tabs sharing driver-selection state:</strong> Tab 1 "What drove sales" (waterfall) and Tab 2 "Where is the headroom" (response curves). Clicking a bar in Tab 1 pre-selects that driver in Tab 2 — the cross-link works in both directions.',
+ '<strong>Tab 1 — What drove sales:</strong> Waterfall chart showing baseline + 6 pillar contributions + competition headwind + total. Sub-brand pane (3 mini-waterfalls: Adult $8.2M, Baby $4.1M, Kids $2.8M + halo callout). Cluster pane (17-column heatmap, stores × factors, grouped into 4 mega-clusters — terminal view, no drill). Interpretation panel calling out Promoted at 23%, Offsite Display 1.55× vs Onsite Search 0.83× iROI.',
+ '<strong>Tab 2 — Where is the headroom:</strong> Driver pill selector (6+ drivers). Large Hill response curve with 3 zones (Flat / Growth / Saturation) and 3 markers (Today / Target / Full Potential). Right column: 7 metric cards. Bottom: recommendation card with 90% CI lift estimate.',
+ '"Open in Scenario Builder" cross-link in both tabs — carries the selected driver or pillar forward.'
  ],
- userJob: 'Identify the highest-leverage lever and the right operating point.',
+ userJob: 'Understand what drove sales last quarter (Tab 1), identify the highest-leverage lever and its operating point (Tab 2).',
  comprehends: [
- ['Each driver has a sweet spot.', ' Past it, more spend / effort yields less. Stop overspending Onsite Search.'],
- ['Today / Target / Max Growth are three distinct points', ' — DSIM gives a defensible target index, not just "spend more."'],
- ['The CI band on the lift estimate ($5,200 – $8,700)', ' tells the user the model is confident enough to act on.']
+ ['Baseline is 49%', '— half of sales would happen with zero activity. Marketing is moving the other half. Click any waterfall bar to see its response curve in Tab 2.'],
+ ['Promoted (Retail Media) is doing 23% of the lift', ', but the dollar efficiency is wildly uneven — Onsite Search is saturated (0.83× iROI), Offsite Display is underinvested (1.55× iROI).'],
+ ['The halo from Kids/Baby media → Adult sales is real and big (+12%)', '. Single-brand attribution misses this — DSIM catches it.']
  ],
  insights: [
- 'For Assortment specifically: today index 50, target 69, max 87. +171% lift between today and target.',
- 'Onsite Search elastAvg = 0.83 (inelastic — saturated); Offsite Display elastAvg = 1.55 (elastic — invest more). Confirms the Decomposition takeaway.',
- 'Elasticity-at-optimal is negative for every driver — diminishing returns confirmed past the saturation point.'
+ 'Specific iROI numbers in waterfall: Offsite Display 1.55×, Onsite Display 1.12×, Sponsored Visibility 0.94×, Onsite Search 0.83×.',
+ 'Competition headwind −5% is geographically concentrated in Southern Staples, not uniform across clusters.',
+ 'Cluster heatmap is a terminal view (D6 locked) — no drill into individual stores. Analyst handles store-level questions off-platform.'
  ],
  links: [
- '"Open in Simulator" button → Scenario Simulator (Page 6). NOTE: does NOT preload the active driver — known issue.'
+ 'Tab 1 waterfall bar click → switches to Tab 2 with that driver pre-selected.',
+ '"Open in Scenario Builder" → Page 5 with the active driver pre-loaded into the Goal Builder.',
+ 'Cluster heatmap has no drill path — by design (D6).'
  ],
  antiMisreads: [
- '"Index 0–100" is an abstract scale, not dollars. New users may think "50" means "$50K." It does not — it\'s a normalized position on the curve.',
- 'Different drivers have different curve shapes (different three curve-shape settings (max lift, steepness, and the spend level where half the effect kicks in)) — the Y-axis is in dollars but the X-axis is dimensionless. Cross-driver comparisons of index-points-to-move are not directly meaningful.'
+ 'The waterfall sums to ~91% not 100% — Baseline + pillar contributions − Competition headwind = the model\'s explained variance. The unexplained ~9% is implicit noise.',
+ 'The cluster heatmap is a terminal view. It shows store-cluster-level patterns, not individual store drill. This is intentional (D6 locked).',
+ '"Default tab" (Tab 1 vs Tab 2 on cold load) is an open question — see Open Questions section.'
  ]
  },
  {
- n: 5, name: 'Keyword Calculator', side: 'Sidebar position: 5th', kbd: '5',
- stage: 4, stageLabel: 'Stage 4 — Plan (keyword)',
+ n: 5, name: 'Scenario Builder', side: 'Sidebar position: 5 of 7 (merged: Keyword Calculator + Scenario Simulator + Goal Builder)', kbd: '5',
+ stage: 4, stageLabel: 'Stage 4 — Plan',
  whatShows: [
- 'Sticky 4-column input panel: Keyword + assortment coverage bar | Current organic SoS rank + current sponsored spend slider | Target rank dropdown + target sponsored spend slider | Calculate + Reset buttons.',
- '3-card output row: Opportunity Sizing card (big +$8,400 number with CI band, required spend, iROI, payback), Rising-Star Opportunity card (SoS gap, assortment coverage), Channel Saturation Alert card (auto-shown when iROI < 1.0).',
- 'Full-width keyword opportunity table — 8 sample keywords ranked by lift: chocolate spread, marshmallow fluff, whipped cream, cottage cheese, mascarpone, feta cheese, greek yogurt, brie wedge. Each row shows current SoS, current spend, suggested spend, est. $ lift, zone pill (Growth / Flat / Saturation), and an arrow.'
+ '<strong>Goal Builder entry step (new in v2):</strong> Four goal cards — Maximize Revenue · Protect Margin · Improve Share of Voice · Improve a Pillar (triggers pillar dropdown) · Custom. Selecting a goal surfaces the most relevant levers. Custom shows all 3 lever classes.',
+ '<strong>Multi-Lever tab (main):</strong> Left column (65% width) — 3 stacked lever sections with colored left borders: Direct controls (blue, 6 sliders), Influenced targets (yellow, 4 sliders), External sensitivities (gray, 3 sliders). Right column (35%, sticky) — Prediction panel: horizon toggle (Week / Month / Quarter / Year), Predicted Units with 90% CI, Predicted Dollars, ASP, Δ vs baseline, Commitment summary (counts per class).',
+ '<strong>Keyword tab:</strong> Sticky 4-column input panel (Keyword + coverage bar, current SoS rank + spend slider, target rank + spend slider, Calculate/Reset). Output cards: Opportunity Sizing (lift with 90% CI, iROI, payback), Rising-Star card, Saturation Alert. Keyword opportunity table: 8 sample rows with generic CPG keywords (protein bar, iced tea, dish soap, paper towels). Each row: current SoS, current spend, suggested spend, est. $ lift, zone pill, action arrow.',
+ 'Save Scenario button in page header opens inline save bar. Saved scenarios table shows 3 pre-loaded (Q3 Plan A · Aggressive Display Shift · Conservative Hold).'
  ],
- userJob: 'Size the opportunity for a specific keyword and decide whether to bid.',
+ userJob: 'Pick a goal, move the relevant levers, size the revenue impact, save the decision for the team.',
  comprehends: [
- ['Lift = function of (rank improvement, spend delta, assortment coverage).', ' The formula is a wireframe approximation.'],
- ['Saturation alerts auto-surface when iROI drops below 1.0', ' → tells the user "more spend here is throwing money away."'],
- ['The 8-keyword opportunity table is a workbench', ' — click any row to load it above and see its sizing.']
+ ['Goal Builder is the entry gate — the levers you see depend on the goal you choose.', ' This prevents the 13-slider paralysis problem from v1.'],
+ ['Every slider move re-predicts units, dollars, ASP, and Δ vs baseline in real time on the 90% CI basis.', ''],
+ ['Saving a scenario creates a named record in the Decision Log (ROI Looker Tab 2).', ' What you save here becomes the benchmark tracked in ROI Looker.']
  ],
  insights: [
- 'Marshmallow fluff at rank 8, current spend $2.5K/day, target spend $4K/day → +$8,400 lift at 1.42× iROI, ~14 day payback.',
- 'Chocolate spread is the biggest opportunity at +$12.1K lift (top row in table, sorted by lift).',
- 'Brie wedge at rank 3 is already in Saturation zone — only +$600 lift even with action. Don\'t bother.'
+ 'Pre-seeded Q3 Plan A predicts +$10.9M annual lift — matches the ROI Looker expected number. Self-consistent across pages.',
+ 'Generic CPG keywords in the Keyword tab (protein bar, iced tea, dish soap) replace the v1 food-specific examples. Apply the same logic to the brand\'s actual category.',
+ '"Improve a Pillar" goal in Goal Builder triggers a pillar selector before showing levers — the UX of that sub-flow (dropdown vs button grid) is an open question.'
  ],
  links: [
- 'Within the page only — clicking a table row loads the row above.'
+ 'Diagnose "Open in Scenario Builder" → lands here with goal/driver pre-populated.',
+ 'Keyword tab → cross-references Marketing &amp; Sales page keyword trend data.',
+ 'Save Scenario → creates entry in Decision Log (ROI Looker Page 6, Tab 2).'
  ],
  antiMisreads: [
- 'The lift formula is a wireframe stand-in, not the production Bayesian output. Numbers will be different in v2.',
- 'The "iROI at target" is a wireframe approximation — the real model uses probability-based model estimates (a statistical technique that shows a range of likely outcomes rather than a single number).',
- '8 keywords are illustrative — production would have hundreds.'
+ 'The Goal Builder does not restrict which levers a user can ever access — Custom goal always unlocks all 3 classes. Goal Builder is a filter, not a gate.',
+ 'The prediction formula is a wireframe stand-in for the real Bayesian draws — numbers will shift when the production model is wired in.',
+ 'Horizon multipliers (Week=1, Month=4.33, Quarter=13, Year=52) are linear scaling — they do not model time-varying decay or buildup. Production will be more sophisticated.'
  ]
  },
  {
- n: 6, name: 'Scenario Simulator', side: 'Sidebar position: 6th', kbd: '6',
- stage: 4, stageLabel: 'Stage 4 — Plan (scenario)',
- whatShows: [
- 'Left column (65% width): 3 stacked lever sections — Direct controls (blue border, 6 sliders), Influence targets (yellow border, 4 sliders), External sensitivities (gray border, 3 sliders). Each section has a class chip and a one-sentence helper text.',
- 'Right column (35% width, sticky): Prediction panel with horizon toggle (Week / Month / Quarter / Year), Predicted Units (with 90% CI), Predicted Dollars, ASP (Average Selling Price), then a divider, then Δ vs baseline (units, dollars, percentage), then a Commitment summary (count of moves per class).',
- 'Save Scenario button in page header opens an inline save bar.',
- 'Saved scenarios table below the levers shows 3 loaded by default scenarios (Q3 Plan A · Aggressive Display Shift · Conservative Hold) with predicted lift and a Load button.'
- ],
- userJob: 'Build a scenario you can either ship (Direct), brief a partner team on (Influenced), or stress-test the plan against (External).',
- comprehends: [
- ['Three classes of lever, and they behave differently', ' — the colored borders enforce the mental model.'],
- ['Every slider move re-predicts units, dollars, ASP, and Δ vs baseline in real time.', ''],
- ['Saving a scenario gives you a named, comparable plan to share with leadership.', '']
- ],
- insights: [
- 'Pre-seeded Q3 Plan A predicts +$10.9M annual lift — matches the Q3 expected number in ROI Looker. Self-consistent.',
- 'Aggressive Display Shift predicts +$13.2M but moves 9 levers — high-commitment plan.',
- 'Conservative Hold predicts +$3.1M with only 3 moves — minimum viable plan.'
- ],
- links: [
- 'Within the page only. Load a scenario → all sliders snap to that scenario\'s positions and the prediction recomputes.'
- ],
- antiMisreads: [
- 'The prediction formula is a linear combination of slider deltas from baseline, scaled to the horizon. Wireframe stand-in for the real Bayesian draws.',
- 'Negative slider positions (e.g., Walmart traffic shift = −20%) can drive the predicted dollars below baseline. This is correct behavior, intentional behavior.',
- 'The horizon multipliers (Week=1, Month=4.33, Quarter=13, Year=52) are linear scaling — they do not model time-varying effects like decay or buildup. Production model will be more sophisticated.'
- ]
- },
- {
- n: 7, name: 'ROI Looker', side: 'Sidebar position: 7th', kbd: '7',
+ n: 6, name: 'ROI Looker', side: 'Sidebar position: 6 of 7', kbd: '6',
  stage: 5, stageLabel: 'Stage 5 — Trackability',
  whatShows: [
- 'Quarter pills in page header: Q1 / Q2 / <strong>Q3</strong> (default).',
- 'Realization Hero card: half-doughnut gauge showing 68% realization, big headline "68% of expected lift realized," sub-line "Of $10.9M expected, $7.4M actual," and a flank panel showing 3 Adopted / 1 Modified / 1 Rejected of 5 plays recommended.',
- 'Play-by-play outcome table: 5 rows with Play ID, description, decision pill, expected $, actual $, realization bar (color-coded green ≥100%, amber 60–99%, red <60%), and a variance note.',
- 'Two side-by-side charts: "Walmart sales — actual vs DSIM counterfactual (what would have happened without the promotion)" (90 days, daily) and "Channel iROI — before vs after" (4 channels).',
- 'Two bottom cards: "What we learned" (3 learnings) and "Q4 plan implications" (3 forward actions).'
+ '<strong>Two tabs:</strong> Tab 1 "Campaign ROI" (default) and Tab 2 "Decision Log" (team-shared).',
+ '<strong>Tab 1 — Campaign ROI:</strong> Quarter pills in page header: Q1 / Q2 / Q3 (default). Realization Hero card: half-doughnut gauge showing 68% realization (negative realization shown counter-clockwise in red — D10 locked), headline "Of $10.9M expected, $7.4M actual," flanked by 3 Adopted / 1 Modified / 1 Rejected plays. Play-by-play outcome table: 5 rows with Play ID, description, decision pill, expected $, actual $, realization bar (green ≥100%, amber 60–99%, red <60%), and a variance note. Two side-by-side charts: actual vs DSIM counterfactual (90 days, daily) and Channel iROI before vs after. Two bottom cards: "What we learned" and "Q4 plan implications."',
+ '<strong>Tab 2 — Decision Log:</strong> Per-play table with columns: Play ID, description, Adopt / Modify / Reject dropdown (editable by team members), free-text rationale note field, Decided by, Decided on timestamp. Past-quarter rows are locked (read-only). Team-shared — all team members see the same state (D14 locked). Conflict resolution when two team members edit simultaneously is deferred to v2.1 (DF4).'
  ],
- userJob: 'Did DSIM-recommended plays deliver? What do we change for next quarter?',
+ userJob: 'Did DSIM-recommended plays deliver? Log the outcome and update the rationale for next quarter.',
  comprehends: [
- ['Of $10.9M expected, $7.4M actually landed.', ' The gap has named causes (OSA spike Wk 8, content slip 12/50, etc.).'],
- ['Some plays over-delivered:', ' Halo at 127% (proved the modeling assumption), Availability fix at 119% (exceeded plan).'],
- ['The system learns', ' — each quarter\'s variance notes feed next quarter\'s implications. Content scope was reduced from 50 SKUs to 20 to match agency capacity, based on Q2 and Q3 evidence.']
+ ['Of $10.9M expected, $7.4M actually landed.', ' The gap has named causes — OSA spike Wk 8 cost ~$2M, content scope was cut from 50 SKUs to 12 by agency capacity.'],
+ ['Some plays over-delivered:', ' Halo at 127% (proves the Kids/Baby → Adult modeling assumption), Availability fix at 119% (exceeded plan).'],
+ ['Decision Log turns the ROI Looker into a team coordination surface', ' — not just reporting, but a record of who decided what and why. Each saved scenario from Scenario Builder appears here.']
  ],
  insights: [
- 'OSA spike during Week 8 campaign cost ~$2M — supply chain handoff is the named failure mode.',
- 'Halo confirmed at +27% above prediction — the Kids/Baby → Adult mechanism is now empirically validated.',
- 'iROI shifts after the reallocation: Onsite Search 0.83×→1.21×, Offsite Display 1.55×→1.42× — settling toward a stable long-run level, exactly what the model predicted.'
+ 'OSA spike during Week 8 campaign cost ~$2M — supply chain handoff is the named failure mode, not the model.',
+ 'Halo confirmed at +27% above prediction — the Kids/Baby → Adult mechanism is empirically validated.',
+ 'iROI shifts after reallocation: Onsite Search 0.83×→1.21×, Offsite Display 1.55×→1.42× — settling toward the steady-state level the model predicted.'
  ],
  links: [
- 'Quarter pills re-render the whole page.',
- 'Per-play rows have no drill path — closing the loop is observation-only in this wireframe.'
+ 'Quarter pills (Tab 1) re-render the gauge, table, and charts.',
+ 'Decision Log (Tab 2) entries are created by saving scenarios in Scenario Builder (Page 5).',
+ 'Per-play rows have no further drill path — observation only in this wireframe.'
  ],
  antiMisreads: [
  'The 90-day actual vs counterfactual chart is generated from a deterministic formula — illustrative, not real Lactalis daily sales.',
- '"Counterfactual" means "what we project would have happened with no DSIM action" — it\'s a model output, not observed reality.',
- 'Realization >100% (Halo at 127%, Availability at 119%) is real over-delivery — these plays beat expectations.'
+ '"Counterfactual" means "what we project would have happened with no DSIM action" — it\'s a model output, not observed data.',
+ 'Realization >100% (Halo at 127%, Availability at 119%) is real over-delivery — these plays beat expectations. It is not a display error.'
+ ]
+ },
+ {
+ n: 7, name: 'Settings', side: 'Sidebar position: 7 of 7', kbd: '7',
+ stage: 5, stageLabel: 'Settings — not in journey',
+ whatShows: [
+ 'Account info: company name, Walmart seller ID, DataWeave account tier.',
+ 'Team management: team member list with role (eCommerce Lead / Brand Manager / Analyst / Read-only), invite by email, remove member.',
+ 'Role assignment: determines page access routing (Brand Manager → filtered Overview; no Scenario Builder access per D5).',
+ 'No model configuration, no integration toggles, no data source management — complexity lives in the analyst relationship, not the UI.'
+ ],
+ userJob: 'Manage team access and role assignments. Nothing else belongs here.',
+ comprehends: [
+ ['Settings is intentionally minimal.', ' Model configuration and integration setup live in the analyst workflow, not the end-user product.'],
+ ['Role assignments here determine what each team member sees on login.', ' Brand Manager role routes to a filtered Overview (D5 locked).'],
+ ['Settings is a dead end in the prototype journey', ' — reviewers can note it exists and move on.']
+ ],
+ insights: [
+ 'Role-based defaults on Scenario Builder (i.e., which goal pre-selects for different roles) is deferred to v2.1 (DF2).',
+ 'Only 3 roles are modeled in v2: eCommerce Lead (full access), Brand Manager (filtered Overview only), Analyst (full access + model config via separate analyst portal).',
+ 'No model reconfiguration from the end-user interface — this boundary is intentional (D7 locked).'
+ ],
+ links: [
+ 'No outbound links from Settings — it\'s a terminal page.',
+ 'Role changes here affect routing on next login.'
+ ],
+ antiMisreads: [
+ 'Settings shows only account + team. If a reviewer asks "where do I configure the model?" — the answer is: that\'s the analyst portal, not the end-user product.',
+ 'The Brand Manager access scope question (which pages they see beyond Overview) is still open — see Open Questions section.'
  ]
  }
 ];
@@ -1642,18 +1725,20 @@ const SCREENS = [
 // CHECKLIST DATA
 // ============================================================
 const CHECKLIST = [
- { txt: 'Open the prototype in a browser at full desktop width (1440 pixels) width. Confirm you land on Overview with Lactalis context.' },
- { txt: 'Press keyboard <code class="kbd">1</code> through <code class="kbd">7</code> — confirm each page loads.' },
- { txt: 'On Overview, click a pillar tile (e.g., Promoted). Confirm it navigates to Shelf Health.' },
- { txt: 'On Shelf Health, click any pillar card. Confirm it navigates to Sales Decomposition.' },
- { txt: 'On Sales Decomposition, click the "By Sub-brand" tab. Confirm 3 mini-waterfalls load and the halo callout reads correctly.' },
- { txt: 'On Sales Decomposition, click "By Cluster" tab. Confirm the 17-column heatmap renders with pinned factor column (stays visible when you scroll right) on the left.' },
- { txt: 'On Response Curves, click each of the 7 driver pills. Confirm the chart updates and the recommendation card text changes to the new driver.' },
- { txt: 'On Response Curves, click "Open in Simulator."', sub: 'Does it preload the active driver, or arrive at defaults? (Should preload, currently does not.)' },
- { txt: 'On Keyword Calculator, drag the target spend slider. Confirm the +$8,400 number updates within ~50ms.' },
- { txt: 'On Scenario Simulator, drag any Direct slider. Confirm the prediction panel updates and the Commitment summary counts go up.' },
- { txt: 'On Scenario Simulator, click Save Scenario, type a name, press Enter. Confirm it appears in the saved table.' },
- { txt: 'On ROI Looker, switch quarter Q3 → Q2 → Q1. Confirm gauge, table, and both charts update.' }
+ { txt: 'Open the prototype in a browser at full desktop width (1440px). Confirm you land on Overview with Demo Brand context (or Lactalis if selected from the account dropdown).' },
+ { txt: 'Press keyboard <code class="kbd">1</code> through <code class="kbd">7</code> — confirm each of the 7 pages loads (Overview → Shelf Health → Marketing &amp; Sales → Diagnose → Scenario Builder → ROI Looker → Settings).' },
+ { txt: 'On Overview, click a pillar tile (e.g., Promoted). Confirm it navigates to Shelf Health (D12 locked).' },
+ { txt: 'On Overview, confirm 6 pillar tiles are visible (not 5). Reviews should appear as the 6th pillar (D1 locked).' },
+ { txt: 'On Shelf Health, click any pillar card. Confirm it navigates to Diagnose pre-selected to that pillar\'s waterfall bar.' },
+ { txt: 'On Marketing &amp; Sales (Page 3), confirm the channel ROI chart shows Onsite Search flagged amber (saturated) and Offsite Display in the growth zone.' },
+ { txt: 'On Diagnose (Page 4), click a waterfall bar on Tab 1. Confirm Tab 2 ("Where is the headroom") pre-selects that driver in the response curve chart.' },
+ { txt: 'On Diagnose, click "Open in Scenario Builder." Confirm it opens Page 5 with the driver or pillar pre-loaded.' },
+ { txt: 'On Scenario Builder (Page 5), click any goal card (e.g., "Improve a Pillar"). Confirm only relevant levers surface — not all 13 sliders simultaneously.', sub: 'Sub-flow UX for pillar selection (dropdown vs button grid) is an open question — note whether the interaction feels clear.' },
+ { txt: 'On Scenario Builder, drag any Direct slider. Confirm the prediction panel updates with 90% CI and the Commitment summary counts go up.' },
+ { txt: 'On Scenario Builder, click Save Scenario, type a name, press Enter. Confirm it appears in the saved scenarios table.' },
+ { txt: 'On ROI Looker (Page 6), switch between Tab 1 (Campaign ROI) and Tab 2 (Decision Log). Confirm Tab 2 shows the Adopt/Modify/Reject dropdown and a rationale note field.' },
+ { txt: 'On ROI Looker Tab 1, switch quarter Q3 → Q2 → Q1. Confirm gauge, table, and both charts update.' },
+ { txt: 'On Settings (Page 7), confirm only account info and team management are present — no model config, no integration toggles.' }
 ];
 
 
@@ -1705,7 +1790,7 @@ function renderAccordions() {
 // ============================================================
 // RENDER: CHECKLIST
 // ============================================================
-const CHECK_KEY = 'dsim-doc-checklist-v1';
+const CHECK_KEY = 'dsim-doc-checklist-v2';
 function getChecklistState() {
  try { return JSON.parse(localStorage.getItem(CHECK_KEY) || '[]'); } catch(e) { return []; }
 }
@@ -1806,7 +1891,7 @@ function initTOC() {
 
  // IntersectionObserver
  const sections = [];
- ['overview','pillars','methodology','walmart','levers','screens','checklist'].forEach(id => {
+ ['overview','pillars','methodology','walmart','levers','screens','open-questions','checklist'].forEach(id => {
  const el = document.getElementById(id);
  if (el) sections.push(el);
  });
