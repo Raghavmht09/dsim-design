@@ -4278,6 +4278,129 @@ main {
   font-weight: 500;
 }
 </style>
+
+<!-- =========================================================
+     TOOLTIP SYSTEM — added 2026-05-27
+     ========================================================= -->
+<style>
+/* ── Wrapper ── */
+.has-tip {
+  position: relative;
+  cursor: help;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ── ⓘ icon ── */
+.tip-icon {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  line-height: 13px;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  color: var(--text-tertiary);
+  opacity: 0.6;
+  flex-shrink: 0;
+  transition: opacity 150ms ease, color 150ms ease;
+  user-select: none;
+}
+.has-tip:hover .tip-icon,
+.has-tip:focus-within .tip-icon {
+  opacity: 1;
+  color: var(--brand-primary);
+}
+
+/* ── Bubble ── */
+.tip-bubble {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 280px;
+  background: #2D2F45;
+  color: #F1F5F9;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.28);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 150ms ease, visibility 150ms ease;
+  pointer-events: none;
+  white-space: normal;
+}
+/* Arrow pointer */
+.tip-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #2D2F45;
+}
+/* Flip below when near viewport top — add .tip-below class via JS or manually */
+.tip-bubble.tip-below {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+.tip-bubble.tip-below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: #2D2F45;
+}
+/* Show on hover or focus */
+.has-tip:hover .tip-bubble,
+.has-tip:focus-within .tip-bubble {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 80ms;
+}
+
+/* ── Inner structure ── */
+.tip-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  display: block;
+}
+.tip-body {
+  color: #CBD5E1;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.tip-source {
+  color: #94A3B8;
+  font-size: 10px;
+  margin-top: 6px;
+  display: block;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 5px;
+}
+
+/* ── Keep labels layout-stable when wrapping has-tip ── */
+.kpi-card-label.has-tip,
+.ms-kpi-label.has-tip,
+.shelf-cell-label.has-tip,
+.dg-metric-label.has-tip,
+.sb-section-title.has-tip,
+.sb-predict-lbl.has-tip,
+.sb-kw-state-label.has-tip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+</style>
+
 </head>
 <body>
 
@@ -4331,7 +4454,7 @@ main {
 
   <div class="tn-right">
     <span class="tn-freshness" title="Model refreshed Tue, May 19 — data is current" aria-label="Model last refreshed Tue, May 19"></span>
-    <a class="tn-icon-btn" href="https://raghavmht09.github.io/dsim-design/docs/" target="_blank" rel="noopener" title="Open DSIM Glossary &amp; Documentation" aria-label="Open documentation">
+    <a class="tn-icon-btn" href="https://docs.dataweave.com/dsim/glossary" target="_blank" rel="noopener" title="Open DSIM Glossary &amp; Documentation" aria-label="Open documentation">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5"/><circle cx="12" cy="16.5" r=".6" fill="currentColor"/></svg>
     </a>
     <div class="tn-role" role="group" aria-label="Demo role toggle">
@@ -4384,8 +4507,14 @@ main {
     <!-- HERO SCORECARD: 1 hero + 6 pillars -->
     <div class="scorecard-grid" id="scorecardGrid">
       <!-- Hero tile is rendered statically; pillar tiles are populated by JS -->
-      <div class="sc-hero" title="Bayesian model R² = 0.91, MAPE = 5.9%. Shelf Health Score aggregates 6 digital shelf pillars.">
-        <div class="sc-hero-label">Shelf Health Score</div>
+      <div class="sc-hero">
+        <div class="sc-hero-label has-tip" tabindex="0" aria-describedby="tip-shelf-health-score">Shelf Health Score <span class="tip-icon" aria-hidden="true">ⓘ</span>
+          <span class="tip-bubble" id="tip-shelf-health-score" role="tooltip">
+            <span class="tip-title">Shelf Health Score</span>
+            <span class="tip-body">Weighted composite of all 6 pillar scores. Range 0–100. Higher = healthier digital shelf.<br><br><strong>Calc:</strong> weighted average of Availability, Easy-to-Find, Looking-Great, Right-Price, Promoted, Reviews pillar scores.</span>
+            <span class="tip-source">Source: DataWeave DSA shelf signals, refreshed weekly.</span>
+          </span>
+        </div>
         <div class="sc-hero-value-row">
           <span class="sc-hero-value" id="ovHeroValue" data-format="number">76</span>
           <span class="sc-hero-unit">/ 100</span>
@@ -4445,7 +4574,13 @@ main {
     <div class="kpi-row" id="ovKpiRow">
       <!-- Card 1: Marketing Spend -->
       <div class="kpi-card">
-        <div class="kpi-card-label">Marketing Spend</div>
+        <div class="kpi-card-label has-tip" tabindex="0" aria-describedby="tip-ov-mktspend">Marketing Spend <span class="tip-icon" aria-hidden="true">ⓘ</span>
+          <span class="tip-bubble" id="tip-ov-mktspend" role="tooltip">
+            <span class="tip-title">Marketing Spend (last 7 days)</span>
+            <span class="tip-body">Total Walmart Connect ad spend, trailing 7 days, summed across active campaigns.</span>
+            <span class="tip-source">Source: Walmart Connect API. Updated daily.</span>
+          </span>
+        </div>
         <div class="kpi-card-sub">Last 7 days · 4 active campaigns</div>
         <div class="kpi-card-value">$58K</div>
         <div class="kpi-card-delta delta-up">↑ 12% WoW</div>
@@ -4457,7 +4592,13 @@ main {
 
       <!-- Card 2: Campaign ROI -->
       <div class="kpi-card">
-        <div class="kpi-card-label">Campaign ROI</div>
+        <div class="kpi-card-label has-tip" tabindex="0" aria-describedby="tip-ov-camproi">Campaign ROI <span class="tip-icon" aria-hidden="true">ⓘ</span>
+          <span class="tip-bubble" id="tip-ov-camproi" role="tooltip">
+            <span class="tip-title">Campaign ROI (avg)</span>
+            <span class="tip-body">Blended return on ad spend across active campaigns.<br><br><strong>Calc:</strong> attributed sales ÷ ad spend, weighted by spend per campaign.</span>
+            <span class="tip-source">Source: Walmart Connect attribution.</span>
+          </span>
+        </div>
         <div class="kpi-card-sub">Avg · weighted by spend</div>
         <div class="kpi-card-value">3.24x</div>
         <div class="kpi-card-delta delta-warn">↓ 0.18 WoW</div>
@@ -4468,7 +4609,13 @@ main {
 
       <!-- Card 3: Walmart Sales -->
       <div class="kpi-card kpi-accent">
-        <div class="kpi-card-label">Walmart Sales</div>
+        <div class="kpi-card-label has-tip" tabindex="0" aria-describedby="tip-ov-wmlsales">Walmart Sales <span class="tip-icon" aria-hidden="true">ⓘ</span>
+          <span class="tip-bubble" id="tip-ov-wmlsales" role="tooltip">
+            <span class="tip-title">Walmart Sales (last 7 days)</span>
+            <span class="tip-body">Attributed Walmart.com sales, trailing 7 days.<br><br><strong>Note:</strong> DSIM coverage figure shows quarter-to-date modeled sales.</span>
+            <span class="tip-source">Source: Walmart Connect attribution + Scintilla POS where available.</span>
+          </span>
+        </div>
         <div class="kpi-card-sub">Last 7 days · DSIM coverage $2.4M QTD</div>
         <div class="kpi-card-value">$487K</div>
         <div class="kpi-card-delta delta-up">↑ 8% WoW</div>
@@ -4496,7 +4643,13 @@ main {
         <div class="shelf-cell-meta delta-up">↑ 0.3 WoW</div>
       </div>
       <div class="shelf-cell accent-info" id="ovShelfCell4">
-        <div class="shelf-cell-label" id="ovShelfCell4Label">Reallocation upside</div>
+        <div class="shelf-cell-label has-tip" id="ovShelfCell4Label" tabindex="0" aria-describedby="tip-realloc">Reallocation upside <span class="tip-icon" aria-hidden="true">ⓘ</span>
+          <span class="tip-bubble" id="tip-realloc" role="tooltip">
+            <span class="tip-title">Reallocation upside ($30K/day)</span>
+            <span class="tip-body">Modeled incremental sales available by shifting spend from saturated to growth channels (e.g. Onsite Search → Offsite Display), holding total spend constant. Shown at 90% confidence.<br><br><strong>Calc:</strong> Bayesian MMM response curves.</span>
+            <span class="tip-source">Source: Bayesian MMM response curves.</span>
+          </span>
+        </div>
         <div class="shelf-cell-value" id="ovShelfCell4Value">$30K <span style="color:var(--text-tertiary); font-size:var(--fs-sm);">/ day</span></div>
         <div class="shelf-cell-sub" id="ovShelfCell4Sub">90% CI · $24K–$36K</div>
         <button class="cell-action" id="ovShelfCell4Action" type="button" onclick="goTo('scenario-builder')">New scenario →</button>
@@ -4546,7 +4699,13 @@ main {
             <th data-sort="sku"      style="width: 32%;">SKU <span class="sort-glyph">↕</span></th>
             <th data-sort="brand"    style="width: 12%;">Sub-brand <span class="sort-glyph">↕</span></th>
             <th data-sort="score"    class="num" style="width: 10%;">Score <span class="sort-glyph">↕</span></th>
-            <th data-sort="deltaWoW" class="num sort-active" style="width: 12%;">Δ WoW <span class="sort-glyph">↓</span></th>
+            <th data-sort="deltaWoW" class="num sort-active" style="width: 12%;"><span class="has-tip" tabindex="0" aria-describedby="tip-mover-wow">Δ WoW <span class="tip-icon" aria-hidden="true">ⓘ</span>
+              <span class="tip-bubble tip-below" id="tip-mover-wow" role="tooltip">
+                <span class="tip-title">Top mover Δ WoW</span>
+                <span class="tip-body">Week-over-week change in this SKU's pillar score.</span>
+                <span class="tip-source">Source: DSA week-over-week diff.</span>
+              </span>
+            </span> <span class="sort-glyph">↓</span></th>
             <th data-sort="pillar"   style="width: 18%;">Pillar driver <span class="sort-glyph">↕</span></th>
             <th data-sort="revenue"  class="num" style="width: 16%;">Revenue impact <span class="sort-glyph">↕</span></th>
           </tr>
@@ -4558,8 +4717,20 @@ main {
     <!-- MODEL QUALITY FOOTER -->
     <div class="model-strip">
       <span class="model-strip-cell"><span class="check-dot">✓</span>Model fit</span>
-      <span class="model-strip-cell">R² <strong>0.91</strong></span>
-      <span class="model-strip-cell">MAPE <strong>5.9%</strong></span>
+      <span class="model-strip-cell has-tip" tabindex="0" aria-describedby="tip-r2-strip">R² <strong>0.91</strong> <span class="tip-icon" aria-hidden="true">ⓘ</span>
+        <span class="tip-bubble tip-below" id="tip-r2-strip" role="tooltip">
+          <span class="tip-title">R² (model fit)</span>
+          <span class="tip-body">Coefficient of determination — % of weekly sales variation the model explains. 0.91 = 91% explained.</span>
+          <span class="tip-source">Source: Bayesian MMM (Robyn) on 90-day training window.</span>
+        </span>
+      </span>
+      <span class="model-strip-cell has-tip" tabindex="0" aria-describedby="tip-mape-strip">MAPE <strong>5.9%</strong> <span class="tip-icon" aria-hidden="true">ⓘ</span>
+        <span class="tip-bubble tip-below" id="tip-mape-strip" role="tooltip">
+          <span class="tip-title">MAPE (prediction error)</span>
+          <span class="tip-body">Mean Absolute Percentage Error — average prediction error. 5.9% beats the 10–15% industry MMM benchmark.</span>
+          <span class="tip-source">Source: holdout validation.</span>
+        </span>
+      </span>
       <span class="model-strip-cell">Method <strong style="font-family:inherit; font-weight:600;">Bayesian MMM (Robyn)</strong></span>
       <span class="model-strip-cell"><strong>17</strong> store clusters</span>
       <span class="model-strip-cell">Refreshed <strong style="font-family:inherit; font-weight:600;">Tue, May 19</strong></span>
@@ -4698,7 +4869,13 @@ main {
               <th data-sort="channel"   style="width: 15%;">Channel <span class="sort-glyph">↕</span></th>
               <th data-sort="spend"     class="num" style="width: 12%;">Spend <span class="sort-glyph">↕</span></th>
               <th data-sort="sales"     class="num" style="width: 12%;">Attributed Sales <span class="sort-glyph">↕</span></th>
-              <th data-sort="roi"       class="num sort-active" style="width: 10%;">ROI <span class="sort-glyph">↓</span></th>
+              <th data-sort="roi"       class="num sort-active" style="width: 10%;"><span class="has-tip" tabindex="0" aria-describedby="tip-ms-camproi">ROI <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble tip-below" id="tip-ms-camproi" role="tooltip">
+                  <span class="tip-title">Campaign ROI</span>
+                  <span class="tip-body">Attributed sales ÷ spend for this campaign.</span>
+                  <span class="tip-source">Source: Walmart Connect attribution.</span>
+                </span>
+              </span> <span class="sort-glyph">↓</span></th>
               <th data-sort="lastDate"  style="width: 12%;">Last activity <span class="sort-glyph">↕</span></th>
               <th class="actions" style="width: 4%;"></th>
             </tr>
@@ -4721,9 +4898,27 @@ main {
             <thead>
               <tr>
                 <th>Channel</th>
-                <th class="num">Inv. share</th>
-                <th class="num">Effect share</th>
-                <th class="num">ROI</th>
+                <th class="num"><span class="has-tip" tabindex="0" aria-describedby="tip-ms-invshare">Inv. share <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                  <span class="tip-bubble tip-below" id="tip-ms-invshare" role="tooltip">
+                    <span class="tip-title">Channel Investment Share</span>
+                    <span class="tip-body">This channel's spend ÷ total media spend.</span>
+                    <span class="tip-source">Source: Walmart Connect API.</span>
+                  </span>
+                </span></th>
+                <th class="num"><span class="has-tip" tabindex="0" aria-describedby="tip-ms-effshare">Effect share <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                  <span class="tip-bubble tip-below" id="tip-ms-effshare" role="tooltip">
+                    <span class="tip-title">Channel Effect Share</span>
+                    <span class="tip-body">This channel's modeled contribution to incremental sales ÷ total media-driven incremental sales.</span>
+                    <span class="tip-source">Source: Bayesian MMM decomposition.</span>
+                  </span>
+                </span></th>
+                <th class="num"><span class="has-tip" tabindex="0" aria-describedby="tip-ms-iroi">ROI <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                  <span class="tip-bubble tip-below" id="tip-ms-iroi" role="tooltip">
+                    <span class="tip-title">Channel iROI</span>
+                    <span class="tip-body">Incremental ROI = Effect Share ÷ Investment Share. &gt;1.0 = underinvested (add spend); &lt;1.0 = saturated (reduce).</span>
+                    <span class="tip-source">Source: Bayesian MMM.</span>
+                  </span>
+                </span></th>
               </tr>
             </thead>
             <tbody id="msChannelBody"></tbody>
@@ -4775,7 +4970,13 @@ main {
     <div class="journey-strip" data-active-stage="3"></div>
     <div class="page-header">
       <div>
-        <h1>Diagnose <span class="dg-r2-badge" title="Bayesian MMM (Robyn) — model fit">R²=0.91</span></h1>
+        <h1>Diagnose <span class="dg-r2-badge has-tip" tabindex="0" aria-describedby="tip-dg-r2">R²=0.91 <span class="tip-icon" aria-hidden="true">ⓘ</span>
+          <span class="tip-bubble tip-below" id="tip-dg-r2" role="tooltip">
+            <span class="tip-title">R² = 0.91</span>
+            <span class="tip-body">Coefficient of determination — % of weekly sales variation the model explains. 0.91 = 91% explained.</span>
+            <span class="tip-source">Source: Bayesian MMM (Robyn) on 90-day training window.</span>
+          </span>
+        </span></h1>
         <div class="subtitle">
           <span>What drove sales · where is the headroom</span>
           <span class="sep">·</span>
@@ -4813,7 +5014,13 @@ main {
               <span class="meta">Click any bar to lock the driver</span>
             </div>
             <div class="dg-waterfall-frame"><canvas id="dgWaterfall"></canvas></div>
-            <div class="dg-waterfall-foot">† 9% = unexplained variance (R²=0.91, MAPE 5.9%)</div>
+            <div class="dg-waterfall-foot has-tip" tabindex="0" aria-describedby="tip-dg-mape">† 9% = unexplained variance (R²=0.91, MAPE 5.9%) <span class="tip-icon" aria-hidden="true">ⓘ</span>
+              <span class="tip-bubble" id="tip-dg-mape" role="tooltip">
+                <span class="tip-title">MAPE 5.9%</span>
+                <span class="tip-body">Mean Absolute Percentage Error — average prediction error. 5.9% beats the 10–15% industry MMM benchmark. The remaining 9% variance is unexplained (noise).</span>
+                <span class="tip-source">Source: holdout validation.</span>
+              </span>
+            </div>
 
             <!-- Competition headwind: SEPARATE bar below the waterfall (9.2.4) -->
             <div class="dg-headwind" id="dgHeadwind">
@@ -4826,7 +5033,13 @@ main {
                 <span class="dg-headwind-value">−4%</span>
               </div>
               <div class="dg-headwind-label">
-                <strong>Competition headwind: −4%</strong> · drag on sales this period (concentrated in Southern Staples)
+                <span class="has-tip" tabindex="0" aria-describedby="tip-dg-headwind"><strong>Competition headwind: −4%</strong> <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                  <span class="tip-bubble" id="tip-dg-headwind" role="tooltip">
+                    <span class="tip-title">Competition headwind</span>
+                    <span class="tip-body">Estimated drag on sales from competitor activity (pricing, share-of-voice). Negative = headwind.</span>
+                    <span class="tip-source">Source: Bayesian decomposition.</span>
+                  </span>
+                </span> · drag on sales this period (concentrated in Southern Staples)
               </div>
             </div>
 
@@ -4893,9 +5106,23 @@ main {
             <div class="dg-hill-driver">Driver: <strong id="dgHillDriverLabel">Offsite Display</strong></div>
           </div>
           <div class="dg-zone-labels">
-            <div class="dg-zone-label flat">Flat 0–31</div>
-            <div class="dg-zone-label growth">Growth 32–87</div>
-            <div class="dg-zone-label saturation">Saturation 88–100</div>
+            <div class="dg-zone-label flat has-tip" tabindex="0" aria-describedby="tip-zone-flat">Flat 0–31 <span class="tip-icon" aria-hidden="true">ⓘ</span>
+              <span class="tip-bubble" id="tip-zone-flat" role="tooltip">
+                <span class="tip-body">Low-response zone — additional investment yields little incremental sales here.</span>
+              </span>
+            </div>
+            <div class="dg-zone-label growth has-tip" tabindex="0" aria-describedby="tip-zone-growth">Growth 32–87 <span class="tip-icon" aria-hidden="true">ⓘ</span>
+              <span class="tip-bubble" id="tip-zone-growth" role="tooltip">
+                <span class="tip-body">Optimal zone — each unit of spend generates strong incremental sales return. Target index sits here.</span>
+                <span class="tip-source">Source: Hill response curve fit.</span>
+              </span>
+            </div>
+            <div class="dg-zone-label saturation has-tip" tabindex="0" aria-describedby="tip-zone-sat">Saturation 88–100 <span class="tip-icon" aria-hidden="true">ⓘ</span>
+              <span class="tip-bubble" id="tip-zone-sat" role="tooltip">
+                <span class="tip-body">Diminishing returns zone — additional spend yields less and less incremental sales. Consider reallocating.</span>
+                <span class="tip-source">Source: Hill curve.</span>
+              </span>
+            </div>
           </div>
           <div class="dg-hill-frame"><canvas id="dgHillCurve"></canvas></div>
         </div>
@@ -5064,7 +5291,12 @@ main {
             <div class="sb-section open" id="sbSectionDirect" data-section="direct" style="border-left: 3px solid var(--brand-primary);">
               <div class="sb-section-head">
                 <div class="sb-section-title-group">
-                  <span class="sb-section-title">Direct Controls</span>
+                  <span class="sb-section-title has-tip" tabindex="0" aria-describedby="tip-sb-direct">Direct Controls <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                    <span class="tip-bubble tip-below" id="tip-sb-direct" role="tooltip">
+                      <span class="tip-title">Direct Controls</span>
+                      <span class="tip-body">Levers you can act on this week without anyone's approval. Changes here directly feed the prediction model.</span>
+                    </span>
+                  </span>
                   <span class="sb-section-badge direct">6 sliders</span>
                 </div>
                 <span class="sb-section-meta">Levers you can act on this week without partner approval.</span>
@@ -5108,7 +5340,12 @@ main {
             <div class="sb-section" id="sbSectionInfluenced" data-section="influenced" style="border-left: 3px solid var(--semantic-warning);">
               <div class="sb-section-head">
                 <div class="sb-section-title-group">
-                  <span class="sb-section-title">Influenced Targets</span>
+                  <span class="sb-section-title has-tip" tabindex="0" aria-describedby="tip-sb-influenced">Influenced Targets <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                    <span class="tip-bubble tip-below" id="tip-sb-influenced" role="tooltip">
+                      <span class="tip-title">Influenced Targets</span>
+                      <span class="tip-body">Outcomes another team owns — you set the goal, then brief them. DSIM models the impact if these targets are hit.</span>
+                    </span>
+                  </span>
                   <span class="sb-section-badge influenced">4 targets</span>
                 </div>
                 <span class="sb-section-chevron">▾</span>
@@ -5142,7 +5379,12 @@ main {
             <div class="sb-section" id="sbSectionExternal" data-section="external" style="border-left: 3px solid var(--border-strong);">
               <div class="sb-section-head">
                 <div class="sb-section-title-group">
-                  <span class="sb-section-title">External Sensitivities</span>
+                  <span class="sb-section-title has-tip" tabindex="0" aria-describedby="tip-sb-external">External Sensitivities <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                    <span class="tip-bubble tip-below" id="tip-sb-external" role="tooltip">
+                      <span class="tip-title">External Sensitivities</span>
+                      <span class="tip-body">Factors you cannot control — adjust these to stress-test your plan against competitor moves or market conditions.</span>
+                    </span>
+                  </span>
                   <span class="sb-section-badge external">3 inputs</span>
                 </div>
                 <span class="sb-section-chevron">▾</span>
@@ -5188,9 +5430,15 @@ main {
                 </div>
                 <div class="sb-kw-state-item">
                   <span class="sb-kw-state-label">Current sponsored spend <span style="color:var(--text-tertiary); font-weight:400;">(read-only)</span></span>
-                  <div class="sb-kw-readonly-spend" title="Pulled from Walmart Connect API. Contact DataWeave analyst to adjust this figure.">
+                  <div class="sb-kw-readonly-spend has-tip" tabindex="0" aria-describedby="tip-sb-kwspend">
                     <span class="sb-kw-readonly-value">$2,500/day</span>
                     <span class="sb-kw-readonly-tag"><span class="lock-icon">🔒</span>From Walmart Connect</span>
+                    <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                    <span class="tip-bubble" id="tip-sb-kwspend" role="tooltip">
+                      <span class="tip-title">Keyword current spend (read-only)</span>
+                      <span class="tip-body">Your actual current daily spend on this keyword. This is a known value, not adjustable.</span>
+                      <span class="tip-source">Source: Walmart Connect API.</span>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -5222,7 +5470,13 @@ main {
             <!-- 3 output cards -->
             <div class="sb-kw-cards" id="sbKwCards">
               <div class="sb-kw-card">
-                <div class="sb-kw-card-label">Opportunity sizing</div>
+                <div class="sb-kw-card-label has-tip" tabindex="0" aria-describedby="tip-sb-kwlift">Opportunity sizing <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                  <span class="tip-bubble" id="tip-sb-kwlift" role="tooltip">
+                    <span class="tip-title">Keyword opportunity lift</span>
+                    <span class="tip-body">Modeled incremental sales from moving to target rank + spend.<br><br><strong>Calc:</strong> rank-gain × sales sensitivity + spend-delta × iROI.</span>
+                    <span class="tip-source">Source: DSIM model.</span>
+                  </span>
+                </div>
                 <div class="sb-kw-card-value" id="kwCardLift">+$8,400</div>
                 <div class="sb-kw-card-ci">90% CI $6,800 – $10,200</div>
                 <div class="sb-kw-card-ci">iROI 1.42× · Payback ~14 days</div>
@@ -5275,18 +5529,40 @@ main {
 
             <div class="sb-predict-block">
               <div class="sb-predict-val xl" id="sbPredUnits" data-format="number">16,916</div>
-              <div class="sb-predict-lbl">predicted units (weekly)</div>
-              <div class="sb-predict-ci" id="sbPredCI">90% CI 15,393 – 18,439</div>
+              <div class="sb-predict-lbl has-tip" tabindex="0" aria-describedby="tip-sb-units">predicted units (weekly) <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble" id="tip-sb-units" role="tooltip">
+                  <span class="tip-title">Predicted Units</span>
+                  <span class="tip-body">Modeled unit sales for your scenario over the chosen time horizon.<br><br><strong>Calc:</strong> baseline + sum of lever-delta effects × horizon.<br><br><strong>Note:</strong> simulation estimate, not a guarantee.</span>
+                </span>
+              </div>
+              <div class="sb-predict-ci has-tip" id="sbPredCI" tabindex="0" aria-describedby="tip-sb-ci">90% CI 15,393 – 18,439 <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble" id="tip-sb-ci" role="tooltip">
+                  <span class="tip-title">90% Confidence Interval</span>
+                  <span class="tip-body">90% confidence interval from the Bayesian posterior — the true value falls in this range 90% of the time.</span>
+                </span>
+              </div>
             </div>
 
             <div class="sb-predict-block">
               <div class="sb-predict-val lg" id="sbPredDollars" data-format="dollar">$184K</div>
-              <div class="sb-predict-lbl">predicted revenue (weekly)</div>
+              <div class="sb-predict-lbl has-tip" tabindex="0" aria-describedby="tip-sb-dollars">predicted revenue (weekly) <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble" id="tip-sb-dollars" role="tooltip">
+                  <span class="tip-title">Predicted Dollars</span>
+                  <span class="tip-body">Predicted Units × Average Selling Price.</span>
+                  <span class="tip-source">Source: scenario model.</span>
+                </span>
+              </div>
             </div>
 
             <div class="sb-predict-block">
               <div class="sb-predict-val md" id="sbPredASP" data-format="dollar">$10.88</div>
-              <div class="sb-predict-lbl">avg selling price</div>
+              <div class="sb-predict-lbl has-tip" tabindex="0" aria-describedby="tip-sb-asp">avg selling price <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble" id="tip-sb-asp" role="tooltip">
+                  <span class="tip-title">ASP — Average Selling Price</span>
+                  <span class="tip-body">Total sales ÷ units.</span>
+                  <span class="tip-source">Source: trailing actuals.</span>
+                </span>
+              </div>
             </div>
 
             <div class="sb-predict-divider"></div>
@@ -5295,7 +5571,12 @@ main {
               <div class="sb-predict-delta" id="sbPredDeltaUnits">+1,523 units</div>
               <div class="sb-predict-delta" id="sbPredDeltaDollars">+$16.6K</div>
               <div class="sb-predict-dpct" id="sbPredDeltaPct">+9.9%</div>
-              <div class="sb-predict-lbl">Δ vs baseline (no investment)</div>
+              <div class="sb-predict-lbl has-tip" tabindex="0" aria-describedby="tip-sb-baseline">Δ vs baseline (no investment) <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble" id="tip-sb-baseline" role="tooltip">
+                  <span class="tip-title">Δ vs Baseline</span>
+                  <span class="tip-body">Difference between your scenario and the all-defaults baseline, in units / dollars / %. Green = gain, red = loss.</span>
+                </span>
+              </div>
             </div>
 
             <div class="sb-predict-commit" id="sbPredCommit">
@@ -5375,7 +5656,13 @@ main {
           <canvas class="rl-gauge-canvas" id="rlGaugeCanvas" width="200" height="110"></canvas>
           <div class="rl-gauge-overlay">
             <span class="rl-gauge-pct" id="rlGaugePct">68%</span>
-            <span class="rl-gauge-lbl">realization</span>
+            <span class="rl-gauge-lbl has-tip" tabindex="0" aria-describedby="tip-rl-gauge">realization <span class="tip-icon" aria-hidden="true">ⓘ</span>
+              <span class="tip-bubble" id="tip-rl-gauge" role="tooltip">
+                <span class="tip-title">Realization gauge</span>
+                <span class="tip-body">Actual lift ÷ expected lift across adopted plays. 100% = delivered as modeled. Can exceed 100% (over-delivery) or go negative (play hurt sales).</span>
+                <span class="tip-source">Source: post-period actuals vs DSIM prediction.</span>
+              </span>
+            </span>
           </div>
         </div>
         <div class="rl-hero-headline">
@@ -5399,7 +5686,13 @@ main {
         </div>
         <div class="rl-chart-card">
           <div class="rl-chart-head">
-            <h3>Channel iROI — before vs after</h3>
+            <h3><span class="has-tip" tabindex="0" aria-describedby="tip-rl-iroi">Channel iROI — before vs after <span class="tip-icon" aria-hidden="true">ⓘ</span>
+              <span class="tip-bubble tip-below" id="tip-rl-iroi" role="tooltip">
+                <span class="tip-title">Channel iROI before/after</span>
+                <span class="tip-body">Incremental ROI per channel, before vs after the reallocation. Convergence toward 1.0 = optimization working.</span>
+                <span class="tip-source">Source: Bayesian MMM, two periods.</span>
+              </span>
+            </span></h3>
           </div>
           <div class="rl-chart-frame"><canvas id="rlIroiChart"></canvas></div>
         </div>
@@ -5438,10 +5731,32 @@ main {
             <tr>
               <th data-sort="id"          style="width:4%;">Play <span class="sort-glyph">↕</span></th>
               <th data-sort="desc"        style="width:22%;">Description <span class="sort-glyph">↕</span></th>
-              <th data-sort="decision"    style="width:12%;">Decision <span class="sort-glyph">↕</span></th>
-              <th data-sort="expected"    class="num" style="width:11%;">Expected $ <span class="sort-glyph">↕</span></th>
-              <th data-sort="actual"      class="num" style="width:11%;">Actual $ <span class="sort-glyph">↕</span></th>
-              <th data-sort="real"        class="num sort-active" style="width:10%;">Realization <span class="sort-glyph">↑</span></th>
+              <th data-sort="decision"    style="width:12%;"><span class="has-tip" tabindex="0" aria-describedby="tip-rl-decision">Decision <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble tip-below" id="tip-rl-decision" role="tooltip">
+                  <span class="tip-title">Decision Log status</span>
+                  <span class="tip-body">Adopt / Modify / Reject decision on this DSIM recommendation. Team-shared — visible to all account users.<br><strong>Audit:</strong> who decided + when.</span>
+                </span>
+              </span> <span class="sort-glyph">↕</span></th>
+              <th data-sort="expected"    class="num" style="width:11%;"><span class="has-tip" tabindex="0" aria-describedby="tip-rl-expected">Expected $ <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble tip-below" id="tip-rl-expected" role="tooltip">
+                  <span class="tip-title">Expected $</span>
+                  <span class="tip-body">DSIM-modeled incremental sales for this play when it was recommended.</span>
+                  <span class="tip-source">Source: scenario model at recommendation time.</span>
+                </span>
+              </span> <span class="sort-glyph">↕</span></th>
+              <th data-sort="actual"      class="num" style="width:11%;"><span class="has-tip" tabindex="0" aria-describedby="tip-rl-actual">Actual $ <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble tip-below" id="tip-rl-actual" role="tooltip">
+                  <span class="tip-title">Actual $</span>
+                  <span class="tip-body">Realized incremental sales after the play was adopted.<br><br><strong>Calc:</strong> actual vs counterfactual (no-action) baseline.</span>
+                  <span class="tip-source">Source: post-period actuals.</span>
+                </span>
+              </span> <span class="sort-glyph">↕</span></th>
+              <th data-sort="real"        class="num sort-active" style="width:10%;"><span class="has-tip" tabindex="0" aria-describedby="tip-rl-real">Realization <span class="tip-icon" aria-hidden="true">ⓘ</span>
+                <span class="tip-bubble tip-below" id="tip-rl-real" role="tooltip">
+                  <span class="tip-title">Realization %</span>
+                  <span class="tip-body">Actual ÷ Expected for this play. 100% = on-model. Over 100% = outperformed. Under 60% = underperformed.</span>
+                </span>
+              </span> <span class="sort-glyph">↑</span></th>
               <th                         style="width:16%;">Variance note</th>
               <th data-sort="decidedBy"   style="width:14%;">Decided <span class="sort-glyph">↕</span></th>
             </tr>
@@ -5941,12 +6256,24 @@ function bindKeyboard() {
    OVERVIEW PAGE — Shot 2
    ========================================================= */
 const OV_PILLARS = [
-  { key: 'availability', name: 'Always Available', kpi: 'OSA',         value: 78,  unit: '%',   delta:  0.8, score: 78, color: '#0D9488', token: 'pillar-availability' },
-  { key: 'search',       name: 'Easy To Find',     kpi: 'SoS',         value: 23,  unit: '%',   delta: -0.5, score: 23, color: '#BE185D', token: 'pillar-search' },
-  { key: 'content',      name: 'Looking Great',    kpi: 'CQS',         value: 84,  unit: '',    delta:  1.1, score: 84, color: '#4F46E5', token: 'pillar-content' },
-  { key: 'pricing',      name: 'Right Price',      kpi: 'Price index', value: 7.8, unit: '/10', delta:  0.2, score: 78, color: '#E0922B', token: 'pillar-pricing' },
-  { key: 'media',        name: 'Promoted',         kpi: 'iROI',        value: 64,  unit: '%',   delta:  4.2, score: 64, color: '#7C3AED', token: 'pillar-media' },
-  { key: 'reviews',      name: 'Reviews',          kpi: 'Rating',      value: 4.3, unit: '★',   delta:  0.1, score: 86, color: '#0891B2', token: 'pillar-reviews' }
+  { key: 'availability', name: 'Always Available', kpi: 'OSA',         value: 78,  unit: '%',   delta:  0.8, score: 78, color: '#0D9488', token: 'pillar-availability',
+    tipBody: 'On-Shelf Availability — % of expected product facings actually in stock.<br><strong>Calc:</strong> in-stock SKU-store combinations ÷ total expected.',
+    tipSource: 'Source: DataWeave DSA availability crawler, daily.' },
+  { key: 'search',       name: 'Easy To Find',     kpi: 'SoS',         value: 23,  unit: '%',   delta: -0.5, score: 23, color: '#BE185D', token: 'pillar-search',
+    tipBody: 'Share of Search — % of category search impressions your brand captures.<br><strong>Calc:</strong> your search result appearances ÷ total category search appearances.',
+    tipSource: 'Source: DataWeave DSA search tracking, daily.' },
+  { key: 'content',      name: 'Looking Great',    kpi: 'CQS',         value: 84,  unit: '',    delta:  1.1, score: 84, color: '#4F46E5', token: 'pillar-content',
+    tipBody: 'Content Quality Score — completeness + quality of product pages.<br><strong>Calc:</strong> weighted index of title, bullets, images, A+ content.',
+    tipSource: 'Source: DataWeave DSA content audit, weekly.' },
+  { key: 'pricing',      name: 'Right Price',      kpi: 'Price index', value: 7.8, unit: '/10', delta:  0.2, score: 78, color: '#E0922B', token: 'pillar-pricing',
+    tipBody: 'Price competitiveness vs comp set.<br><strong>Calc:</strong> price index relative to category competitors + rollback presence.',
+    tipSource: 'Source: DataWeave DSA pricing crawler, daily.' },
+  { key: 'media',        name: 'Promoted',         kpi: 'iROI',        value: 64,  unit: '%',   delta:  4.2, score: 64, color: '#7C3AED', token: 'pillar-media',
+    tipBody: 'Retail Media coverage + efficiency.<br><strong>Calc:</strong> Walmart Connect coverage % weighted by channel iROI.',
+    tipSource: 'Source: Walmart Connect API, daily.' },
+  { key: 'reviews',      name: 'Reviews',          kpi: 'Rating',      value: 4.3, unit: '★',   delta:  0.1, score: 86, color: '#0891B2', token: 'pillar-reviews',
+    tipBody: 'Ratings &amp; Reviews health.<br><strong>Calc:</strong> weighted avg star rating + review volume per SKU vs category benchmark.',
+    tipSource: 'Source: DataWeave DSA reviews crawler, weekly.' }
 ];
 
 // Score trend (overall + 6 pillars), 13 weekly points — with visible peaks/valleys
@@ -6168,11 +6495,17 @@ function renderPillarTiles() {
     tile.dataset.pillar = p.key;
     tile.setAttribute('role', 'button');
     tile.setAttribute('tabindex', '0');
-    tile.title = p.name + ' — click body to drill into Shelf Health';
+    const tipId = 'tip-pillar-' + p.key;
     tile.innerHTML = `
       <div class="pt-head">
         <div class="pt-title">
-          <div class="pt-name">${p.name}</div>
+          <div class="pt-name has-tip" tabindex="0" aria-describedby="${tipId}">${p.name} <span class="tip-icon" aria-hidden="true">ⓘ</span>
+            <span class="tip-bubble" id="${tipId}" role="tooltip">
+              <span class="tip-title">${p.name}</span>
+              <span class="tip-body">${p.tipBody}</span>
+              <span class="tip-source">${p.tipSource}</span>
+            </span>
+          </div>
           <div class="pt-kpi">${p.kpi}</div>
         </div>
         <button class="pt-expand" type="button" aria-label="Expand chart" title="Expand chart">${expandIcon()}</button>
@@ -6303,10 +6636,15 @@ function renderChannelMiniBar() {
   el.innerHTML = OV_CHANNELS.map(c => {
     const heightPct = Math.round((c.roi / max) * 100);
     return `
-      <div class="kpi-minibar-col" title="${c.name}: ${c.roi.toFixed(2)}× iROI">
+      <div class="kpi-minibar-col has-tip" tabindex="0" aria-describedby="tip-minibar-${c.name.toLowerCase()}">
         <span class="val">${c.roi.toFixed(1)}×</span>
         <div class="bar" style="height: ${heightPct}%; background: ${c.name === 'Onsite' || c.name === 'Display' ? 'var(--brand-primary)' : '#94A3B8'};"></div>
         <span class="label">${c.name}</span>
+        <span class="tip-bubble tip-below" id="tip-minibar-${c.name.toLowerCase()}" role="tooltip">
+          <span class="tip-title">${c.name} iROI</span>
+          <span class="tip-body">Incremental ROI = Effect Share ÷ Investment Share. ${c.roi.toFixed(2)}× = ${c.roi >= 1 ? 'underinvested — consider adding spend' : 'saturated — consider reducing spend'}.</span>
+          <span class="tip-source">Source: Bayesian MMM.</span>
+        </span>
       </div>
     `;
   }).join('');
@@ -6457,11 +6795,17 @@ function renderClusters() {
   row.innerHTML = OV_CLUSTERS.map(c => {
     const deltaCls = c.delta > 0 ? 'delta-up' : (c.delta < 0 ? 'delta-down' : 'delta-flat');
     const arrow = c.delta > 0 ? '↑' : (c.delta < 0 ? '↓' : '↔');
+    const cTipId = 'tip-cluster-' + c.slug;
     return `
       <div class="cluster-card">
         <div class="cluster-name">${c.name}</div>
         <div class="cluster-score-row">
-          <span class="cluster-score">${c.score}</span>
+          <span class="cluster-score has-tip" tabindex="0" aria-describedby="${cTipId}">${c.score} <span class="tip-icon" aria-hidden="true">ⓘ</span>
+            <span class="tip-bubble tip-below" id="${cTipId}" role="tooltip">
+              <span class="tip-title">Mega-cluster score</span>
+              <span class="tip-body">Composite shelf-health score for this store cluster. 4 mega-clusters group the 17 modeled stores.<br><strong>Calc:</strong> same weighting as overall Shelf Health Score, scoped to cluster's stores.</span>
+            </span>
+          </span>
           <span class="cluster-delta ${deltaCls}">${arrow} ${Math.abs(c.delta).toFixed(1)}</span>
         </div>
         <div class="cluster-bar tone-${c.tone}"><span style="width: ${c.score}%"></span></div>
@@ -7250,19 +7594,36 @@ function renderMsKpi() {
 
   wrap.innerHTML = `
     <div class="ms-kpi">
-      <div class="ms-kpi-label">Total marketing spend</div>
+      <div class="ms-kpi-label has-tip" tabindex="0" aria-describedby="tip-ms-spend">Total marketing spend <span class="tip-icon" aria-hidden="true">ⓘ</span>
+        <span class="tip-bubble" id="tip-ms-spend" role="tooltip">
+          <span class="tip-title">Total Marketing Spend</span>
+          <span class="tip-body">Sum of ad spend across all active campaigns for the selected period + retailer.</span>
+          <span class="tip-source">Source: Walmart Connect API (more retailers coming).</span>
+        </span>
+      </div>
       <div class="ms-kpi-sub">${campaigns} active campaigns</div>
       <div class="ms-kpi-value">${fmtDollar(spend)}</div>
       <div class="ms-kpi-delta ${msStatusDeltaTone(deltas.spend)}">↑ +${deltas.spend}% vs ${dtPrior}</div>
     </div>
     <div class="ms-kpi">
-      <div class="ms-kpi-label">Total sales (DSIM-attributed)</div>
+      <div class="ms-kpi-label has-tip" tabindex="0" aria-describedby="tip-ms-sales">Total sales (DSIM-attributed) <span class="tip-icon" aria-hidden="true">ⓘ</span>
+        <span class="tip-bubble" id="tip-ms-sales" role="tooltip">
+          <span class="tip-title">Total Sales</span>
+          <span class="tip-body">Attributed sales for the period.</span>
+          <span class="tip-source">Source: Walmart Connect attribution + Scintilla POS.</span>
+        </span>
+      </div>
       <div class="ms-kpi-sub">DSIM-attributed · 90% CI</div>
       <div class="ms-kpi-value">${fmtDollar(sales)}</div>
       <div class="ms-kpi-delta ${msStatusDeltaTone(deltas.sales)}">↑ +${deltas.sales}% vs ${dtPrior}</div>
     </div>
     <div class="ms-kpi">
-      <div class="ms-kpi-label">Blended ROI</div>
+      <div class="ms-kpi-label has-tip" tabindex="0" aria-describedby="tip-ms-roi">Blended ROI <span class="tip-icon" aria-hidden="true">ⓘ</span>
+        <span class="tip-bubble" id="tip-ms-roi" role="tooltip">
+          <span class="tip-title">Blended ROI</span>
+          <span class="tip-body">Total attributed sales ÷ total spend across all campaigns.<br><strong>Note:</strong> blended, not incremental — see DSIM iROI for incrementality.</span>
+        </span>
+      </div>
       <div class="ms-kpi-sub">Sales ÷ Spend (weighted)</div>
       <div class="ms-kpi-value">${roi.toFixed(2)}×</div>
       <div class="ms-kpi-delta delta-warn">↓ ${deltas.roi.toFixed(2)} vs ${dtPrior}</div>
@@ -7912,7 +8273,13 @@ function dgRenderPromotedBreakdown() {
         <div class="dg-promoted-name">${p.name}</div>
         <div class="dg-promoted-effect">+${p.effect}%</div>
         <div class="dg-promoted-foot">
-          <span class="dg-promoted-roi">iROI ${p.iROI.toFixed(2)}×</span>
+          <span class="dg-promoted-roi has-tip" tabindex="0" aria-describedby="tip-dg-promo-${p.name.replace(/\s+/g,'-').toLowerCase()}">iROI ${p.iROI.toFixed(2)}× <span class="tip-icon" aria-hidden="true">ⓘ</span>
+            <span class="tip-bubble" id="tip-dg-promo-${p.name.replace(/\s+/g,'-').toLowerCase()}" role="tooltip">
+              <span class="tip-title">${p.name} iROI</span>
+              <span class="tip-body">Incremental ROI = Effect Share ÷ Investment Share. ${p.iROI.toFixed(2)}× ${p.iROI >= 1 ? '— underinvested, consider adding spend' : '— saturated, consider reducing spend'}. This channel is in the <strong>${zoneLabel}</strong> zone.</span>
+              <span class="tip-source">Source: Bayesian MMM.</span>
+            </span>
+          </span>
           <span class="dg-zone-pill tone-${tone}">${zoneLabel}</span>
         </div>
       </div>
@@ -8240,21 +8607,42 @@ function dgRenderMetricsAndRecommendation() {
   const liftPct = today > 0 ? Math.round(((target - today) / today) * 100) : 0;
 
   const cards = [
-    { label: 'Current index',         value: p.todayIdx },
-    { label: 'Target index',          value: p.targetIdx },
-    { label: 'Max growth index',      value: p.maxIdx },
+    { label: 'Current index',         value: p.todayIdx,
+      tipBody: 'Where this lever operates today on the 0–100 normalized scale.<br><strong>Note:</strong> index is a model scale, not dollars.' },
+    { label: 'Target index',          value: p.targetIdx,
+      tipBody: 'Recommended operating point for best marginal return — top of the growth zone.',
+      tipSource: 'Source: Hill response curve fit.' },
+    { label: 'Max growth index',      value: p.maxIdx,
+      tipBody: 'Point beyond which extra investment yields diminishing returns (saturation).',
+      tipSource: 'Source: Hill curve.' },
     { label: 'Sales lift today',      value: fmtDollar(today)  + '/wk' },
-    { label: 'Sales lift at target',  value: fmtDollar(target) + '/wk', sub: '+' + liftPct + '% vs today' },
+    { label: 'Sales lift at target',  value: fmtDollar(target) + '/wk', sub: '+' + liftPct + '% vs today',
+      tipBody: 'Modeled incremental sales if you move this lever from today\'s index to target. Shown with 90% CI.',
+      tipSource: 'Source: response curve.' },
     { label: 'Sales lift at max',     value: fmtDollar(max)    + '/wk' },
-    { label: 'Elasticity at avg',     value: elasAvg.toFixed(2), tone: elasAvg >= 1 ? 'good' : 'bad' },
-    { label: 'Elasticity at opt',     value: elasOpt.toFixed(2), tone: elasOpt >= 1 ? 'good' : 'bad' }
+    { label: 'Elasticity at avg',     value: elasAvg.toFixed(2), tone: elasAvg >= 1 ? 'good' : 'bad',
+      tipBody: '% sales change per 1% change in this lever, at the current operating point. &gt;1 elastic, &lt;1 inelastic.',
+      tipSource: 'Source: response curve derivative.' },
+    { label: 'Elasticity at opt',     value: elasOpt.toFixed(2), tone: elasOpt >= 1 ? 'good' : 'bad',
+      tipBody: '% sales change per 1% change in this lever, at the optimal (target) operating point.',
+      tipSource: 'Source: response curve derivative.' }
   ];
 
+  let _dgTipIdx = 0;
   wrap.innerHTML = cards.map(c => {
     const toneClass = c.tone === 'good' ? 'elasticity-good' : (c.tone === 'bad' ? 'elasticity-bad' : '');
+    const tipId = c.tipBody ? ('tip-dg-metric-' + _dgTipIdx++) : null;
+    const labelHtml = c.tipBody
+      ? `<div class="dg-metric-label has-tip" tabindex="0" aria-describedby="${tipId}">${c.label} <span class="tip-icon" aria-hidden="true">ⓘ</span>
+           <span class="tip-bubble" id="${tipId}" role="tooltip">
+             <span class="tip-body">${c.tipBody}</span>
+             ${c.tipSource ? '<span class="tip-source">' + c.tipSource + '</span>' : ''}
+           </span>
+         </div>`
+      : `<div class="dg-metric-label">${c.label}</div>`;
     return `
       <div class="dg-metric-card ${toneClass}">
-        <div class="dg-metric-label">${c.label}</div>
+        ${labelHtml}
         <div class="dg-metric-value">${c.value}</div>
         ${c.sub ? '<div class="dg-metric-sub">' + c.sub + '</div>' : ''}
       </div>
