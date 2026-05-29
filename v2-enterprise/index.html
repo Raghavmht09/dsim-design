@@ -2790,7 +2790,6 @@ main {
   display: flex; flex-direction: column;
   gap: var(--s-3);
   min-width: 0;
-  overflow: hidden;
 }
 .dg-hill-head {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -2803,7 +2802,7 @@ main {
   color: var(--text-tertiary);
 }
 .dg-hill-driver strong { color: var(--text-primary); font-weight: 600; }
-.dg-hill-frame { position: relative; height: 380px; }
+.dg-hill-frame { position: relative; height: 380px; overflow: hidden; }
 .dg-zone-labels {
   display: grid;
   grid-template-columns: 31fr 56fr 13fr;
@@ -3689,6 +3688,9 @@ main {
   gap: 2px;
   pointer-events: none;
 }
+.rl-gauge-overlay .has-tip {
+  pointer-events: auto;
+}
 .rl-gauge-pct {
   font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
   font-size: 32px; font-weight: 700;
@@ -4363,6 +4365,10 @@ main {
   opacity: 1;
   visibility: visible;
   transition-delay: 80ms;
+}
+/* JS-positioned tooltips escape overflow:hidden containers */
+.tip-bubble.js-placed {
+  position: fixed !important;
 }
 
 /* ── Inner structure ── */
@@ -10064,6 +10070,38 @@ document.addEventListener('DOMContentLoaded', boot);
   });
   /* announce after listener is live */
   window.parent.postMessage({type:'__edit_mode_available'},'*');
+})();
+</script>
+<script>
+/* ── Tooltip position fix: use fixed positioning via getBoundingClientRect ──
+   Overrides position:absolute so tooltips escape overflow:hidden containers. */
+(function() {
+  function placeTip(trigger) {
+    var bubble = trigger.querySelector('.tip-bubble');
+    if (!bubble) return;
+    var r = trigger.getBoundingClientRect();
+    var cx = r.left + r.width / 2;
+    var isBelow = bubble.classList.contains('tip-below');
+    bubble.classList.add('js-placed');
+    bubble.style.left = Math.round(cx) + 'px';
+    bubble.style.bottom = '';
+    if (isBelow) {
+      bubble.style.top = Math.round(r.bottom + 8) + 'px';
+      bubble.style.transform = 'translateX(-50%)';
+    } else {
+      bubble.style.top = Math.round(r.top) + 'px';
+      bubble.style.transform = 'translateX(-50%) translateY(calc(-100% - 8px))';
+    }
+  }
+  // Capture phase catches mouseenter on all descendants including dynamic content
+  document.addEventListener('mouseenter', function(e) {
+    var t = e.target && e.target.closest ? e.target.closest('.has-tip') : null;
+    if (t) placeTip(t);
+  }, true);
+  document.addEventListener('focusin', function(e) {
+    var t = e.target && e.target.closest ? e.target.closest('.has-tip') : null;
+    if (t) placeTip(t);
+  });
 })();
 </script>
 </body>
